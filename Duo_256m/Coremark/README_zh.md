@@ -20,11 +20,11 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essent
 安装ruyi包管理器
 
 ```
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.41.0/ruyi-0.41.0.riscv64
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.amd64
 
-chmod +x ruyi-0.41.0.riscv64
+chmod +x ./ruyi-0.47.0.amd64
 
-sudo cp -v ruyi-0.41.0.riscv64 /usr/local/bin/ruyi
+sudo cp -v ./ruyi-0.47.0.amd64 /usr/local/bin/ruyi
 ```
 
 安装GCC和LLVM工具链
