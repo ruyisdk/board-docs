@@ -14,9 +14,9 @@
 
 | profile | YOLOX |
 
-##### 
 
-##### **##\*\*一、RuyiSDK示例\*\***
+
+##**一、RuyiSDK示例**
 
 Ruyi环境搭建  
 
@@ -38,9 +38,9 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 
 ```
 
-##### **##\*\*二、YOLOX 目标检测示例\*\***
+## **二、YOLOX 目标检测示例**
 
-###### **###\*\*示例描述和硬件环境准备  \*\***
+### **示例描述和硬件环境准备 **
 
 示例描述  
 
@@ -52,7 +52,7 @@ YOLOX 是一个高性能的目标检测模型，本示例在 Lichee Pi 4A 上运
 
 
 
-###### **###\*\*创建并激活ruyi虚拟环境 \*\*** 
+###**创建并激活ruyi虚拟环境**
 
 创建虚拟环境，命名为 yolox-venv，使用 sipeed-lpi4a profile。  
 
@@ -316,7 +316,7 @@ Successfully installed coloredlogs-15.0.1 flatbuffers-25.12.19 humanfriendly-10.
 
 ```
 
-###### **###\*\*运行示例并验证结果  \*\***
+### **运行示例并验证结果  **
 
 
 
