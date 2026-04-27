@@ -178,5 +178,7 @@ profile: sipeed-lpi4a-opencv
      ```c#
      Success! Image saved as test_output.jpg
      ```
+     ![test.png](./images/test.png)
+
 
      
