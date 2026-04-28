@@ -1,5 +1,5 @@
 ---
-sys: RuyiSDK
+sys: debian
 sys_ver: 0.46.0
 sys_var: Debian
 provider: milkv
