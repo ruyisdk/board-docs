@@ -1,4 +1,3 @@
-
 ---
 sys: revyos
 sys_ver: "20250110"
@@ -10,8 +9,6 @@ last_update: 2026-04-27
 model: Lichee Pi 4A
 profile: YOLOv5n
 ---
-
-
 
 # **RuyiSDK示例**
 本示例暂未验证，只描述过程
