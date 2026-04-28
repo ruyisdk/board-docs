@@ -25,7 +25,7 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essent
 
 ```
 
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.46.0/ruyi-0.46.0.riscv64
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.riscv64
 
 chmod +x ruyi-0.46.0.riscv64
 
