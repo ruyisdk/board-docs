@@ -65,11 +65,11 @@ ruyi install gnu-plct llvm-plct
 
 请参考以下引脚对照表及图片将模块连接至 Duo S。
 
-[![dht22 引脚图](https://github.com/ZihanCheng63/board-docs/blob/main/Duo_S/images/dht22.png)](https://github.com/ZihanCheng63/board-docs/blob/main/Duo_S/images/dht22.png)
+[![dht22 引脚图](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/dht22.png)](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/dht22.png)
 
-  
 
-[![duos-pinout-v1.1](https://github.com/ruyisdk/board-docs/blob/main/Duo_S/images/duos-pinout-v1.1.webp)](https://github.com/ruyisdk/board-docs/blob/main/Duo_S/images/duos-pinout-v1.1.webp)
+
+[![duos-pinout-v1.1](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)
 
 
 
@@ -86,9 +86,9 @@ ruyi install gnu-plct llvm-plct
 
 
 
-![接线图 1](https://github.com/ZihanCheng63/board-docs/blob/main/Duo_S/images/image-2026041701.png)
+![接线图 1](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/image-2026041701.png)
 
-![接线图 2](https://github.com/ZihanCheng63/board-docs/blob/main/Duo_S/images/image-2026041702.png)
+![接线图 2](https://raw.githubusercontent.com/ZihanCheng63/board-docs/main/Duo_S/images/image-2026041702.png)
 
 ### 3. 获取源码
 
