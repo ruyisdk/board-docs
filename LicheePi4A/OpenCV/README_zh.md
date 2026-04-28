@@ -1,5 +1,5 @@
 ---
-sys: Debian
+sys: debian
 sys_ver: 12 (Bookworm)
 sys_var: 
 provider: PLCT/Sipeed
