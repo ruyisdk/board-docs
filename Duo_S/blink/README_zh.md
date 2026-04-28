@@ -21,7 +21,7 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essent
 
 ```
 
-#### 安装 ruyi 包管理器
+安装 ruyi 包管理器
 
 ```
 
