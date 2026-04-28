@@ -1,7 +1,7 @@
 ---
 sys: debian
 sys_ver: v1.6.35
-sys_var: Debian
+sys_var: null
 provider: milkv
 status: peripheral 
 last_update: 2026-04-23
