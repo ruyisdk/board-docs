@@ -43,7 +43,7 @@ ruyi install gnu-plct llvm-plct
 
 ```
 
-Blink
+## Blink
 
 本文介绍如何使用 RuyiSDK 在 Milk-V Duo S 开发板上快速部署编译环境，并构建 LED 闪烁控制程序，验证板载 LED 的控制功能。
 
@@ -65,7 +65,9 @@ Blink
 
 ```bash
 
-git clone https://github.com/milkv-duo/duo-examples.git
+ruyi extract milkv-duo-examples
+
+mv milkv-duo-examples-* duo-examples 
 
 cd duo-examples
 
