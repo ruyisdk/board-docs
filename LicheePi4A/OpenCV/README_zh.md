@@ -3,7 +3,7 @@ sys: debian
 sys_ver: 12 (Bookworm)
 sys_var: 
 provider: PLCT/Sipeed
-status: Supported
+status: cv
 last_update: 2026-04-21
 
 model: LicheePi 4A
@@ -31,7 +31,7 @@ profile: sipeed-lpi4a-opencv
   ```
 
 
-## LicheePi 4A Dhrystone 基准测试
+## LicheePi 4A OpenCV
 
 - #### 示例描述和硬件环境准备
 
