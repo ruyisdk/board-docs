@@ -12,9 +12,7 @@ profile: YOLOX
 
 
 
-# **RuyiSDK示例AI示例**
-
-Ruyi环境搭建  
+# **RuyiSDK AI示例**
 
 更新ruyi软件包列表并安装编译工具链  
 

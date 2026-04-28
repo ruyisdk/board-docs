@@ -12,7 +12,7 @@ profile: MobilenetV2
 
 
 
-# **RuyiSDK示例 AI 示例**
+# **RuyiSDK AI 示例**
 本示例暂未验证只描述过程
 ## **安装依赖包**
 ### **安装Docker**
@@ -21,13 +21,14 @@ sudo apt update
 sudo apt install -y ca-certificates curl
 ```
 
-# 下载 Docker 官方安装脚本并执行
+下载 Docker 官方安装脚本并执行
 ```bash
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 安装成功后查看docker及其状态:
-``bash
+
+```bash
 docker --version
 sudo systemctl status docker
 ```
@@ -88,7 +89,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 
 ```
 
-## **MobilenetV2测试示例**
+## **MobilenetV2**
 ### **示例描述和硬件环境准备**
 本教程是一个如何在 LicheePi4A 平台上部署 mobilenetv2 模型完成图像分类的示例。  
 硬件环境：Lichee Pi 4A (16GB)    

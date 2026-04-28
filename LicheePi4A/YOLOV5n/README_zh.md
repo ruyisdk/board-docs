@@ -10,7 +10,7 @@ model: Lichee Pi 4A
 profile: YOLOv5n
 ---
 
-# **RuyiSDK示例**
+# **RuyiSDK AI示例**
 本示例暂未验证，只描述过程
 ## **安装依赖包**
 ### **安装docker**
@@ -158,7 +158,7 @@ warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 ```
 
-## **YOLOV5n测试示例**
+## **YOLOV5n**
 ### **示例描述和硬件环境准备**
 示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链的 NPU 交叉编译能力。  
 硬件环境：Lichee Pi 4A (16GB)   
