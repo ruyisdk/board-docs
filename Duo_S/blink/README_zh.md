@@ -33,7 +33,7 @@ sudo cp -v ruyi-0.46.0.riscv64 /usr/local/bin/ruyi
 
 ```
 
-#### 安装工具链
+安装工具链
 
 ```
 
