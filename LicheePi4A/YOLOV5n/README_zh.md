@@ -124,8 +124,7 @@ pip install pandas
 pip install tqdm
 pip install seaborn
 #下载权重文件
-wget https://github.com/ultralytics/yolov5/releases/downloals
-d/v7.0/yolov5n.pt
+wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
 ```
 
 ```bashcd y
