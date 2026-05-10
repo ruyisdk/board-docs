@@ -1,18 +1,55 @@
 ---
 sys: revyos
-sys_ver: "20250110"
+sys_ver: "20251226"
 sys_var: null
 
 status: AI
-last_update: 2026-04-27
+last_update: 2026-05-08
 
 model: Lichee Pi 4A
 profile: YOLOv5n
 ---
 
-# **RuyiSDK AI示例**
-本示例暂未验证，只描述过程
-## **安装依赖包**
+
+# **RuyiSDK示例**
+本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。本示例暂未验证只描述过程  
+## **环境配置**
+### **开发板配置**
+安装python虚拟环境  
+```bash
+sudo -i
+apt install python3.11-venv
+cd /root
+python3 -m venv ort
+source /root/ort/bin/activate
+```
+SHL库安装  
+```bash
+# 1. 安装 shl-python
+pip3 install shl-python -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 2. 查看安装位置并复制动态库到系统目录
+python3 -m shl --whereis th1520
+# 假设输出为 /home/debian/ort/lib/python3.11/site-packages/shl/install_nn2/th1520
+
+# 3. 根据输出路径复制动态库（注意替换实际路径）
+sudo cp /home/debian/ort/lib/python3.11/site-packages/shl/install_nn2/th1520/lib/* /usr/lib/
+sudo ldconfig
+```
+HHB-onnxruntime 安装  
+HHB-onnxuruntime 是移植了 SHL 后端（execution providers），让 onnxruntime 能复用到 SHL 中针对玄铁 CPU 的高性能优化代码。  
+CPU 版本  
+```bash
+wget https://github.com/zhangwm-pt/onnxruntime/releases/download/riscv_whl_v2.6.0/hhb_onnxruntime_c920-2.6.0-cp311-cp311-linux_riscv64.whl
+pip install hhb_onnxruntime_c920-2.6.0-cp311-cp311-linux_riscv64.whl
+
+```
+NPU版本  
+```bash
+wget https://github.com/zhangwm-pt/onnxruntime/releases/download/riscv_whl_v2.6.0/hhb_onnxruntime_th1520-2.6.0-cp311-cp311-linux_riscv64.whl
+pip install hhb_onnxruntime_th1520-2.6.0-cp311-cp311-linux_riscv64.whl
+```
+### **宿主机（x86）环境配置**
 ### **安装docker**
 ```bash
 sudo apt update
@@ -44,7 +81,6 @@ licheepi@licheepi-virtual-machine:~$ sudo systemctl status docker
 sudo usermod -aG docker $USER
 newgrp docker
 ```
-
 拉取 HHB Docker 镜像
 ```bash
 docker pull hhb4tools/hhb:latest
@@ -55,15 +91,6 @@ docker run -itd --name hhb_env hhb4tools/hhb:latest
 #进入容器
 docker exec -it hhb_env /bin/bash
 ```
-
-在终端显示如下：
-```text
-licheepi@licheepi-virtual-machine:~$ docker run -itd --name hhb_env hhb4tools/hhb:latest
-78776422f7c978472da9c903bcba5804cae8c7f83f410a5b7fbd2989dbc2e877
-licheepi@licheepi-virtual-machine:~$ docker exec -it hhb_env /bin/bash
-root@78776422f7c9:/# 
-
-```
 下载Yolov5n模型    
 下载到示例目录 /home/example/th1520_npu/yolov5n 下：  
 ```bash
@@ -73,20 +100,41 @@ git clone https://gitclone.com/github.com/ultralytics/yolov5.git
 cd yolov5
 pip3 install ultralytics
 ```
-如果遇到版本冲突的问题，强制重装torch和torchvision
+如果遇到python版本不兼容的问题：  
+在 Docker 容器内创建新的 Python 3.9 环境  
 ```bash
-pip3 install --upgrade torch==2.4.1 torchvision==0.19.1
+# 安装 python3.9 和 venv
+apt update
+apt install -y python3.9 python3.9-venv
+
+# 创建虚拟环境
+python3.9 -m venv /opt/yolo-venv
+
+# 激活虚拟环境
+source /opt/yolo-venv/bin/activate
 ```
-安装所需依赖
+ 在新环境里安装依赖  
 ```bash
-pip3 install pandas
-pip3 install seaborn
+# 升级 pip
+pip install --upgrade pip
+# 安装 ultralytics
+pip install ultralytics
+pip install opencv-python-headless -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install pandas
+pip install tqdm
+pip install seaborn
+#下载权重文件
+wget https://github.com/ultralytics/yolov5/releases/download/v7.0/yolov5n.pt
 ```
 
+```bashcd y
+cd /home/example/th1520_npu/yolov5n/yolov5
+# 导出模型
+python3 export.py --weights yolov5n.pt --include onnx --imgsz 384 640  
+```
+退出虚拟环境：  
 ```bash
-python3 export.py --weights yolov5n.pt --include onnx --imgsz 384 640
-# 将导出的 ONNX 文件复制到示例目录
-cp yolov5n.onnx ../
+deactivate
 ```
 
 HHB编译模型：  
@@ -94,30 +142,56 @@ HHB编译模型：
 编译时需要先进入到示例所在目录 /home/example/th1520_npu/yolov5n  
 ```bash
 cd /home/example/th1520_npu/yolov5n
-hhb -D --model-file yolov5n.onnx --data-scale-div 255 --board th1520 --input-name "images" --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" --input-shape "1 3 384 640" --calibrate-dataset kite.jpg  --quantization-scheme "int8_asym"
+cp yolov5/yolov5n.onnx .
+hhb -D \
+  --model-file yolov5n.onnx \
+  --board th1520 \
+  --input-name "images" \
+  --input-shape "1 3 384 640" \
+  --data-scale-div 255 \
+  --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" \
+  --calibrate-dataset kite.jpg \
+  --quantization-scheme "int8_asym"
 ```
 在终端显示如下：
 ```text
-root@78776422f7c9:/home/example/th1520_npu/yolov5n# hhb -D --model-file yolov5n.onnx --data-scale-div 255 --board th1520 --input-name "images" --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" --input-shape "1 3 384 640" --calibrate-dataset kite.jpg  --quantization-scheme "int8_asym"
-[2026-04-27 06:12:54] (HHB LOG): Start import model.
-[2026-04-27 06:12:55] (HHB LOG): Model import completed! 
-[2026-04-27 06:12:55] (HHB LOG): Start quantization.
-[2026-04-27 06:12:55] (HHB LOG): get calibrate dataset from kite.jpg
-[2026-04-27 06:12:55] (HHB LOG): Start optimization.
-[2026-04-27 06:12:55] (HHB LOG): Optimization completed!
-Calibrating: 100%|██████████████████| 316/316 [00:23<00:00, 13.21it/s]
-[2026-04-27 06:13:19] (HHB LOG): Start conversion to csinn.
-[2026-04-27 06:13:20] (HHB LOG): Conversion completed!
-[2026-04-27 06:13:20] (HHB LOG): Start operator fusion.
-[2026-04-27 06:13:20] (HHB LOG): Operator fusion completed!
-[2026-04-27 06:13:21] (HHB LOG): Start operator split.
-[2026-04-27 06:13:21] (HHB LOG): Operator split completed!
-[2026-04-27 06:13:21] (HHB LOG): Start layout convert.
-[2026-04-27 06:13:21] (HHB LOG): Layout convert completed!
-[2026-04-27 06:13:21] (HHB LOG): Quantization completed!
+root@78776422f7c9:/home/example/th1520_npu/yolov5n# hhb -D \
+>   --model-file yolov5n.onnx \
+>   --data-scale-div 255 \
+>   --board th1520 \
+>   --input-name "images" \
+>   --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" \
+>   --input-shape "1 3 384 640" \
+>   --calibrate-dataset kite.jpg \
+>   --quantization-scheme "int8_asym"
+[2026-05-08 02:48:22] (HHB LOG): Start import model.
+[2026-05-08 02:48:24] (HHB LOG): Model import completed! 
+[2026-05-08 02:48:24] (HHB LOG): Start quantization.
+[2026-05-08 02:48:24] (HHB LOG): get calibrate dataset from kite.jpg
+[2026-05-08 02:48:24] (HHB LOG): Start optimization.
+[2026-05-08 02:48:25] (HHB LOG): Optimization completed!
+Calibrating: 100%|███████████████| 316/316 [00:37<00:00,  8.34it/s]
+[2026-05-08 02:49:03] (HHB LOG): Start conversion to csinn.
+[2026-05-08 02:49:04] (HHB LOG): Conversion completed!
+[2026-05-08 02:49:04] (HHB LOG): Start operator fusion.
+[2026-05-08 02:49:04] (HHB LOG): Operator fusion completed!
+[2026-05-08 02:49:05] (HHB LOG): Start operator split.
+[2026-05-08 02:49:05] (HHB LOG): Operator split completed!
+[2026-05-08 02:49:05] (HHB LOG): Start layout convert.
+[2026-05-08 02:49:05] (HHB LOG): Layout convert completed!
+[2026-05-08 02:49:05] (HHB LOG): Quantization completed!
 
 ```
-
+退出docker环境。  
+```bash
+exit
+```
+在终端显示如下：  
+```bash
+root@78776422f7c9:/home/example/th1520_npu/yolov5n# exit
+exit
+licheepi@licheepi-virtual-machine:~$ 
+```
 ### **安装 RuyiSDK**
 ```bash
 # 下载并安装 ruyi
@@ -137,30 +211,10 @@ ruyi install gnu-plct-xthead
 info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 
 ```
-### **创建并激活 ruyi 虚拟环境**
 
-```bash
-# 创建虚拟环境 venv-sipeed
-ruyi venv -t gnu-plct-xthead sipeed-lpi4a venv-sipeed 
-#激活虚拟环境
-. venv-sipeed/bin/ruyi-activate 
-#查看当前虚拟环境下的 gcc 是否可用
-riscv64-plctxthead-linux-gnu-gcc --version
-```
-在终端显示如下：
-```text
-licheepi@licheepi-virtual-machine:~$ . venv-sipeed/bin/ruyi-activate 
-«Ruyi venv-sipeed» licheepi@licheepi-virtual-machine:~$ riscv64-plctxthead-linux-gnu-gcc --version 
-riscv64-plctxthead-linux-gnu-gcc (RuyiSDK 20250526 Xuantie-Sources Xuantie-binutils-8ee62aac8606 Xuantie-gcc-c2e0bcc86d1f Xuantie-glibc-29dd660835c5) 14.1.1 20240710
-Copyright (C) 2024 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
-```
-
-## **YOLOV5n**
+## **YOLOV5n测试示例**
 ### **示例描述和硬件环境准备**
-示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链的 NPU 交叉编译能力。  
+示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链的 NPU 交叉编译能力。
 硬件环境：Lichee Pi 4A (16GB)   
 软件环境：RuyiSDK 0.47.0，HHB 2.6.17
 
@@ -197,82 +251,23 @@ licheepi@licheepi-virtual-machine:~$ . venv-sipeed/bin/ruyi-activate
 ```
 
 ### **使用 ruyi 工具链编译示例代码**
-确认交叉编译器可用  
+确认交叉编译器可用
 ```bash
-riscv64-plctxthead-linux-gnu-gcc --version
+riscv64-plctxthead-linux-gnu-g++ --version
+# 复制整个yolov5n 目录
+docker cp hhb_env:/home/example/th1520_npu/yolov5n .
 ```
-
-复制必要的文件到宿主机  
+把 Docker 里的官方库复制到宿主机
 ```bash
-# 复制 hhb_out 目录（包含 io.c, model.c, process.c 等）
-docker cp hhb_env:/home/example/th1520_npu/yolov5n/hhb_out ./
+docker cp hhb_env:/usr/local/lib/python3.8/dist-packages/hhb/install_nn2/th1520 ./hhb_th1520
 
-# 复制 NPU SDK（头文件和静态库）
-docker cp hhb_env:/usr/local/lib/python3.8/dist-packages/hhb/install_nn2/th1520 ./th1520_npu_sdk
+docker cp hhb_env:/usr/local/lib/python3.8/dist-packages/hhb/prebuilt/runtime/riscv_linux ./hhb_runtime
 
-# 复制 c920 的静态库
-docker cp hhb_env:/usr/local/lib/python3.8/dist-packages/hhb/install_nn2/c920/lib/. ./th1520_npu_sdk/lib/
-
-# 复制主程序文件
-docker cp hhb_env:/home/example/th1520_npu/yolov5n/yolov5n.c ./
+docker cp hhb_env:/usr/local/lib/python3.8/dist-packages/hhb/prebuilt/decode/install/lib/rv ./hhb_decode_lib
 ```
-交叉编译libjpeg  
+修改yolov5n.c源码：
 ```bash
-cd /home/licheepi
-git clone https://github.com/libjpeg-turbo/libjpeg-turbo.git
-cd libjpeg-turbo
-mkdir build && cd build
-
-cmake .. \
-    -DCMAKE_C_COMPILER=riscv64-plctxthead-linux-gnu-gcc \
-    -DCMAKE_INSTALL_PREFIX=/home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr \
-    -DENABLE_SHARED=OFF \
-    -DWITH_JPEG8=ON
-
-make -j$(nproc)
-make install
-```
-交叉编译zlib
-```bash
-cd /home/licheepi
-wget https://github.com/madler/zlib/archive/refs/tags/v1.3.1.tar.gz -O zlib-1.3.1.tar.gz
-tar -xzvf zlib-1.3.1.tar.gz
-cd zlib-1.3.1
-
-export CC=riscv64-plctxthead-linux-gnu-gcc
-export AR=riscv64-plctxthead-linux-gnu-ar
-
-./configure --prefix=/home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr --static
-make -j$(nproc)
-make install
-```
-交叉编译 libpng  
-```bash
-cd /home/licheepi
-wget https://download.sourceforge.net/libpng/libpng-1.6.40.tar.gz
-tar -xzvf libpng-1.6.40.tar.gz
-cd libpng-1.6.40
-
-./configure \
-    --host=riscv64-plctxthead-linux-gnu \
-    --prefix=/home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr \
-    --enable-static \
-    --disable-shared \
-    CPPFLAGS="-I/home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include" \
-    LDFLAGS="-L/home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/lib"
-
-make -j$(nproc)
-make install
-```
-解决 omp.h 缺失问题
-```bash
-mkdir -p /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include
-docker cp hhb_env:/usr/lib/gcc/x86_64-linux-gnu/9/include/omp.h \
-    /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include/
-```
-修复 yolov5n.c 中的函数名问题
-```bash
-# 替换不兼容的函数名
+cd ~/yolov5n
 sed -i 's/shl_ref_f32_to_input_dtype/shl_c920_f32_to_input_dtype/g' yolov5n.c
 ```
 
@@ -280,36 +275,33 @@ sed -i 's/shl_ref_f32_to_input_dtype/shl_c920_f32_to_input_dtype/g' yolov5n.c
 ```bash
 riscv64-plctxthead-linux-gnu-gcc \
   yolov5n.c \
+  -o yolov5n_example \
   hhb_out/io.c \
   hhb_out/model.c \
-  hhb_out/process.c \
-  -o yolov5n_example \
-  -I hhb_out/ \
-  -I th1520_npu_sdk/include/ \
-  -I th1520_npu_sdk/include/shl_public/ \
-  -I th1520_npu_sdk/include/csinn/ \
+  -Wl,--gc-sections \
+  -O2 -g \
+  -mabi=lp64d \
   -I . \
-  th1520_npu_sdk/lib/libshl_c920.a \
-  /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/lib/libjpeg.a \
-  /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/lib/libpng.a \
-  /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/lib/libz.a \
-  -lstdc++ -lpthread -ldl -lm \
-  -mabi=lp64d -march=rv64gcv0p7_zfh_xtheadc \
-  -Wl,--gc-sections -O2 -g
-```
-检查生成的文件：  
-```bash
-ls -la yolov5n_example
-# 查看文件类型
-file yolov5n_example
-```
-终端显示如下：  
-```text
-«Ruyi venv-sipeed» licheepi@licheepi-virtual-machine:~$ ls -la yolov5n_example
--rwxrwxr-x 1 licheepi licheepi 9640776  4月 27 15:25 yolov5n_example
-«Ruyi venv-sipeed» licheepi@licheepi-virtual-machine:~$ file yolov5n_example
-yolov5n_example: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-riscv64-lp64d.so.1, BuildID[sha1]=a581dfa6e00424f79d7da7b9659cd5fbb5172789, for GNU/Linux 4.15.0, with debug_info, not stripped
+  -I hhb_out/ \
+  -I /home/licheepi/hhb_th1520/include/ \
+  -I /home/licheepi/hhb_th1520/include/shl_public/ \
+  -I /home/licheepi/hhb_th1520/include/csinn/ \
+  -L /home/licheepi/hhb_th1520/lib/ \
+  -lshl \
+  -L /home/licheepi/hhb_decode_lib/ \
+  -L /home/licheepi/hhb_runtime/ \
+  -lprebuilt_runtime \
+  -ljpeg -lpng -lz -lstdc++ -lm \
+  -march=rv64gcv0p7_zfh_xtheadc \
+  -Wl,-unresolved-symbols=ignore-in-shared-libs
 
+```
+解决 omp.h 缺失问题
+```bash
+mkdir -p /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include
+docker cp hhb_env:/usr/lib/gcc/x86_64-linux-gnu/9/include/omp.h \
+    /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include/
+cp ~/omp.h ~/yolov5n/
 ```
 
 ### **运行示例并验证结果**
