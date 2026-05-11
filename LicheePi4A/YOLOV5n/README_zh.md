@@ -12,7 +12,6 @@ profile: YOLOv5n
 
 
 # **RuyiSDK示例**
-本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。 
 ## **环境配置**
 ### **开发板配置**
 安装python虚拟环境  
@@ -138,7 +137,7 @@ deactivate
 ```
 
 HHB编译模型：  
-将 ONNX 模型交叉编译成 NPU 上可执行的程序，需要使用 hhb 命令。  
+将 ONNX 模型交叉编译成 CPU 上可执行的程序，需要使用 hhb 命令。  
 编译时需要先进入到示例所在目录 /home/example/th1520_npu/yolov5n  
 ```bash
 cd /home/example/th1520_npu/yolov5n
@@ -210,7 +209,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 
 ## **YOLOV5n测试示例(CPU)**
 ### **示例描述和硬件环境准备**
-示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链的 NPU 交叉编译能力。
+示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链在 RISC-V CPU（C920）上的交叉编译能力。
 硬件环境：Lichee Pi 4A (16GB)   
 软件环境：RuyiSDK 0.47.0，HHB 2.6.17
 
@@ -292,6 +291,7 @@ riscv64-plctxthead-linux-gnu-gcc \
   -Wl,-unresolved-symbols=ignore-in-shared-libs
 
 ```
+生成的可执行文件 yolov5n_example 用于在开发板上运行模型推理   
 解决 omp.h 缺失问题
 ```bash
 mkdir -p /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include
