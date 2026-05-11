@@ -21,6 +21,12 @@ apt install python3.11-venv
 cd /root
 python3 -m venv ort
 source /root/ort/bin/activate
+#下载python依赖包
+cd /home/debian
+git clone -b python3.11 https://github.com/zhangwm-pt/prebuilt\_whl.git
+cd prebuilt\_whl
+pip install \*.whl
+
 ```
 SHL库安装  
 ```bash
