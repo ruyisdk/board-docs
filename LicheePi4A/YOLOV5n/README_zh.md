@@ -12,7 +12,7 @@ profile: YOLOv5n
 
 
 # **RuyiSDK示例**
-本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。本示例暂未验证只描述过程  
+本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。 
 ## **环境配置**
 ### **开发板配置**
 安装python虚拟环境  
@@ -145,41 +145,37 @@ cd /home/example/th1520_npu/yolov5n
 cp yolov5/yolov5n.onnx .
 hhb -D \
   --model-file yolov5n.onnx \
-  --board th1520 \
-  --input-name "images" \
-  --input-shape "1 3 384 640" \
   --data-scale-div 255 \
+  --board c920 \
+  --input-name "images" \
   --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" \
-  --calibrate-dataset kite.jpg \
-  --quantization-scheme "int8_asym"
+  --input-shape "1 3 384 640" \
+  --quantization-scheme float16
 ```
 在终端显示如下：
 ```text
 root@78776422f7c9:/home/example/th1520_npu/yolov5n# hhb -D \
 >   --model-file yolov5n.onnx \
 >   --data-scale-div 255 \
->   --board th1520 \
+>   --board c920 \
 >   --input-name "images" \
 >   --output-name "/model.24/m.0/Conv_output_0;/model.24/m.1/Conv_output_0;/model.24/m.2/Conv_output_0" \
 >   --input-shape "1 3 384 640" \
->   --calibrate-dataset kite.jpg \
->   --quantization-scheme "int8_asym"
-[2026-05-08 02:48:22] (HHB LOG): Start import model.
-[2026-05-08 02:48:24] (HHB LOG): Model import completed! 
-[2026-05-08 02:48:24] (HHB LOG): Start quantization.
-[2026-05-08 02:48:24] (HHB LOG): get calibrate dataset from kite.jpg
-[2026-05-08 02:48:24] (HHB LOG): Start optimization.
-[2026-05-08 02:48:25] (HHB LOG): Optimization completed!
-Calibrating: 100%|███████████████| 316/316 [00:37<00:00,  8.34it/s]
-[2026-05-08 02:49:03] (HHB LOG): Start conversion to csinn.
-[2026-05-08 02:49:04] (HHB LOG): Conversion completed!
-[2026-05-08 02:49:04] (HHB LOG): Start operator fusion.
-[2026-05-08 02:49:04] (HHB LOG): Operator fusion completed!
-[2026-05-08 02:49:05] (HHB LOG): Start operator split.
-[2026-05-08 02:49:05] (HHB LOG): Operator split completed!
-[2026-05-08 02:49:05] (HHB LOG): Start layout convert.
-[2026-05-08 02:49:05] (HHB LOG): Layout convert completed!
-[2026-05-08 02:49:05] (HHB LOG): Quantization completed!
+>   --quantization-scheme float16
+[2026-05-11 06:26:10] (HHB LOG): Start import model.
+[2026-05-11 06:26:11] (HHB LOG): Model import completed! 
+[2026-05-11 06:26:11] (HHB LOG): Start quantization.
+[2026-05-11 06:26:12] (HHB LOG): Start optimization.
+[2026-05-11 06:26:12] (HHB LOG): Optimization completed!
+[2026-05-11 06:26:12] (HHB LOG): Start conversion to csinn.
+[2026-05-11 06:26:12] (HHB LOG): Conversion completed!
+[2026-05-11 06:26:12] (HHB LOG): Start operator fusion.
+[2026-05-11 06:26:13] (HHB LOG): Operator fusion completed!
+[2026-05-11 06:26:13] (HHB LOG): Start operator split.
+[2026-05-11 06:26:13] (HHB LOG): Operator split completed!
+[2026-05-11 06:26:13] (HHB LOG): Start layout convert.
+[2026-05-11 06:26:13] (HHB LOG): Layout convert completed!
+[2026-05-11 06:26:13] (HHB LOG): Quantization completed!
 
 ```
 退出docker环境。  
@@ -212,7 +208,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 
 ```
 
-## **YOLOV5n测试示例**
+## **YOLOV5n测试示例(CPU)**
 ### **示例描述和硬件环境准备**
 示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链的 NPU 交叉编译能力。
 硬件环境：Lichee Pi 4A (16GB)   
@@ -283,13 +279,13 @@ riscv64-plctxthead-linux-gnu-gcc \
   -mabi=lp64d \
   -I . \
   -I hhb_out/ \
-  -I /home/licheepi/hhb_th1520/include/ \
-  -I /home/licheepi/hhb_th1520/include/shl_public/ \
-  -I /home/licheepi/hhb_th1520/include/csinn/ \
-  -L /home/licheepi/hhb_th1520/lib/ \
+  -I ~/hhb_c920/include/ \
+  -I ~/hhb_c920/include/shl_public/ \
+  -I ~/hhb_c920/include/csinn/ \
+  -L ~/hhb_c920/lib/ \
   -lshl \
-  -L /home/licheepi/hhb_decode_lib/ \
-  -L /home/licheepi/hhb_runtime/ \
+  -L ~/hhb_decode_lib/ \
+  -L ~/hhb_runtime/ \
   -lprebuilt_runtime \
   -ljpeg -lpng -lz -lstdc++ -lm \
   -march=rv64gcv0p7_zfh_xtheadc \
@@ -305,4 +301,49 @@ cp ~/omp.h ~/yolov5n/
 ```
 
 ### **运行示例并验证结果**
-暂未验证
+把生成文件传递到开发板上：  
+```bash
+scp -r /home/licheepi/yolov5n debian@172.16.60.209:~/
+```
+先确认开发板驱动是否加载：  
+```bash
+lsmod
+```
+若在输出中有 img_mem，vha 和 vha_info 这三个模块，NPU驱动即加载成功。  
+若没有加载，手动加载模块：  
+```bash
+sudo modprobe img_mem
+sudo modprobe vha
+sudo modprobe vha_info
+```
+激活开发板上的python虚拟环境  
+```bash
+source /home/debian/ort/bin/activate
+```
+
+运行程序  
+```bash
+cd yolov5n
+sudo chmod 666 /dev/vha0
+python3 inference.py 
+
+```
+在终端显示如下：
+```text
+(ort) debian@revyos-lpi4a:~/yolov5n$ python3 inference.py
+ ********** preprocess image **********
+ ******* run yolov5 and postprocess *******
+Run graph execution time: 389.52063ms, FPS=2.57
+detect num: 4
+id:     label   score           x1              y1              x2              y2
+[0]:    0       0.901887        274.524475      158.559036      359.169312      332.431702
+[1]:    0       0.879545        80.073883       184.767792      190.130157      349.906281
+[2]:    0       0.845318        219.378418      221.669983      283.860413      333.806152
+[3]:    33      0.666908        67.099136       174.128189      202.971451      220.213608
+ ********** draw bbox **********
+[274.524475, 158.559036, 359.169312, 332.431702, 0.901887, 0]
+[80.073883, 184.767792, 190.130157, 349.906281, 0.879545, 0]
+[219.378418, 221.669983, 283.860413, 333.806152, 0.845318, 0]
+[67.099136, 174.128189, 202.971451, 220.213608, 0.666908, 33]
+
+```
