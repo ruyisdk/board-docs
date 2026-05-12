@@ -267,7 +267,7 @@ riscv64-plctxthead-linux-gnu-gcc \
 mkdir -p /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include
 docker cp hhb_env:/usr/lib/gcc/x86_64-linux-gnu/9/include/omp.h \
     /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include/
-cp ~/omp.h ~/yolov5n/
+cp ~/omp.h ~/yolov5s/
 ```
 ### **运行示例并验证结果**
 把生成文件传递到开发板上：  
