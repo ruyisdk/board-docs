@@ -127,7 +127,12 @@ Saving to: 'mobilenetv2-12.onnx'
 mobilenetv2-12.onn 100%[==============>]  13.32M  1.80MB/s    in 7.6s    
 2026-04-28 06:33:29 (1.76 MB/s) - 'mobilenetv2-12.onnx' saved [13964571/13964571]
 ```
-
+使用以下 wget 命令直接下载 MobilenetV2 示例所需的文件到当前目录：  
+```bash
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/main.cpp
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/synset.txt
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/persian_cat.jpg
+```
 获取本次教程所使用的优化版本 opencv 所需的库文件
 ```bash
 cd /home/example/th1520_npu/
