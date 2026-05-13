@@ -101,6 +101,12 @@ docker exec -it hhb_env /bin/bash
 ```bash
 mkdir -p /home/example/th1520_npu/yolov5n
 cd /home/example/th1520_npu/yolov5n
+#使用 wget 命令，从官方示例仓库中下载运行推理所必需的文件。  
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/detection/yolov5/coco.names
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/detection/yolov5/inference.py
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/detection/yolov5/kite.jpg
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/detection/yolov5/yolov5n.c
+#克隆官方仓库并安装依赖  
 git clone https://gitclone.com/github.com/ultralytics/yolov5.git
 cd yolov5
 pip3 install ultralytics
