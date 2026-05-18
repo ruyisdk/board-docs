@@ -317,17 +317,7 @@ cp ~/omp.h ~/yolov5n/
 ```bash
 scp -r /home/licheepi/yolov5n debian@172.16.60.209:~/
 ```
-先确认开发板驱动是否加载：  
-```bash
-lsmod
-```
-若在输出中有 img_mem，vha 和 vha_info 这三个模块，NPU驱动即加载成功。  
-若没有加载，手动加载模块：  
-```bash
-sudo modprobe img_mem
-sudo modprobe vha
-sudo modprobe vha_info
-```
+
 激活开发板上的python虚拟环境  
 ```bash
 source /home/debian/ort/bin/activate
@@ -336,7 +326,6 @@ source /home/debian/ort/bin/activate
 运行程序  
 ```bash
 cd yolov5n
-sudo chmod 666 /dev/vha0
 python3 inference.py 
 
 ```
