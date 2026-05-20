@@ -1,34 +1,24 @@
-# 使用 RuyiSDK 在 Milk-V Duo256m 上编译运行 mailbox-test 教程
+---
+sys: buildroot
+sys_ver: v1.1.4
+sys_var: v1
 
-本教程以在Milk-V Duo256m上编译运行mailbox-test为例，基于mailbox通信机制验证RuyiSDK对RISC-V架构的编译适配性，以及开发板核间/外设mailbox通信的功能正确性。
+status: peripheral
+last_update: 2026-05-03
 
-## 1.准备工作
+model: Milk-V Duo (256M)
+profile: Mailbox-test
+---
 
-### 下载系统镜像
+# RuyiSDK 外设示例
 
-```Plain Text
-https://github.com/milkv-duo/duo-buildroot-sdk-v2/releases/download/v2.0.1/milkv-duo256m-musl-riscv64-sd_v2.0.1.img.zip
-```
-
-### 解压系统镜像
-
-```Plain Text
-unzip milkv-duo256m-musl-riscv64-sd_v2.0.1.img.zip
-```
-
-### 系统镜像烧录进存储卡
-
-```Plain Text
-sudo dd if=milkv-duo256m-musl-riscv64-sd_v2.0.1.img of=/dev/sdX bs=1M; sync
-```
-
-### 安装依赖包
+安装依赖包
 
 ```Plain Text
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
-### 安装ruyi包管理器
+安装ruyi包管理器
 
 ```Plain Text
 wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.45.0/ruyi-0.45.0.amd64
@@ -36,29 +26,58 @@ chmod +x ruyi-0.45.0.amd64
 sudo cp -v ruyi-0.45.0.amd64 /usr/local/bin/ruyi
 ```
 
-### 安装GCC工具链
+安装GCC工具链
 
 ```Plain Text
 ruyi update
 ruyi install gnu-plct 
 ```
+## Mailbox-test
 
-## 2.获取 mailbox-test 源码并编译
+本文介绍如何使用 RuyiSDK 在 Milk-V Duo 256M 开发板上快速部署编译环境，并构建 mailbox 双核通信程序，验证大核与小核之间的通信功能。
 
-### 创建并激活ruyi虚拟环境（GCC）
+### 1. 准备工作
+
+* **开发板**：Milk-V Duo 256M (256M, SG2002)
+
+* **其他**：microSD 卡、USB Type-C 数据线
+
+#### 操作系统安装与启动验证
+
+确保您的开发板已准备好系统。
+
+参考文档： https://milkv.io/zh/docs/duo/getting-started/boot
+
+
+### 2. 获取源码
+
+#### 克隆源码
+
+```bash
+
+ruyi extract milkv-duo-examples
+
+mv milkv-duo-examples-* duo-examples 
+
+cd duo-examples
+
+```
+
+### 3. 编译应用与验证
+#### 创建并激活ruyi虚拟环境（GCC）
 
 ```Plain Text
 ruyi venv -t toolchain/gnu-plct milkv-duo venv-mailbox
 . ~/venv-mailbox/bin/ruyi-activate
 ```
 
-### 验证GCC版本
+#### 验证GCC版本
 
 ```Plain Text
 riscv64-plct-linux-gnu-gcc -v
 ```
 
-#### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 cuiqiyun@DESKTOP-FOE2N7B:~$ . ~/venv-mailbox/bin/ruyi-activate
@@ -73,32 +92,15 @@ Supported LTO compression algorithms: zlib zstd
 gcc version 15.1.0 20250912 (experimental) (RuyiSDK 20250912 PLCT-Sources-c926bf6b4d86)
 ```
 
-
-
-### 获取 mailbox-test 源码
-
-Milk-V Duo官方提供了mailbox相关测试代码，直接克隆官方示例仓库：
+#### 编译 mailbox-test 程序
 
 ```Plain Text
-git clone https://github.com/milkv-duo/duo-examples.git
-cd duo-examples/mailbox-test
-```
+cd mailbox-test
 
-#### log：
-
-```
-«Ruyi venv-mailbox» cuiqiyun@DESKTOP-FOE2N7B:~$ git clone https://github.com/milkv-duo/duo-examples.git
-fatal: destination path 'duo-examples' already exists and is not an empty directory.
-«Ruyi venv-mailbox» cuiqiyun@DESKTOP-FOE2N7B:~$ cd duo-examples/mailbox-test
-```
-
-### 编译 mailbox-test 测试程序
-
-```Plain Text
 riscv64-plct-linux-gnu-gcc mailbox_test.c -static -o mailbox-test -O2 -lm
 ```
 
-#### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-mailbox» cuiqiyun@DESKTOP-FOE2N7B:~/duo-examples/mailbox-test$ riscv64-plct-linux-gnu-gcc mailbox_test.c -static -o mailbox-test -O2 -lm
@@ -106,15 +108,15 @@ riscv64-plct-linux-gnu-gcc mailbox_test.c -static -o mailbox-test -O2 -lm
 
 
 
-## 3.将二进制文件传输至开发板并运行验证
+### 4.将二进制文件传输至开发板并运行
 
-### 将编译好的二进制传输至开发板
+#### 将编译好的二进制传输至开发板
 
 ```Plain Text
 scp mailbox-test root@192.168.42.1:~
 ```
 
-#### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-mailbox» cuiqiyun@DESKTOP-FOE2N7B:~/duo-examples/mailbox-test$ scp mailbox-test root@192.168.42.1:~
@@ -122,26 +124,26 @@ root@192.168.42.1's password:
 mailbox-test                                                                          100% 3005KB   3.5MB/s   00:00
 ```
 
-### SSH连接到开发板
+#### SSH连接到开发板
 
 ```Plain Text
 ssh root@192.168.42.1
 ```
 
-#### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-mailbox» cuiqiyun@DESKTOP-FOE2N7B:~/duo-examples/mailbox-test$ ssh root@192.168.42.1
 root@192.168.42.1's password:
 ```
 
-### 运行 mailbox-test 测试程序
+#### 运行 mailbox-test 程序
 
 ```Plain Text
 ./mailbox-test
 ```
 
-#### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 [root@milkv-duo]~# ./mailbox-test

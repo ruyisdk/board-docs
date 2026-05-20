@@ -1,85 +1,194 @@
-# 使用 RuyiSDK 在 Milk-V Duo256m 上编译blink教程
-### LED 闪烁的脚本禁用
-```bash
-ssh root@192.168.42.1
-mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync
-```
-<img width="1153" height="152" alt="image" src="https://github.com/user-attachments/assets/1a4fb58e-42a3-45ec-87ce-d87e2c1a3c25" />
+---
+sys: buildroot
+sys_ver: v1.1.4
+sys_var: v1
 
+status: peripheral
+last_update: 2026-05-06
 
-### 搭建编译环境
+model: Milk-V Duo (256M)
+profile: Blink
+---
 
+# RuyiSDK 外设示例
 
-**安装基础依赖**
+安装依赖包
 
-```bash
-sudo apt update
-sudo apt install git build-essential gcc make libncurses5-dev flex bison libssl-dev rsync
-```
-<img width="1504" height="255" alt="image" src="https://github.com/user-attachments/assets/5f5247c5-2a07-41d3-a261-69ada805cae3" />
-
-<img width="1503" height="790" alt="image" src="https://github.com/user-attachments/assets/be03092d-8b57-4af0-b6ef-05058cc97765" />
-
-**下载 RISC-V 交叉编译工具链**
-```bash
-# 创建一个工作目录
-mkdir -p ~/milkv
-cd ~/milkv
-<img width="1715" height="307" alt="image" src="https://github.com/user-attachments/assets/2bbfa243-7cc2-48e9-8a23-c4a6c855e0a7" />
-
-# 下载官方预编译的工具链 (可能需要几分钟，取决于网速)
-wget https://sophon-file.sophon.cn/sophon-prod-s3/drive/23/03/07/16/host-tools.tar.gz
-<img width="901" height="423" alt="image" src="https://github.com/user-attachments/assets/763b2f40-28f7-4a48-9947-3c10a30b281d" />
-
-# 解压
-tar -xf host-tools.tar.gz
 ```
 
-**获取官方 Blink 裸机示例代码**
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+
+```
+安装 ruyi 包管理器
+
+```
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.45.0/ruyi-0.45.0.amd64
+
+chmod +x ruyi-0.45.0.amd64
+
+sudo cp -v ruyi-0.45.0.amd64 /usr/local/bin/ruyi
+
+```
+
+安装工具链
+
+```
+
+ruyi update
+
+ruyi install gnu-plct llvm-plct
+
+```
+## Blink
+
+本文介绍如何使用 RuyiSDK 在 Milk-V Duo 256M 开发板上快速部署编译环境，并构建 LED 闪烁控制程序，验证板载 LED 的控制功能。
+
+### 1. 准备工作
+
+* **开发板**：Milk-V Duo 256M (256M, SG2002)
+
+* **其他**：microSD 卡、USB Type-C 数据线
+
+#### 操作系统安装与启动验证
+
+确保您的开发板已准备好系统。
+
+参考文档： https://milkv.io/zh/docs/duo/getting-started/boot
+
+### 2. 获取源码
+
+#### 克隆源码
 
 ```bash
-git clone https://github.com/milkv-duo/duo-examples.git
+
+ruyi extract milkv-duo-examples
+
+mv milkv-duo-examples-* duo-examples 
+
 cd duo-examples
+
 ```
-<img width="1438" height="190" alt="image" src="https://github.com/user-attachments/assets/3d45577e-a442-402b-88ee-f21d13ee8420" />
 
+### 3. 编译应用与验证
 
-**先运行环境配置脚本**
+#### 创建虚拟环境
 
 ```bash
-cd ~/milkv/duo-examples
-source envsetup.sh
+
+ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
+
+. ~/venv-gnu-plct/bin/ruyi-activate
+
 ```
-<img width="1495" height="553" alt="image" src="https://github.com/user-attachments/assets/6affe553-7f66-4ff2-b5d6-fe6b50a47346" />
 
-这个脚本会帮你**自动拉取交叉编译工具链**（不用你手动 wget 了），并配置好环境变量。观察输出，等它跑完。
-
-**进入 blink 目录编译**
+#### 验证工具链版本
 
 ```bash
+
+riscv64-plct-linux-gnu-gcc -v
+
+```
+
+#### 编译 LED 闪烁程序
+
+```bash
+
 cd blink
-make
+
+riscv64-plct-linux-gnu-gcc blink.c -o blink \
+    -I../include \
+    -I../wiringX/src \
+    -L../libs/system/musl_riscv64 \
+    -lwiringx
+
 ```
-<img width="1905" height="165" alt="image" src="https://github.com/user-attachments/assets/2c590e55-baac-418b-beed-925ea01a206b" />
 
-### 将二进制文件传输至开发板并运行验证
+#### 验证结果
 
-**将编译好的二进制传输至开发板**
+检查生成的二进制文件：
 
 ```bash
-scp blink root@192.168.42.1:~
-```
-<img width="1290" height="75" alt="image" src="https://github.com/user-attachments/assets/f34e28e8-7468-4d0d-997f-a84becb3321b" />
 
-**SSH连接到开发板**
+file blink
+
+```
+
+### 4.传输并运行
+
+默认用户名：`root`，默认密码：`milkv`
 
 ```bash
+
+# 传输到开发板
+
+scp blink root@192.168.42.1:/root/
+
+# SSH 登录开发板
+
 ssh root@192.168.42.1
+
 ```
 
-**运行官方逻辑验证程序**
+#### 禁用系统自带 LED 脚本
+
+运行 blink 程序前，需要先禁用系统自带的 LED 闪烁脚本，避免冲突：
 
 ```bash
-./blink
+
+mv /mnt/system/blink.sh /mnt/system/blink.sh_backup && sync
+
+# 执行完后，需要重启开发板，使禁用生效：
+
+reboot
+
 ```
-<img width="905" height="670" alt="image" src="https://github.com/user-attachments/assets/f06b5ced-bbdb-4b6d-ab15-550201f10306" />
+
+重启后重新 SSH 登录
+
+```bash
+
+ssh root@192.168.42.1
+
+# 运行测试
+
+./blink
+
+```
+
+运行后终端持续输出 LED 状态：
+
+```bash
+
+Duo LED GPIO (wiringX) 25: High
+
+Duo LED GPIO (wiringX) 25: Low
+
+Duo LED GPIO (wiringX) 25: High
+
+Duo LED GPIO (wiringX) 25: Low
+
+...
+
+```
+
+蓝色 LED 会同步闪烁：`High` 亮起，` Low` 熄灭。
+
+按 `Ctrl+C`  可终止程序。
+
+### 5.恢复系统原有 LED 功能
+
+测试完成后，如需恢复系统默认 LED 闪烁：
+
+```bash
+
+ssh root@192.168.42.1
+
+# 恢复 LED 脚本
+
+mv /mnt/system/blink.sh_backup /mnt/system/blink.sh && sync
+
+# 重启开发板使恢复生效
+
+reboot
+
+```

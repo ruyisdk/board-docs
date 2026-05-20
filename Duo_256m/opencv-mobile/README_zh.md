@@ -1,49 +1,76 @@
-# 使用 RuyiSDK 在 Milk\-V Duo256M 上编译运行 opencv\-mobile 教程
+---
+sys: buildroot
+sys_ver: v1.1.4
+sys_var: v1
 
+status: cv
+last_update: 2026-05-03
+
+model: Milk-V Duo (256M)
+profile: OpenCV-Mobile
 ---
 
-## 1\. 准备工作
+# RuyiSDK CV示例
 
-### 安装依赖包
+安装依赖包
 
-```bash
-sudo apt update
-sudo apt install -y wget make cmake git unzip build-essential
 ```
 
-### 安装 ruyi 包管理器
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
-```bash
+```
+安装 ruyi 包管理器
+
+```
 wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.45.0/ruyi-0.45.0.amd64
+
 chmod +x ruyi-0.45.0.amd64
+
 sudo cp -v ruyi-0.45.0.amd64 /usr/local/bin/ruyi
+
 ```
 
-### 安装工具链
+安装工具链
 
-```bash
+```
+
 ruyi update
-ruyi install gnu-milkv-milkv-duo-musl-bin
+
+ruyi install gnu-plct llvm-plct
+
 ```
+## OpenCV-Mobile
 
----
+本文介绍如何使用 RuyiSDK 在 Milk-V Duo 256M 开发板上快速部署编译环境，并构建 OpenCV-Mobile，OpenCV-Mobile 是一个精简版的 OpenCV 库，通过调整编译参数，删减部分 OpenCV 源码，来最小化编译 OpenCV。
 
-## 2\. 创建并激活 ruyi 虚拟环境
+
+### 1. 准备工作
+
+* **开发板**：Milk-V Duo 256M (256M, SG2002)
+
+* **其他**：microSD 卡、USB Type-C 数据线
+
+#### 操作系统安装与启动验证
+
+确保您的开发板已准备好系统。
+
+参考文档： https://milkv.io/zh/docs/duo/getting-started/boot
+
+### 2. 创建并激活 ruyi 虚拟环境
 
 ```bash
 ruyi venv -t gnu-milkv-milkv-duo-musl-bin milkv-duo venv-opencv
 . ~/venv-opencv/bin/ruyi-activate
 ```
 
-### 验证环境
+#### 验证环境
 
 ```bash
 riscv64-unknown-linux-musl-gcc --version
 ```
 
----
 
-## 3\. 获取 opencv\-mobile 预编译库
+### 3. 获取 OpenCV-Mobile 预编译库
 
 ```bash
 mkdir -p ~/duo256m-opencv && cd ~/duo256m-opencv
@@ -51,7 +78,7 @@ wget https://github.com/nihui/opencv-mobile/releases/download/v35/opencv-mobile-
 unzip opencv-mobile-4.13.0-milkv-duo.zip
 ```
 
-### log:
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~$ mkdir -p ~/duo256m-opencv && cd ~/duo256m-opencv
@@ -223,10 +250,7 @@ Archive:  opencv-mobile-4.13.0-milkv-duo.zip
 ```
 
 
-
----
-
-## 4\. 准备测试图片 in\.jpg
+### 4. 准备测试图片 in.jpg
 
 1. 在电脑上任意找一张 JPG 图片
 
@@ -234,9 +258,8 @@ Archive:  opencv-mobile-4.13.0-milkv-duo.zip
 
 3. 重命名为：`in\.jpg`
 
----
 
-## 5\. 编写测试代码 main\.cpp
+### 5. 编写测试代码 main.cpp
 
 ```bash
 cat > main.cpp << 'EOF'
@@ -264,7 +287,7 @@ int main()
 EOF
 ```
 
-### log:
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~/duo256m-opencv$ cat > main.cpp << 'EOF'
@@ -294,9 +317,7 @@ EOF
 
 
 
----
-
-## 6\. 编写 CMakeLists\.txt
+### 6. 编写 CMakeLists.txt
 
 ```bash
 cat > CMakeLists.txt << 'EOF'
@@ -316,7 +337,7 @@ target_link_libraries(opencv-test ${OpenCV_LIBS})
 EOF
 ```
 
-### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~/duo256m-opencv$ cat > CMakeLists.txt << 'EOF'
@@ -336,10 +357,7 @@ EOF
 ```
 
 
-
----
-
-## 7\. 交叉编译
+### 7. 编译
 
 ```bash
 mkdir build && cd build
@@ -347,7 +365,7 @@ cmake ..
 make -j4
 ```
 
-### log：
+正常情况下，终端会看到类似如下输出：
 
 ```Plain Text
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~/duo256m-opencv$ mkdir build && cd build
@@ -388,16 +406,15 @@ Resolving signs.jpg (signs.jpg)... failed: Name or service not known.
 wget: unable to resolve host address ‘signs.jpg’
 ```
 
----
 
-## 8\. 传输文件至开发板
+### 8. 传输文件至开发板
 
 ```bash
 scp opencv-test root@192.168.42.1:/root
 scp ../in.jpg root@192.168.42.1:/root
 ```
 
-### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~/duo256m-opencv$ scp in.jpg root@192.168.42.1:/root/
@@ -410,9 +427,7 @@ opencv-test                                                                     
 
 
 
----
-
-## 9\. 在 Duo256M 上运行
+### 9. 在 Duo 256M 上运行
 
 ```bash
 ssh root@192.168.42.1
@@ -420,7 +435,7 @@ chmod +x opencv-test
 ./opencv-test
 ```
 
-### log：
+正常情况下，终端会看到类似如下输出：
 
 ```
 «Ruyi venv-opencv» cuiqiyun@DESKTOP-FOE2N7B:~/duo256m-opencv$ ssh root@192.168.42.1
@@ -433,6 +448,3 @@ w=940, h=940
 resize success, out.jpg saved!
 ```
 
-
-
----
