@@ -12,67 +12,47 @@ profile: YOLOX
 
 
 
-# **RuyiSDK AI示例**
+# RuyiSDK AI示例
 
 更新ruyi软件包列表并安装编译工具链  
 
 ```bash
-
 ruyi update
-
 ruyi install gnu-plct-xthead
-
 ```
 
 终端会看到如下输出：
 
 ```text
-
 info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
-
 ```
 
-## **YOLOX 目标检测示例**
+## YOLOX 
 
-### **示例描述和硬件环境准备**
-
-示例描述  
+### 示例描述和硬件环境准备
 
 YOLOX 是一个高性能的目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOX，对输入图片进行目标检测，输出带检测框的结果图片。  
-
 硬件环境：Lichee Pi 4A (16GB)  
-
 软件环境：RuyiSDK：0.47.0   Python：3.11.4   
 
-
-
-### **创建并激活ruyi虚拟环境**
+### 创建并激活 ruyi 虚拟环境
 
 创建虚拟环境，命名为 yolox-venv，使用 sipeed-lpi4a profile。  
 
 ```bash
-
 ruyi venv -t gnu-plct-xthead sipeed-lpi4a yolox-venv
-
-
 ```
 
 进入虚拟环境目录  
 
 ```bash
-
 cd yolox-venv
-
 ```
-
-
 
 激活虚拟环境  
 
 ```bash
-
 source ./bin/ruyi-activate
-
 ```
 
 终端会显示如下输出  
@@ -120,8 +100,6 @@ debian@revyos-lpi4a:\~/yolox-venv$ source ./bin/ruyi-activate
 ```
 
 本示例在 Ruyi 环境下运行验证，但不涉及 Ruyi 工具链编译流程，属于 Python + ONNXRuntime 的应用级推理示例。  
-
-
 
 在Ruyi环境中配置Python并运行YOLOX  
 
@@ -173,9 +151,9 @@ source ort/bin/activate
 
 
 
-获取YOLOX模型  
+获取 YOLOX 模型  
 
-在ruyi虚拟环境中下载github上的源码  
+在 ruyi 虚拟环境中下载 github 上的源码  
 
 ```bash
 
@@ -183,15 +161,15 @@ git clone https://github.com/Megvii-BaseDetection/YOLOX.git
 
 cd YOLOX/demo/ONNXRuntime
 
-wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox\_s.onnx
+wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yolox_s.onnx
 
 ```
 
-用 nano 编辑 onnx\_inference.py    
+用 nano 编辑 onnx_inference.py    
 
 ```bash
 
-nano /home/debian/YOLOX/demo/ONNXRuntime/onnx\_inference.py
+nano /home/debian/YOLOX/demo/ONNXRuntime/onnx_inference.py
 
 ```
 
@@ -229,35 +207,35 @@ import onnxruntime
 
 
 
-from yolox.data.data\_augment import preproc as preprocess
+from yolox.data.data_augment import preproc as preprocess
 
-from yolox.data.datasets import COCO\_CLASSES
+from yolox.data.datasets import COCO_CLASSES
 
-from yolox.utils import mkdir, multiclass\_nms, demo\_postprocess, vis
-
-
+from yolox.utils import mkdir, multiclass_nms, demo_postprocess, vis
 
 
 
-def make\_parser():
 
-&#x20;   parser = argparse.ArgumentParser("onnxruntime inference sample")
+
+def make_parser():
+
+ parser = argparse.ArgumentParser("onnxruntime inference sample")
 
 ```
 
 安装依赖包  
 
-下载预编译好的python依赖包  
+下载预编译好的 python 依赖包  
 
 ```bash
 
 cd /home/debian
 
-git clone -b python3.11 https://github.com/zhangwm-pt/prebuilt\_whl.git
+git clone -b python3.11 https://github.com/zhangwm-pt/prebuilt_whl.git
 
-cd prebuilt\_whl
+cd prebuilt_whl
 
-pip install \*.whl
+pip install *.whl
 
 ```
 
@@ -297,9 +275,9 @@ Successfully installed pillow-9.5.0
 
 ```bash
 
-wget https://github.com/zhangwm-pt/onnxruntime/releases/download/riscv\_whl/onnxruntime-1.14.1-cp311-cp311-linux\_riscv64.whl
+wget https://github.com/zhangwm-pt/onnxruntime/releases/download/riscv_whl/onnxruntime-1.14.1-cp311-cp311-linux_riscv64.whl
 
-pip install onnxruntime-1.14.1-cp311-cp311-linux\_riscv64.whl
+pip install onnxruntime-1.14.1-cp311-cp311-linux_riscv64.whl
 
 ```
 
@@ -311,7 +289,7 @@ Successfully installed coloredlogs-15.0.1 flatbuffers-25.12.19 humanfriendly-10.
 
 ```
 
-### **运行示例并验证结果**
+### 运行示例并验证结果
 
 
 
@@ -319,7 +297,7 @@ Successfully installed coloredlogs-15.0.1 flatbuffers-25.12.19 humanfriendly-10.
 
 cd /home/debian/YOLOX/demo/ONNXRuntime
 
-python3 onnx\_inference.py -m yolox\_s.onnx -i soccer.jpg -o outdir -s 0.3 --input\_shape 640,640
+python3 onnx_inference.py -m yolox_s.onnx -i soccer.jpg -o outdir -s 0.3 --input_shape 640,640
 
 ```
 
@@ -329,7 +307,7 @@ python3 onnx\_inference.py -m yolox\_s.onnx -i soccer.jpg -o outdir -s 0.3 --inp
 
 ```text
 
-(ort) «Ruyi yolox-venv» debian@revyos-lpi4a:\~/YOLOX/demo/ONNXRuntime$ python3 onnx\_inference.py -m yolox\_s.onnx -i soccer.jpg -o outdir -s 0.3 --input\_shape 640,640
+(ort) «Ruyi yolox-venv» debian@revyos-lpi4a:\~/YOLOX/demo/ONNXRuntime$ python3 onnx_inference.py -m yolox_s.onnx -i soccer.jpg -o outdir -s 0.3 --input_shape 640,640
 
 
 
@@ -347,5 +325,4 @@ soccer.jpg
 
 ```
 
-###### 
 

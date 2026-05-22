@@ -10,11 +10,11 @@ model: Lichee Pi 4A
 profile: MobilenetV2
 ---
 
-# **RuyiSDK示例 AI 示例**
+# RuyiSDK AI 示例
 本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。
 ## 环境配置
-### **开发板配置**
-安装python虚拟环境  
+### 开发板配置
+安装 python 虚拟环境  
 ```bash
 sudo -i
 apt install python3.11-venv
@@ -48,19 +48,19 @@ NPU版本
 wget https://github.com/zhangwm-pt/onnxruntime/releases/download/riscv_whl_v2.6.0/hhb_onnxruntime_th1520-2.6.0-cp311-cp311-linux_riscv64.whl
 pip install hhb_onnxruntime_th1520-2.6.0-cp311-cp311-linux_riscv64.whl
 ```
-### **宿主机（x86）环境配置**
-### **安装docker**
+### 宿主机环境配置
+### 安装 Docker
 ```bash
 sudo apt update
 sudo apt install -y ca-certificates curl
 ```
 ```bash
 # 下载 Docker 官方安装脚本并执行
+
 curl -fsSL https://get.docker.com -o get-docker.sh
 sudo sh get-docker.sh
 ```
 安装成功后查看docker及其状态:
-
 ```bash
 docker --version
 sudo systemctl status docker
@@ -100,7 +100,7 @@ cd /home/example/th1520_npu/onnx_mobilenetv2_c++
 ```
 在该目录下下载模型mobilenetv2-12.onnx
 ```bash
-wget https://github.com/onnx/models/blob/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
+wget https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
 ```
 终端显示如下：  
 ```text
@@ -127,7 +127,12 @@ Saving to: 'mobilenetv2-12.onnx'
 mobilenetv2-12.onn 100%[==============>]  13.32M  1.80MB/s    in 7.6s    
 2026-04-28 06:33:29 (1.76 MB/s) - 'mobilenetv2-12.onnx' saved [13964571/13964571]
 ```
-
+使用以下 wget 命令直接下载 MobilenetV2 示例所需的文件到当前目录：  
+```bash
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/main.cpp
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/synset.txt
+wget https://raw.githubusercontent.com/zhangwm-pt/lpi4a-example/main/classification/mobilenetv2/persian_cat.jpg
+```
 获取本次教程所使用的优化版本 opencv 所需的库文件
 ```bash
 cd /home/example/th1520_npu/
@@ -193,210 +198,51 @@ Calibrating: 100%|███████████| 153/153 [00:13<00:00, 11.76
 [2026-04-30 03:20:52] (HHB LOG): Start layout convert.
 [2026-04-30 03:20:52] (HHB LOG): Layout convert completed!
 [2026-04-30 03:20:52] (HHB LOG): Quantization completed!
-
 ```
 退出docker环境：
 ```bash
 exit
 ```
-
-### **安装 RuyiSDK**
+### 安装 RuyiSDK
 ```bash
 # 下载并安装 ruyi
 wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.amd64
 chmod +x ruyi-0.47.0.amd64
 sudo cp ruyi-0.47.0.amd64 /usr/local/bin/ruyi
 ```
-### **安装工具链**
+### 安装工具链
 ```bash
 ruyi update
 ruyi install gnu-plct-xthead
 ```
-
 会在终端看到如下输出：  
 ```text
-
 info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
-
 ```
-
-
-## **MobilenetV2**
-### **示例描述和硬件环境准备**
-本教程是一个如何在 LicheePi4A 平台上部署 mobilenetv2 模型完成图像分类的示例。  
-硬件环境：Lichee Pi 4A (16GB)    
-软件环境：RuyiSDK：0.47.0  HHB：2.6.17  
-### **环境配置**
-首先获取本节教程的模型
-```bash
-sudo mkdir -p /home/example/th1520_npu/onnx_mobilenetv2_c++
-#修改权限让当前用户可读写
-sudo chown -R licheepi:licheepi /home/example
-#进入目录
-cd /home/example/th1520_npu/onnx_mobilenetv2_c++
-```
-在该目录下下载模型mobilenetv2-12.onnx
-```bash
-wget https://github.com/onnx/models/blob/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
-```
-终端显示如下：  
-```text
-licheepi@licheepi-virtual-machine:~$ docker start hhb_env
-hhb_env
-licheepi@licheepi-virtual-machine:~$ docker exec -it hhb_env /bin/bash
-root@78776422f7c9:/# cd /home/example/th1520_npu
-root@78776422f7c9:/home/example/th1520_npu# mkdir -p /home/example/th1520_npu/onnx_mobilenetv2_c++
-root@78776422f7c9:/home/example/th1520_npu# cd onnx_mobilenetv2_c++
-
-root@78776422f7c9:/home/example/th1520_npu/onnx_mobilenetv2_c++# wget https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
---2026-04-28 06:33:19--  https://github.com/onnx/models/raw/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
-Resolving github.com (github.com)... 20.205.243.166
-Connecting to github.com (github.com)|20.205.243.166|:443... connected.
-HTTP request sent, awaiting response... 302 Found
-Location: https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx [following]
---2026-04-28 06:33:20--  https://media.githubusercontent.com/media/onnx/models/main/validated/vision/classification/mobilenet/model/mobilenetv2-12.onnx
-Resolving media.githubusercontent.com (media.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.110.133, ...
-Connecting to media.githubusercontent.com (media.githubusercontent.com)|185.199.109.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 13964571 (13M) [application/octet-stream]
-Saving to: 'mobilenetv2-12.onnx'
-
-mobilenetv2-12.onn 100%[==============>]  13.32M  1.80MB/s    in 7.6s    
-2026-04-28 06:33:29 (1.76 MB/s) - 'mobilenetv2-12.onnx' saved [13964571/13964571]
-```
-
-获取本次教程所使用的优化版本 opencv 所需的库文件
-```bash
-cd /home/example/th1520_npu/
-git clone https://github.com/zhangwm-pt/prebuilt_opencv.git
-```
-在终端显示如下：
-```text
-root@78776422f7c9:/home/example/th1520_npu/onnx_mobilenetv2_c++# cd ..
-root@78776422f7c9:/home/example/th1520_npu# git clone https://github.com/zhangwm-pt/prebuilt_opencv.git
-Cloning into 'prebuilt_opencv'...
-remote: Enumerating objects: 461, done.
-remote: Counting objects: 100% (4/4), done.
-remote: Compressing objects: 100% (3/3), done.
-remote: Total 461 (delta 0), reused 4 (delta 0), pack-reused 457 (from 1)
-Receiving objects: 100% (461/461), 47.56 MiB | 8.72 MiB/s, done.
-Resolving deltas: 100% (78/78), done.
-Updating files: 100% (395/395), done.
-```
-```bash
-# 进入示例目录
-cd /home/example/th1520_npu/onnx_mobilenetv2_c++
-
-# 执行 HHB 编译模型
-hhb -D --model-file mobilenetv2-12.onnx \
-  --data-scale 0.017 \
-  --data-mean "124 117 104" \
-  --board th1520 \
-  --postprocess save_and_top5 \
-  --input-name "input" \
-  --output-name "output" \
-  --input-shape "1 3 224 224" \
-  --calibrate-dataset persian_cat.jpg \
-  --quantization-scheme "int8_asym"
-```
-会在终端显示如下：  
-```text
-root@78776422f7c9:/home/example/th1520_npu# cd /home/example/th1520_npu/onnx_mobilenetv2_c++
-
-root@78776422f7c9:/home/example/th1520_npu/onnx_mobilenetv2_c++
-# hhb -D --model-file mobilenetv2-12.onnx \
->   --data-scale 0.017 \
->   --data-mean "124 117 104" \
->   --board th1520 \
->   --postprocess save_and_top5 \
->   --input-name "input" \
->   --output-name "output" \
->   --input-shape "1 3 224 224" \
->   --calibrate-dataset persian_cat.jpg \
->   --quantization-scheme "int8_asym"
-[2026-04-30 03:20:38] (HHB LOG): Start import model.
-[2026-04-30 03:20:38] (HHB LOG): Model import completed! 
-[2026-04-30 03:20:38] (HHB LOG): Start quantization.
-[2026-04-30 03:20:38] (HHB LOG): get calibrate dataset from persian_cat.jpg
-[2026-04-30 03:20:38] (HHB LOG): Start optimization.
-[2026-04-30 03:20:39] (HHB LOG): Optimization completed!
-Calibrating: 100%|███████████| 153/153 [00:13<00:00, 11.76it/s]
-[2026-04-30 03:20:52] (HHB LOG): Start conversion to csinn.
-[2026-04-30 03:20:52] (HHB LOG): Conversion completed!
-[2026-04-30 03:20:52] (HHB LOG): Start operator fusion.
-[2026-04-30 03:20:52] (HHB LOG): Operator fusion completed!
-[2026-04-30 03:20:52] (HHB LOG): Start operator split.
-[2026-04-30 03:20:52] (HHB LOG): Operator split completed!
-[2026-04-30 03:20:52] (HHB LOG): Start layout convert.
-[2026-04-30 03:20:52] (HHB LOG): Layout convert completed!
-[2026-04-30 03:20:52] (HHB LOG): Quantization completed!
-
-```
-退出docker环境：
-```bash
-exit
-```
-
-### **安装 RuyiSDK**
-```bash
-# 下载并安装 ruyi
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.amd64
-chmod +x ruyi-0.47.0.amd64
-sudo cp ruyi-0.47.0.amd64 /usr/local/bin/ruyi
-```
-### **安装工具链**
-```bash
-ruyi update
-ruyi install gnu-plct-xthead
-```
-
-会在终端看到如下输出：  
-```text
-
-info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
-
-```
-
-## **MobilenetV2测试示例**
-### **示例描述和硬件环境准备**
+## MobilenetV2
+### 示例描述和硬件环境准备
 本教程是一个如何在 LicheePi4A 平台上部署 mobilenetv2 模型完成图像分类的示例。  
 硬件环境：Lichee Pi 4A (16GB)    
 软件环境：RuyiSDK：0.47.0  HHB：2.6.17  
 
-### **创建并激活 ruyi 虚拟环境**
-
+### 创建并激活 ruyi 虚拟环境
 创建虚拟环境，命名为 yolox-venv，使用 sipeed-lpi4a profile。  
 
 ```bash
-
 ruyi venv -t gnu-plct-xthead sipeed-lpi4a yolox-venv
-
-
 ```
-
 进入虚拟环境目录  
-
 ```bash
-
 cd yolox-venv
-
 ```
-
-激活虚拟环境  ，该虚拟环境为后续开发板的运行提供了统一的运行环境。
-
+激活虚拟环境  ，该虚拟环境为后续开发板的运行提供了统一的运行环境。 
 ```bash
-
 source ./bin/ruyi-activate
-
 ```
-
-### **使用 ruyi 工具链编译示例代码**
-
-确认交叉编译器可用：
+### 使用 ruyi 工具链编译示例代码
+确认交叉编译器可用
 ```bash
 riscv64-plctxthead-linux-gnu-g++ --version
-```
-```bash
 # 复制整个 onnx_mobilenetv2_c++ 目录（包含 main.cpp, hhb_out 等）
 docker cp hhb_env:/home/example/th1520_npu/onnx_mobilenetv2_c++ .
 # 复制 prebuilt_opencv 目录（交叉编译所需 OpenCV 库）
@@ -414,7 +260,6 @@ riscv64-plctxthead-linux-gnu-g++ \
   -lzlib -lcsi_cv -latomic -ldl -lpthread -lrt \
   -o mobilenetv2_example_ruyi
 ```
-
 在终端显示如下：
 ```text
 «Ruyi venv-sipeed» licheepi@licheepi-virtual-machine:~$ docker cp hhb_env:/home/example/th1520_npu/onnx_mobilenetv2_c++ .
@@ -429,15 +274,12 @@ Successfully copied 40.3MB to /home/licheepi/.
   -llibjpeg-turbo -llibwebp -llibpng -llibtiff -llibopenjp2 \
   -lzlib -lcsi_cv -latomic -ldl -lpthread -lrt \
   -o mobilenetv2_example_ruyi
-
 ```
-
-### **运行示例并验证结果**
+### 运行示例并验证结果
 把生成文件传递到开发板上：  
 ```bash
 scp -r /home/licheepi/onnx_mobilenetv2_c++ debian@172.16.60.209:~/
 ```
-
 终端显示如下：  
 ```text
 «Ruyi venv-sipeed» licheepi@licheepi-virtual-machine:~/onnx_mobilenetv2_c++$ scp -r /home/licheepi/onnx_mobilenetv2_c++ debian@172.16.60.209:~/
@@ -469,9 +311,8 @@ mobilenetv2-12.onnx                    100%   13MB   2.6MB/s   00:05
 persian_cat.jpg                        100%  351KB   4.9MB/s   00:00    
 main.cpp                               100% 3705   172.5KB/s   00:00 
 ```
-
 先确认开发板驱动是否加载：  
-```bah
+```bash
 lsmod
 ```
 若在输出中有 img_mem，vha 和 vha_info 这三个模块，NPU驱动即加载成功。  
@@ -481,7 +322,6 @@ sudo modprobe img_mem
 sudo modprobe vha
 sudo modprobe vha_info
 ```
-
 运行程序：  
 ```bash
 cd onnx_mobilenetv2_c++
@@ -546,3 +386,6 @@ n02127052 lynx, catamount
 n02124075 Egyptian cat
 n02123159 tiger cat
 ```
+
+
+ 
