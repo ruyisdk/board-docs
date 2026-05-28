@@ -125,8 +125,8 @@ riscv64-unknown-linux-musl-g++ -mcpu=c906fdv -march=rv64imafdcv0p7xthead -mcmode
 rm /home/duo256/cvitek-tdl-sdk-sg200x/sample/cvi_yolo/sample_yolov5.o
 ```
 模型准备  
-可以直接点击下载本文文档预编译好的[yolov5_cv181x_int8_sym.cvimodel](https://raw.githubusercontent.com/TOT2232/yolov5-object-detection/main/yolov5_cv181x_int8_sym.cvimodel)
-或者参考 [TPU-MLIR](https://github.com/sophgo/tpu-mlir) 文档自己生成。  
+可以直接点击下载本文文档预编译好的[yolov5_cv181x_int8_sym.cvimodel](https://github.com/TOT2232/yolov5-object-detection.git)
+或者参考 [TPU-MLIR](https://milkv.io/zh/docs/duo/application-development/tdl-sdk/tdl-sdk-yolov5) 文档自己生成。  
 
 测试图片准备  
 从coco2017选择一张图片作为测试图片，复制到当前文件夹：  
