@@ -11,6 +11,7 @@ profile: Hello World
 ---
 
 # RuyiSDK 基础示例
+>说明：ESP32-P4 必须使用乐鑫官方 IDF 工具链编译。本示例中，RuyiSDK 仅用于创建虚拟环境、获取源码和编辑 `hello_world_main.c`，编译烧录仍通过 `idf.py` 完成。
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 
