@@ -113,7 +113,7 @@ clang -v
 编译Hello World（LLVM）
 
 ```bash
-cat > hello.c << "EOF"
+cat > hello_k510.c << "EOF"
 #include <stdio.h>
 int main() {
     printf("Hello from K510 with Clang!\n");
