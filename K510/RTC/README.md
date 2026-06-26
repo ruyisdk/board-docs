@@ -3,7 +3,7 @@ sys: Ubuntu 20.04.4 LTS in Docker
 sys_ver: v1.9
 sys_var: null
 
-status: rtc
+status: system
 last_update: 2026-06-18
 
 model: Canaan K510 CRB-V1.2 KIT
@@ -11,7 +11,7 @@ profile: RTC
 
 ---
 
-# RuyiSDK RTC示例
+# RuyiSDK 系统示例
 
 - 安装ruyi包管理器
 
@@ -45,7 +45,7 @@ ruyi install gnu-plct llvm-plct
   . gcc-env/bin/ruyi-activate
   ```
 
-- #### 使用 ruyi 工具链编译 GPIO PUD 测试代码
+- #### 使用 ruyi 工具链编译 RTC 测试代码
 
   1. **创建测试代码目录并编写代码**
 
