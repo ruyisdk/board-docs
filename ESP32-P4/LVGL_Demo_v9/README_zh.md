@@ -2,7 +2,7 @@
 sys: FreeRTOS
 sys_ver: 
 
-status: lvgl
+status: gui
 last_update: 2026-05-29
 
 model: ESP32-P4-Function-EV-Board
@@ -10,7 +10,7 @@ profile: LVGL Demo v9
 
 ---
 
-# RuyiSDK LVGL 示例
+# RuyiSDK 图形界面示例
 
 > 说明：ESP32-P4 硬件驱动依赖乐鑫官方 IDF 工具链。本示例中，RuyiSDK 仅用于虚拟环境管理、源码获取和编辑，编译烧录仍使用 `idf.py` 命令。
 

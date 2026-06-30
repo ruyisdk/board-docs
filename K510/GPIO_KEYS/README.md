@@ -3,7 +3,7 @@ sys: Ubuntu 20.04.4 LTS in Docker
 sys_ver: v1.9
 sys_var: null
 
-status: gpio
+status: peripheral
 last_update: 2026-06-25
 
 model: Canaan K510 CRB-V1.2 KIT
@@ -11,7 +11,7 @@ profile: GPIO_KEYS
 
 ---
 
-# RuyiSDK GPIO功能示例
+# RuyiSDK 外设示例
 
 - 安装ruyi包管理器
 

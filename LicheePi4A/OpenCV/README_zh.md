@@ -3,7 +3,7 @@ sys: revyos
 sys_ver: "20250930"
 sys_var: null
 
-status: cv
+status: computer-vision
 last_update: 2026-04-21
 
 model: Lichee Pi 4A

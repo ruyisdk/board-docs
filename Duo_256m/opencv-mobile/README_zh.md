@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: cv
+status: computer-vision
 last_update: 2026-05-03
 
 model: Milk-V Duo (256M)
 profile: OpenCV-Mobile
 ---
 
-# RuyiSDK CV示例
+# RuyiSDK 计算机视觉示例
 
 安装依赖包
 
