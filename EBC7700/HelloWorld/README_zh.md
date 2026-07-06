@@ -1,6 +1,6 @@
 ---
 sys: ubuntu
-sys_ver: 
+sys_ver: 24.04
 sys_var: 
 
 status: basics
