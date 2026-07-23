@@ -1,0 +1,39 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Obsidian
+.obsidian/
+.trash/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Node.js
+node_modules/
+
+# Logs and temporary files
+*.log
+*.tmp
