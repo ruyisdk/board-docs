@@ -6,31 +6,40 @@ Welcome to the RuyiSDK development board tutorial and example documentation cent
 
 ## 📚 Directory Structure
 
-- `/boards`: Stores tutorial documents categorized by development board model (in Markdown format).
-- `/templates`: Contains PR templates and documentation templates for adding new development boards.
+- `/<board-name>`: Stores tutorial documents and examples categorized by development board model (in Markdown format).
+- `/templates`: Stores documentation templates for adding new boards and examples.
 
 ## 🚀 Supported Development Board Matrix
 
 This repository currently includes, but is not limited to, documentation resources for the following hardware:
 
-| Supported Device | Example Documentation                                                      | Chip Vendor                                                           |
-| ---------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| Lichee Pi 4A     | [LicheePi4A](https://board-docs-frontend.pages.dev/boards/LicheePi4A/)     | [XuanTie](https://docs.revyos.dev/docs/Installation/licheepi4a/)      |
-| Duo              | [Duo](https://board-docs-frontend.pages.dev/boards/Duo/)                   | [Sophgo](https://docs.revyos.dev/docs/Installation/milkv-meles/)      |
-| Duo_256m         | [Duo_256m](https://board-docs-frontend.pages.dev/boards/Duo_256m/)         | [Sophgo](./Installation/licheepi4a.md)                                |
-| Duo_S            | [Duo_S](https://board-docs-frontend.pages.dev/boards/Duo_S/)               | [Sophgo](./Image%20flashing/licheeconsole4a.md)                       |
-| BPI-F3           | [BPI-F3](https://board-docs-frontend.pages.dev/boards/BPI-F3/)             | [SpaceMIT](./Image%20flashing/licheebook.md)                          |
+| Supported Device            | Board Documentation                              | Chip Vendor |
+| --------------------------- | ------------------------------------------------ | ----------- |
+| Banana Pi BPI-F3            | [BPI-F3](./BPI-F3/README.md)                     | [SpacemiT](https://www.spacemit.com/en/)         |
+| Milk-V Duo (64M)            | [Duo](./Duo/README.md)                           | [SOPHGO](https://en.sophgo.com/)                 |
+| Milk-V Duo (256M)           | [Duo_256m](./Duo_256m/README.md)                 | [SOPHGO](https://en.sophgo.com/)                 |
+| Milk-V Duo S                | [Duo_S](./Duo_S/README.md)                       | [SOPHGO](https://en.sophgo.com/)                 |
+| EBC7700                     | [EBC7700](./EBC7700/README.md)                   | [ESWIN](https://www.eswincomputing.com/en/)      |
+| ESP32-P4-Function-EV-Board  | [ESP32-P4](./ESP32-P4/README.md)                 | [Espressif](https://www.espressif.com/en/)       |
+| Milk-V Jupiter2             | [Jupiter2](./Jupiter2/README.md)                 | [SpacemiT](https://www.spacemit.com/en/)         |
+| Canaan K510-CRB-V1.2 KIT    | [K510](./K510/README.md)                         | [Canaan](https://www.canaan.io/)                 |
+| Lichee Pi 3A                | [LicheePi3A](./LicheePi3A/README.md)             | [SpacemiT](https://www.spacemit.com/en/)         |
+| Lichee Pi 4A                | [LicheePi4A](./LicheePi4A/README.md)             | [XuanTie](https://www.xrvm.com/)                 |
+| Milk-V Meles                | [Meles](./Meles/README.md)                       | [XuanTie](https://www.xrvm.com/)                 |
+| Milk-V Pioneer              | [Pioneer](./Pioneer/README.md)                   | [SOPHGO](https://en.sophgo.com/)                 |
+| Nuclei RV-STAR              | [RV-STAR](./RV-STAR/README.md)                   | [GigaDevice](https://www.gigadevice.com/)        |
+| VisionFive 2 Lite           | [VisionFive2Lite](./VisionFive2Lite/README.md)   | [StarFive](https://starfivetech.com/en/)         |
 
-*(Note: For the complete support status, please visit our frontend example repository website.)*
+*(Note: For the complete support status, please visit the [board documentation frontend](https://board-docs-frontend.pages.dev/).)*
 
 ## 🛠️ How to Contribute
 
 We warmly welcome developers or interns to submit new development board evaluations or improve existing documentation. Please follow the steps below:
 
-1. **Fork this repository** and clone it locally.  
-2. **Use templates**: Find the standard documentation template in the `/templates` directory and fill in the initialization process and test results as required.  
-3. **Format check**: Ensure correct Markdown syntax, and pay special attention to checking for broken links.  
-4. **Submit a PR**: Clearly describe the development board model you tested and the toolchain version used in the PR description.  
+1. **Fork this repository** and clone it locally.
+2. **Use templates**: Use the standard documentation templates in [`templates/`](./templates/) and fill in the initialization process and test results as required.
+3. **Format check**: Ensure correct Markdown syntax, and pay special attention to checking for broken links.
+4. **Submit a PR**: Clearly describe the development board model you tested and the toolchain version used in the PR description.
 
 ## 📄 License
 
