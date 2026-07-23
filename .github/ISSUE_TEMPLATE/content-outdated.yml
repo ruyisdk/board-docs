@@ -1,0 +1,48 @@
+name: Outdated Documentation
+description: Report documentation superseded by a newer version, image, URL, or workflow
+title: "[Content Outdated] "
+labels: ["documentation"]
+body:
+- type: markdown
+  attributes:
+    value: Thank you for helping us keep the RuyiSDK board documentation current. Please identify the outdated content and provide an official or reliable source that confirms the update.
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before submitting
+    description: Please search the existing issues before opening a new one. For substantial changes, wait for a maintainer to confirm the scope before starting work.
+    options:
+    - label: I have searched the existing issues and confirmed that this is not a duplicate.
+      required: true
+    - label: I am willing to update this documentation and submit a Pull Request.
+      required: false
+- type: input
+  id: page
+  attributes:
+    label: Page URL
+    description: Provide a link to the page containing the outdated information.
+    placeholder: https://github.com/ruyisdk/board-docs/blob/main/Duo/README.md
+  validations:
+    required: true
+- type: textarea
+  id: details
+  attributes:
+    label: What is outdated?
+    description: Describe what has changed and which part of the page needs to be updated.
+    placeholder: This page refers to version X, but the current version is...
+  validations:
+    required: true
+- type: input
+  id: source
+  attributes:
+    label: Updated source URL
+    description: Provide a link to official or reliable information that confirms the update.
+  validations:
+    required: true
+- type: textarea
+  id: notes
+  attributes:
+    label: Additional context
+    description: Include any other details that may help us update the page.
+  validations:
+    required: false

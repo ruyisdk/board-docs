@@ -10,6 +10,8 @@ model: [Board Name]
 profile: [Example Name]
 ---
 
+<!-- `status` 请填写规范的示例分类，详见 CONTRIBUTING_zh.md 中的“示例分类”。 -->
+
 #  RuyiSDK [类型]示例
 
 - 安装依赖包

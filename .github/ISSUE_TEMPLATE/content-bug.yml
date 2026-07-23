@@ -1,0 +1,91 @@
+name: Incorrect or Unclear Documentation
+description: Report a typo, broken command or link, incorrect result, or unclear instruction
+title: "[Content Bug] "
+labels: ["bug", "documentation"]
+body:
+- type: markdown
+  attributes:
+    value: Thank you for helping us improve the RuyiSDK board documentation. Please provide enough information for us to locate and understand the problem.
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before submitting
+    description: Please search the existing issues before opening a new one. For substantial changes, wait for a maintainer to confirm the scope before starting work.
+    options:
+    - label: I have searched the existing issues and confirmed that this is not a duplicate.
+      required: true
+    - label: I am willing to fix this issue and submit a Pull Request.
+      required: false
+- type: dropdown
+  id: problem_type
+  attributes:
+    label: Problem type
+    options:
+    - Typo or unclear wording
+    - Broken link
+    - Instructions or commands do not work
+    - Incorrect or unexpected result
+    - Other
+  validations:
+    required: true
+- type: input
+  id: page
+  attributes:
+    label: Page URL
+    description: Provide a link to the page containing the problem.
+    placeholder: https://github.com/ruyisdk/board-docs/blob/main/Duo/README.md
+  validations:
+    required: true
+- type: textarea
+  id: problem
+  attributes:
+    label: Problem summary
+    description: Summarize the problem and its impact.
+    placeholder: This section does not work as documented because...
+  validations:
+    required: true
+- type: textarea
+  id: environment
+  attributes:
+    label: Test environment
+    description: Required when instructions or commands do not work. Include the board model, OS or image, RuyiSDK version, and relevant tool versions.
+    placeholder: |
+      Board:
+      OS or image:
+      RuyiSDK version:
+      Other relevant versions:
+  validations:
+    required: false
+- type: textarea
+  id: steps
+  attributes:
+    label: Steps to reproduce
+    description: Required when the problem can be reproduced by following specific steps.
+    placeholder: |
+      1.
+      2.
+      3.
+  validations:
+    required: false
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected result
+    description: Required for test or command failures. Describe what should happen according to the documentation.
+  validations:
+    required: false
+- type: textarea
+  id: actual
+  attributes:
+    label: Actual result
+    description: Required for test or command failures. Describe what happened instead.
+  validations:
+    required: false
+- type: upload
+  id: logs
+  attributes:
+    label: Error logs or screenshots
+    description: Upload only relevant files. GitHub limits images to 10 MB and logs, text, and JSON files to 25 MB per file.
+  validations:
+    required: false
+    accept: ".log,.txt,.json,.png,.jpg,.jpeg,.gif"
