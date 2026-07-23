@@ -1,0 +1,66 @@
+name: Request New Documentation
+description: Request documentation for a new board or example
+title: "[Content Request] "
+labels: ["enhancement", "documentation"]
+body:
+- type: markdown
+  attributes:
+    value: Thank you for suggesting new RuyiSDK board documentation. Please provide enough information for us to evaluate the request.
+- type: checkboxes
+  id: confirm
+  attributes:
+    label: Before submitting
+    description: Please search the existing issues and repository content before opening a new request. For substantial changes, wait for a maintainer to confirm the scope before starting work.
+    options:
+    - label: I have searched the existing issues and confirmed that this is not a duplicate.
+      required: true
+    - label: I am willing to add this documentation and submit a Pull Request.
+      required: false
+- type: dropdown
+  id: content_type
+  attributes:
+    label: Request type
+    options:
+    - Board documentation
+    - Example documentation
+  validations:
+    required: true
+- type: input
+  id: product
+  attributes:
+    label: Board and Example Name
+    description: For board documentation, provide the board name. For example documentation, provide both the target board and example name.
+    placeholder: Milk-V Duo S / Blink
+  validations:
+    required: true
+- type: input
+  id: cpu
+  attributes:
+    label: Processor or SoC
+    description: Optional; primarily for board documentation requests.
+    placeholder: SG2000
+  validations:
+    required: false
+- type: input
+  id: cpu_core
+  attributes:
+    label: CPU Core
+    description: Optional; primarily for board documentation requests.
+    placeholder: XuanTie C906
+  validations:
+    required: false
+- type: input
+  id: source
+  attributes:
+    label: Reference URL
+    description: Link to official or reliable information about the board or example.
+    placeholder: https://example.com/vendor-documentation
+  validations:
+    required: true
+- type: textarea
+  id: notes
+  attributes:
+    label: Additional context
+    description: Explain why this documentation would be useful and include any other relevant details.
+  validations:
+    required: false
