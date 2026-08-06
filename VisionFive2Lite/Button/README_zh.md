@@ -3,14 +3,14 @@ sys: ubuntu
 sys_ver: "24.04"
 sys_var: null
 
-status: peripheral
+category: peripheral
 last_update: 2026-07-20
 
 model: VisionFive2 Lite
 profile: GPIO_Button
 ---
 
-#  RuyiSDK GPIO示例
+# RuyiSDK 外设控制示例
 
 - **安装依赖包**
 

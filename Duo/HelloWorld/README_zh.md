@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: basics
+category: getting-started
 last_update: 2026-04-03
 
 model: Milk-V Duo (64M)
 profile: Hello World
 ---
 
-#  RuyiSDK 基础示例
+# RuyiSDK 入门示例
 
 安装依赖包
 

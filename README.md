@@ -2,7 +2,7 @@
 
 [中文](./README_zh.md) / [English](./README.md)
 
-Welcome to the RuyiSDK development board tutorial and example documentation center. This repository mainly contains environment initialization guides, basic examples, peripheral examples, multimedia, AI, and other tutorial documents for various RISC-V development boards.
+Welcome to the RuyiSDK development board tutorial and example documentation center. This repository mainly contains environment initialization guides, getting-started examples, peripheral control, multimedia, AI, and other tutorial documents for various RISC-V development boards.
 
 ## 📚 Directory Structure
 
@@ -30,7 +30,7 @@ This repository currently includes, but is not limited to, documentation resourc
 | Nuclei RV-STAR              | [RV-STAR](./RV-STAR/README.md)                   | [GigaDevice](https://www.gigadevice.com/)        |
 | VisionFive 2 Lite           | [VisionFive2Lite](./VisionFive2Lite/README.md)   | [StarFive](https://starfivetech.com/en/)         |
 
-*(Note: For the complete support status, please visit the [board documentation frontend](https://board-docs-frontend.pages.dev/).)*
+*(Note: For the complete list of boards and examples, please visit the [board documentation frontend](https://board-docs-frontend.pages.dev/).)*
 
 ## 🛠️ How to Contribute
 

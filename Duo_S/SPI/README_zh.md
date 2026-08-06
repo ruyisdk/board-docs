@@ -3,13 +3,13 @@ sys: debian
 sys_ver: v1.6.35
 sys_var: null
 provider: milkv
-status: peripheral 
+category: peripheral
 last_update: 2026-06-06
 model: Milk-V Duo S
 profile: SPI
 ---
 
-# RuyiSDK 外设示例
+# RuyiSDK 外设控制示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

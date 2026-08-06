@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v2.0.0
 sys_var: v1
 
-status: AI
+category: ai
 last_update: 2026-06-17
 
 model: Milk-V Duo (256M)
 profile: Yolov8-Person-Pets
 ---
 
-# RuyiSDK  AI 示例
+# RuyiSDK 人工智能示例
 ### 安装依赖库
 ```bash
 sudo apt update

@@ -3,14 +3,14 @@ sys: debian
 sys_ver: v1.6.35
 sys_var: v1
 
-status: basics
+category: getting-started
 last_update: 2026-04-06
 
 model: Milk-V Duo S
 profile: Hello World
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 入门示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: AI
+category: ai
 last_update: 2026-06-11
 
 model: Milk-V Duo (256M)
 profile: Pedestrian-Detection
 ---
 
-# RuyiSDK  AI 示例
+# RuyiSDK 人工智能示例
 ### 安装依赖库
 ```bash
 sudo apt update

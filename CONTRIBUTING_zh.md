@@ -154,7 +154,7 @@ sys: debian              # 系统标识
 sys_ver: v1.6.35         # 系统版本
 sys_var: null            # 变体标识
 provider: milkv          # 镜像提供方
-status: peripheral       # 示例分类
+category: peripheral     # 示例分类
 last_update: 2026-04-09  # 文档最后更新日期
 model: Milk-V Duo S      # 开发板名称
 profile: Blink           # 示例名称
@@ -163,23 +163,29 @@ profile: Blink           # 示例名称
 
 #### 示例分类
 
-示例文档的 `status` 应填写以下规范值之一：
+示例文档的 `category` 应填写以下规范值之一：
 
-| `status` 值 | 分类 |
+| `category` 值 | 分类 |
 | --- | --- |
-| `basics` | 基础示例 |
+| `getting-started` | 入门 |
 | `peripheral` | 外设控制 |
-| `communication` | 通信接口 |
 | `network` | 网络通信 |
 | `system` | 系统编程 |
+| `storage` | 存储 |
+| `power-management` | 低功耗与电源管理 |
 | `multimedia` | 多媒体应用 |
 | `computer-vision` | 计算机视觉 |
 | `ai` | 人工智能 |
-| `crypto` | 加密安全 |
+| `security` | 安全 |
 | `compression` | 数据压缩 |
 | `gui` | 图形界面 |
 | `benchmark` | 性能测试 |
-| `application` | 应用与综合 |
+| `application` | 综合应用 |
+| `other` | 其他 |
+
+每个示例应根据主要教学目标选择一个分类。UART、I2C、SPI 等板级接口通常归入
+`peripheral`，网络协议和服务归入 `network`，系统调用、内核接口和多核协作归入
+`system`。只有确实无法归类时才使用 `other`，并在拉取请求描述中简要说明原因。
 
 如还有不清楚的部分，可以提交 Issue。
 

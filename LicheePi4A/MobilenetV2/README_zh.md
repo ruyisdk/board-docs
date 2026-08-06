@@ -3,14 +3,14 @@ sys: revyos
 sys_ver: "20251226"
 sys_var: null
 
-status: AI
+category: ai
 last_update: 2026-05-06
 
 model: Lichee Pi 4A
 profile: MobilenetV2
 ---
 
-# RuyiSDK AI 示例
+# RuyiSDK 人工智能示例
 本示例需要搭建好 NPU 使用相关环境，如没有搭建，请参考环境配置搭建。
 ## 环境配置
 ### 开发板配置

@@ -3,7 +3,7 @@ sys: Ubuntu 20.04.4 LTS in Docker
 sys_ver: v1.9
 sys_var: null
 
-status: system
+category: system
 last_update: 2026-06-18
 
 model: Canaan K510 CRB-V1.2 KIT
@@ -11,7 +11,7 @@ profile: RTC
 
 ---
 
-# RuyiSDK 系统示例
+# RuyiSDK 系统编程示例
 
 - 安装ruyi包管理器
 

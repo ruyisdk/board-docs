@@ -3,14 +3,14 @@ sys: revyos
 sys_ver: "20250930"
 sys_var: null
 
-status: others
+category: benchmark
 last_update: 2026-04-03
 
 model: Lichee Pi 4A
 profile: Dhrystone
 ---
 
-# RuyiSDK 性能评测示例
+# RuyiSDK 性能测试示例
 
 ## 环境说明
 

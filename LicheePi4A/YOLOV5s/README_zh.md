@@ -3,7 +3,7 @@ sys: revyos
 sys_ver: "20251226"
 sys_var: null
 
-status: AI
+category: ai
 last_update: 2026-05-11
 
 model: Lichee Pi 4A
@@ -11,7 +11,7 @@ profile: YOLOV5s
 ---
 
 
-# RuyiSDK AI 示例
+# RuyiSDK 人工智能示例
 ## 环境配置
 ### 开发板配置
 安装 python 虚拟环境  
