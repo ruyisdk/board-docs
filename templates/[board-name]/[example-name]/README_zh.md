@@ -18,7 +18,6 @@ profile: [Example Name]
 - 安装 RuyiSDK
 - 安装工具链
 
-
 ## [示例名称]
 
 - 示例描述和硬件环境准备
