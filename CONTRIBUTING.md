@@ -31,7 +31,7 @@ board-docs
     |
     |--- Examples
          |
-         |--- README.md # English example documentation
+         |--- README.md # English example documentation (optional)
          |
          |--- README_zh.md # Chinese example documentation
          |
@@ -201,11 +201,13 @@ Please refer to the following templates:
 - [English board template](./templates/[board-name]/README.md)
 - [Chinese board template](./templates/[board-name]/README_zh.md)
 - [Chinese example template](./templates/[board-name]/[example-name]/README_zh.md)
+- [English example template (optional)](./templates/[board-name]/[example-name]/README.md)
 
 ### Internationalization (i18n)
 
-- Main documentation should be written in English (README.md)
-- Translation documents use the {FileName}_{lang}.md format (e.g. Chinese translation can use README_zh.md)
+- Board documentation uses README.md for English and README_zh.md for Chinese
+- Example documentation uses README_zh.md; an English README.md is optional
+- Other translations use the {FileName}_{lang}.md format
 - Keep metadata, commands, versions, links, and expected results consistent between language versions
 - Maintain correct hyperlinks between documents
 - Use consistent terminology with other documents in the same language

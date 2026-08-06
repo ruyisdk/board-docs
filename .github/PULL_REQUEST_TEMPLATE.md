@@ -11,6 +11,7 @@ If you're creating a new board or example, please refer to our templates:
 - [English board template](../templates/[board-name]/README.md)
 - [Chinese board template](../templates/[board-name]/README_zh.md)
 - [Chinese example template](../templates/[board-name]/[example-name]/README_zh.md)
+- [English example template (optional)](../templates/[board-name]/[example-name]/README.md)
 
 ### Checklist
 

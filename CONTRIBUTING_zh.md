@@ -31,7 +31,7 @@
     |
     |--- 各个示例
          |
-         |--- README.md # 示例英文文档
+         |--- README.md # 示例英文文档（可选）
          |
          |--- README_zh.md # 示例中文文档
          |
@@ -198,11 +198,13 @@ profile: Blink           # 示例名称
 - [开发板英文模板](./templates/[board-name]/README.md)
 - [开发板中文模板](./templates/[board-name]/README_zh.md)
 - [示例中文模板](./templates/[board-name]/[example-name]/README_zh.md)
+- [示例英文模板（可选）](./templates/[board-name]/[example-name]/README.md)
 
 ### 国际化 (i18n)
 
-- 主文档使用英文编写（README.md）
-- 翻译文档使用 {FileName}_{lang}.md 格式（如中文文档可使用 README_zh.md）
+- 开发板文档使用 README.md 编写英文版本，使用 README_zh.md 编写中文版本
+- 示例文档使用 README_zh.md，英文版本 README.md 为可选内容
+- 其他翻译文档使用 {FileName}_{lang}.md 格式
 - 不同语言版本的元数据、命令、版本、链接和预期结果应保持一致
 - 保持文档间超链接的正确性
 - 使用与其他同语言文档一致的术语
