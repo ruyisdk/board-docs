@@ -2,7 +2,7 @@
 
 [中文](./README_zh.md) / [English](./README.md)
 
-欢迎来到 RuyiSDK 的开发板教程与示例文档中心。本仓库主要存放各款 RISC-V 开发板的环境初始化指南、基础示例、外设示例、多媒体、AI等示例教程文档。
+欢迎来到 RuyiSDK 的开发板教程与示例文档中心。本仓库主要存放各款 RISC-V 开发板的环境初始化指南、入门示例、外设控制、多媒体、AI 等示例教程文档。
 
 ## 📚 目录结构说明
 
@@ -30,7 +30,7 @@
 | Nuclei RV-STAR              | [RV-STAR](./RV-STAR/README_zh.md)                   | [GigaDevice](https://www.gigadevice.com.cn/)       |
 | VisionFive 2 Lite           | [VisionFive2Lite](./VisionFive2Lite/README_zh.md)   | [StarFive](https://starfivetech.com/)              |
 
-*(注：完整的支持状态请访问[开发板文档前端](https://board-docs-frontend.pages.dev/)查阅。)*
+*(注：完整的开发板与示例列表请访问[开发板文档前端](https://board-docs-frontend.pages.dev/)查阅。)*
 
 ## 🛠️ 如何参与贡献
 

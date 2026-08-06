@@ -3,14 +3,14 @@ sys: revyos
 sys_ver: "20250930"
 sys_var: null
 
-status: basics
+category: benchmark
 last_update: 2026-04-03
 
 model: Lichee Pi 4A
 profile: Coremark
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 性能测试示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

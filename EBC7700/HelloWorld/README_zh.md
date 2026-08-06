@@ -3,14 +3,14 @@ sys: ubuntu
 sys_ver: 24.04
 sys_var: 
 
-status: basics
+category: getting-started
 last_update: 2026-07-06
 
 model: EBC7700
 profile: Hello World
 ---
 
-#  RuyiSDK 基础示例
+# RuyiSDK 入门示例
 
 安装依赖包
 

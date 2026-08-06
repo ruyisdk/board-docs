@@ -2,7 +2,7 @@
 sys: FreeRTOS
 sys_ver: 
 
-status: gui
+category: gui
 last_update: 2026-05-29
 
 model: ESP32-P4-Function-EV-Board

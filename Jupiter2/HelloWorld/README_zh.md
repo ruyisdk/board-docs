@@ -3,14 +3,14 @@ sys: Bianbu
 sys_ver: 4.0.1
 sys_var: null
 
-status: basics
+category: getting-started
 last_update: 2026-07-22
 
 model: 	Milk-V Jupiter2
 profile: Hello World
 ---
 
-#  RuyiSDK 基础示例
+# RuyiSDK 入门示例
 安装依赖包
 
 ```

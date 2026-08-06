@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: basics
+category: benchmark
 last_update: 2026-04-03
 
 model: Milk-V Duo (256M)
 profile: Coremark
 ---
 
-#  RuyiSDK 基础示例
+# RuyiSDK 性能测试示例
 安装依赖包
 
 ```

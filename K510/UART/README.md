@@ -3,14 +3,14 @@ sys: Ubuntu 20.04.4 LTS in Docker
 sys_ver: v1.9
 sys_var: null
 
-status: peripheral
+category: peripheral
 last_update: 2026-07-20
 
 model: Canaan K510 CRB-V1.2 KIT
 profile: UART
 ---
 
-# RuyiSDK UART示例
+# RuyiSDK 外设控制示例
 
 - 安装ruyi包管理器
 

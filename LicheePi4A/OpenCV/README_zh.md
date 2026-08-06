@@ -3,7 +3,7 @@ sys: revyos
 sys_ver: "20250930"
 sys_var: null
 
-status: computer-vision
+category: computer-vision
 last_update: 2026-04-21
 
 model: Lichee Pi 4A
@@ -11,7 +11,7 @@ profile: OpenCV
 
 ---
 
-#  RuyiSDK 计算机视觉示例
+# RuyiSDK 计算机视觉示例
 
 - **安装依赖包**
 

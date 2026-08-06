@@ -2,14 +2,14 @@
 sys: baremetal
 sys_ver: null
 sys_var: null
-status: basics
+category: benchmark
 last_update: 2026-05-31
 model: Nuclei RV-STAR
 profile: Coremark
 
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 性能测试示例
 
 > 说明：Nuclei RV-STAR 硬件驱动依赖 Nuclei 官方 SDK 和专用工具链。本示例中，RuyiSDK 仅用于虚拟环境管理、源码获取和编辑，编译烧录仍使用 make 和 openocd 命令。
 

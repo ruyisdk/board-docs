@@ -3,14 +3,14 @@ sys: debian
 sys_ver: v1.6.35
 sys_var: v1
 
-status: peripheral
+category: peripheral
 last_update: 2026-04-06
 
 model: Milk-V Duo S
 profile: Pico-ePaper-2.13
 ---
 
-# RuyiSDK 外设示例
+# RuyiSDK 外设控制示例
 
 ## Pico-ePaper-2.13
 

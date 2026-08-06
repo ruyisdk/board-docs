@@ -3,13 +3,13 @@ sys: debian
 sys_ver: v1.6.35
 sys_var: null
 provider: milkv
-status: peripheral
+category: system
 last_update: 2026-04-05
 model: Milk-V Duo S
 profile: Mailbox-test
 ---
 
-# RuyiSDK 外设示例
+# RuyiSDK 系统编程示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

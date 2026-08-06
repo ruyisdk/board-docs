@@ -3,7 +3,7 @@ sys: ubuntu
 sys_ver: "24.04"
 sys_var: null
 
-status: peripheral
+category: peripheral
 last_update: 2026-06-02
 
 model: VisionFive2 Lite
@@ -11,7 +11,7 @@ profile: GPIO_LED_Blink
 
 ---
 
-#  RuyiSDK 外设示例
+# RuyiSDK 外设控制示例
 
 - **安装依赖包**
 

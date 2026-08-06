@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: AI
+category: ai
 last_update: 2026-05-20
 
 model: Milk-V Duo (256M)
 profile: YOLOv11
 ---
 
-# RuyiSDK AI 示例
+# RuyiSDK 人工智能示例
 本示例和 YOLOv8 示例步骤相同，仅替换为 YOLOv11 对应的 cvimodel 文件。  
 ### 安装依赖库
 ```bash

@@ -3,7 +3,7 @@ sys: ubuntu
 sys_ver: "24.04"
 sys_var: null
 
-status: basics
+category: benchmark
 last_update: 2026-04-27
 
 model: VisionFive2 Lite
@@ -11,7 +11,7 @@ profile: Coremark
 
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 性能测试示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

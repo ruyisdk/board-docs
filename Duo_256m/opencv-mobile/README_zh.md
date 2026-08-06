@@ -3,7 +3,7 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: computer-vision
+category: computer-vision
 last_update: 2026-05-03
 
 model: Milk-V Duo (256M)

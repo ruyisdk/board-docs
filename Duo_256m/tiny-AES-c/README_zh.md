@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: Crypto
+category: security
 last_update: 2026-05-03
 
 model: Milk-V Duo (256M)
 profile: tiny-AES-c
 ---
 
-# RuyiSDK 加密示例
+# RuyiSDK 安全示例
 
 安装依赖包
 

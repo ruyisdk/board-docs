@@ -2,14 +2,14 @@
 sys: bianbu
 sys_ver: 3.0.1
 sys_var: Desktop
-status: basics
+category: getting-started
 last_update: 2026-04-20
 
 model: Lichee Pi 3A
 profile: Hello World
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 入门示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

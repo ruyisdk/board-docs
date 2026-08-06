@@ -155,7 +155,7 @@ sys: debian              # System identifier
 sys_ver: v1.6.35         # System version
 sys_var: null            # Variant identifier
 provider: milkv          # Image provider
-status: peripheral       # Example category
+category: peripheral     # Example category
 last_update: 2026-04-09  # Document last update date
 model: Milk-V Duo S      # Board name
 profile: Blink           # Example name
@@ -164,23 +164,31 @@ profile: Blink           # Example name
 
 #### Example Categories
 
-The `status` field in an example document must use one of the following values:
+The `category` field in an example document must use one of the following values:
 
-| `status` value | Category |
+| `category` value | Category |
 | --- | --- |
-| `basics` | Basics |
+| `getting-started` | Getting started |
 | `peripheral` | Peripheral control |
-| `communication` | Communication interfaces |
 | `network` | Networking |
 | `system` | System programming |
+| `storage` | Storage |
+| `power-management` | Power management |
 | `multimedia` | Multimedia applications |
 | `computer-vision` | Computer vision |
 | `ai` | Artificial intelligence |
-| `crypto` | Cryptography and security |
+| `security` | Security |
 | `compression` | Data compression |
 | `gui` | Graphical user interfaces |
 | `benchmark` | Benchmarking |
-| `application` | Applications and integration |
+| `application` | Integrated applications |
+| `other` | Other |
+
+Choose one category based on the example's primary learning objective. UART, I2C,
+and SPI examples normally belong to `peripheral`; network protocols and services
+belong to `network`; system calls, kernel interfaces, and multicore coordination
+belong to `system`. Use `other` only when no listed category applies, and briefly
+explain the reason in the pull request description.
 
 If there are any parts that are still unclear, please create an issue.
 

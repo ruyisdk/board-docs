@@ -3,7 +3,7 @@ sys: Ubuntu 20.04.4 LTS in Docker
 sys_ver: v1.9
 sys_var: null
 
-status: basics
+category: getting-started
 last_update: 2026-06-14
 
 model: Canaan K510 CRB-V1.2 KIT
@@ -11,7 +11,7 @@ profile: Hello World
 
 ---
 
-# RuyiSDK 基础示例
+# RuyiSDK 入门示例
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 

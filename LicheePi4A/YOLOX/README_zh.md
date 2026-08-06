@@ -3,7 +3,7 @@ sys: revyos
 sys_ver: "20250110"
 sys_var: null
 
-status: AI
+category: ai
 last_update: 2026-04-22
 
 model: Lichee Pi 4A
@@ -12,7 +12,7 @@ profile: YOLOX
 
 
 
-# RuyiSDK AI示例
+# RuyiSDK 人工智能示例
 
 更新ruyi软件包列表并安装编译工具链  
 

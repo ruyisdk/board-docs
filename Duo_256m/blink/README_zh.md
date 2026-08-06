@@ -3,14 +3,14 @@ sys: buildroot
 sys_ver: v1.1.4
 sys_var: v1
 
-status: peripheral
+category: peripheral
 last_update: 2026-05-06
 
 model: Milk-V Duo (256M)
 profile: Blink
 ---
 
-# RuyiSDK 外设示例
+# RuyiSDK 外设控制示例
 
 安装依赖包
 
