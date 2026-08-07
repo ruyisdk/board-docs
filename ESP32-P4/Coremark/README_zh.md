@@ -1,6 +1,7 @@
 ---
 sys: FreeRTOS
-sys_ver: 
+sys_ver: null
+sys_var: null
 
 category: benchmark
 last_update: 2026-05-07
@@ -140,4 +141,3 @@ I (28895) main_task: Returned from app_main()
 ```
 idf.py fullclean
 ```
-

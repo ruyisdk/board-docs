@@ -1,0 +1,13 @@
+[project]
+name = "board-docs-tools"
+version = "0.1.0"
+description = "Validation tools for RuyiSDK board documentation"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic>=2.11.7,<3",
+    "python-frontmatter==1.1.0",
+    "PyYAML==6.0.2",
+]
+
+[tool.uv]
+package = false

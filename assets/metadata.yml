@@ -1,0 +1,39 @@
+board:
+  required:
+    - product
+    - cpu
+    - cpu_core
+    - ram
+    - vendor
+    - silicon_vendor
+
+example:
+  required:
+    - sys
+    - sys_ver
+    - sys_var
+    - category
+    - last_update
+    - model
+    - profile
+  optional:
+    - provider
+  forbidden:
+    - status
+
+categories:
+  - getting-started
+  - peripheral
+  - network
+  - system
+  - storage
+  - power-management
+  - multimedia
+  - computer-vision
+  - ai
+  - security
+  - compression
+  - gui
+  - benchmark
+  - application
+  - other

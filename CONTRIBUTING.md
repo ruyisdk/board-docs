@@ -146,6 +146,8 @@ silicon_vendor: Sophgo     # Chip manufacturer
 ---
 ```
 
+All six board metadata fields above are required and must not be empty.
+
 The YAML metadata for example documentation can refer to the Blink example for Milk-V Duo S:
 
 ```yaml
@@ -161,6 +163,11 @@ model: Milk-V Duo S      # Board name
 profile: Blink           # Example name
 ---
 ```
+
+All example metadata fields above except `provider` are required. If the system
+version is unknown or no system variant exists, keep `sys_ver` and `sys_var` and
+set their values to `null`. The optional `provider` field identifies the provider
+or maintainer of the system image and may be omitted when unknown.
 
 #### Example Categories
 

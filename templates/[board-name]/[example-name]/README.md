@@ -10,6 +10,7 @@ model: [Board Name]
 profile: [Example Name]
 ---
 
+<!-- `provider` is optional; replace the placeholder when known, or remove the field. -->
 <!-- Use a canonical `category` value from "Example Categories" in CONTRIBUTING.md. -->
 
 # RuyiSDK [Example Category] Example

@@ -145,6 +145,8 @@ silicon_vendor: Sophgo     # 芯片制造商
 ---
 ```
 
+以上 6 个开发板元数据字段均为必填项，且值不得为空。
+
 示例文档的 YAML 元数据可参考 Milk-V Duo S 的 Blink 示例：
 
 ```yaml
@@ -160,6 +162,10 @@ model: Milk-V Duo S      # 开发板名称
 profile: Blink           # 示例名称
 ---
 ```
+
+除 `provider` 外，以上示例元数据字段均为必填项。无法确定系统版本或不存在系统变体时，
+`sys_ver`、`sys_var` 仍须保留并填写 `null`。`provider` 用于标识系统镜像的提供者或维护者；
+无法确定时可省略。
 
 #### 示例分类
 
