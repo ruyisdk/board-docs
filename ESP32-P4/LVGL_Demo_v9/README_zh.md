@@ -1,6 +1,7 @@
 ---
 sys: FreeRTOS
-sys_ver: 
+sys_ver: null
+sys_var: null
 
 category: gui
 last_update: 2026-05-29

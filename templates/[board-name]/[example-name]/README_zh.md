@@ -10,6 +10,7 @@ model: [Board Name]
 profile: [Example Name]
 ---
 
+<!-- `provider` 为可选字段；已知镜像提供方时请替换占位符，否则删除该字段。 -->
 <!-- `category` 请填写规范的示例分类，详见 CONTRIBUTING_zh.md 中的“示例分类”。 -->
 
 # RuyiSDK [示例分类]示例

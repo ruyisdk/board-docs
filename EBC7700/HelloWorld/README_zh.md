@@ -1,7 +1,7 @@
 ---
 sys: ubuntu
 sys_ver: 24.04
-sys_var: 
+sys_var: null
 
 category: getting-started
 last_update: 2026-07-06

@@ -1,8 +1,8 @@
 ---
 product: ESP32-P4-Function-EV-Board
 cpu: ESP32-P4
-cpu_core: 
-ram: 32MB PSRAM
+cpu_core: Dual-core RISC-V
+ram: 16MB/32MB PSRAM
 vendor: Espressif
 silicon_vendor: Espressif
 
