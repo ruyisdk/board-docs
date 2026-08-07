@@ -1,0 +1,20 @@
+name: PR checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  dco:
+    name: DCO compliance
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run dco-check
+        uses: christophebedard/dco-check@7b0205d25ead0f898e0b706b58227dd5fa7e3f55 # 0.5.0
+        with:
+          python-version: '3.12'
+          args: '--verbose'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
