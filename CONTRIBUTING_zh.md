@@ -123,9 +123,9 @@ git config --global user.name "您的姓名"
 git config --global user.email "your.email@example.com"
 ```
 
-#### DCO 验证
+#### CI 中的 DCO 验证
 
-本仓库尚未启用自动化 DCO 检查，维护者会在审查时核对每个提交的 `Signed-off-by` 标签行。
+所有拉取请求（PR）都会在我们的持续集成 (CI) 流程中接受自动化 DCO 检查。此检查会验证您的拉取请求中的所有提交是否都有适当的 DCO 签名。如果任何提交缺少签名，CI 检查将失败，在解决问题之前，您的拉取请求将无法被合并。
 
 ## 数据结构规范
 

@@ -124,9 +124,9 @@ git config --global user.name "Your Name"
 git config --global user.email "your.email@example.com"
 ```
 
-#### DCO Verification
+#### DCO enforcement in CI
 
-This repository does not yet have automated DCO checks enabled. Maintainers will verify the `Signed-off-by` tag in each commit during review.
+All pull requests go through an automated DCO check in our continuous integration (CI) pipeline. This check verifies that all commits in your pull request have a proper DCO sign-off. If any commits are missing the sign-off, the CI check will fail, and your pull request cannot be merged until the issue is fixed.
 
 ## Data Structure Specifications
 
