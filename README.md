@@ -30,7 +30,7 @@ This repository currently includes, but is not limited to, documentation resourc
 | Nuclei RV-STAR              | [RV-STAR](./RV-STAR/README.md)                   | [GigaDevice](https://www.gigadevice.com/)        |
 | VisionFive 2 Lite           | [VisionFive2Lite](./VisionFive2Lite/README.md)   | [StarFive](https://starfivetech.com/en/)         |
 
-*(Note: For the complete list of boards and examples, please visit the [board documentation frontend](https://board-docs-frontend.pages.dev/).)*
+*(Note: For the complete list of boards and examples, please visit the [board documentation frontend](https://boards.ruyisdk.org/).)*
 
 ## 🛠️ How to Contribute
 
