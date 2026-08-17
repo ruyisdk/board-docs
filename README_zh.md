@@ -30,7 +30,7 @@
 | Nuclei RV-STAR              | [RV-STAR](./RV-STAR/README_zh.md)                   | [GigaDevice](https://www.gigadevice.com.cn/)       |
 | VisionFive 2 Lite           | [VisionFive2Lite](./VisionFive2Lite/README_zh.md)   | [StarFive](https://starfivetech.com/)              |
 
-*(注：完整的开发板与示例列表请访问[开发板文档前端](https://board-docs-frontend.pages.dev/)查阅。)*
+*(注：完整的开发板与示例列表请访问[开发板文档前端](https://boards.ruyisdk.org/)查阅。)*
 
 ## 🛠️ 如何参与贡献
 
