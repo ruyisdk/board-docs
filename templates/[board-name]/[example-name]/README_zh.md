@@ -12,6 +12,10 @@ profile: [Example Name]
 
 <!-- `provider` 为可选字段；已知镜像提供方时请替换占位符，否则删除该字段。 -->
 <!-- `category` 请填写规范的示例分类，详见 CONTRIBUTING_zh.md 中的“示例分类”。 -->
+<!-- 新增板卡目录使用去掉空格的官方产品名称；存量目录不改名。 -->
+<!-- 新增示例目录统一使用小写字母和连字符。 -->
+<!-- 安装 Ruyi 时链接 https://ruyisdk.org/docs/Package-Manager/installation/，不使用固定版本下载链接。 -->
+<!-- 如需展示版本，请注明“以 X 版本为例”，并确保 frontmatter 的 `last_update` 准确。 -->
 
 # RuyiSDK [示例分类]示例
 
