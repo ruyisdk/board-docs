@@ -28,7 +28,7 @@
 | Milk-V Jupiter2 | [Jupiter2](./Jupiter2/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
 | Milk-V Meles | [Meles](./Meles/README_zh.md) | [XuanTie](https://www.xrvm.cn/) |
 | Milk-V Pioneer | [Pioneer](./Pioneer/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
-| RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com.cn/) |
+| Nuclei RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com.cn/) |
 | VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README_zh.md) | [StarFive](https://starfivetech.com/) |
 <!-- MATRIX:END -->
 

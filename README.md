@@ -28,7 +28,7 @@ This repository currently includes, but is not limited to, documentation resourc
 | Milk-V Jupiter2 | [Jupiter2](./Jupiter2/README.md) | [SpacemiT](https://www.spacemit.com/en/) |
 | Milk-V Meles | [Meles](./Meles/README.md) | [XuanTie](https://www.xrvm.com/) |
 | Milk-V Pioneer | [Pioneer](./Pioneer/README.md) | [SOPHGO](https://en.sophgo.com/) |
-| RV-STAR | [RV-STAR](./RV-STAR/README.md) | [GigaDevice](https://www.gigadevice.com/) |
+| Nuclei RV-STAR | [RV-STAR](./RV-STAR/README.md) | [GigaDevice](https://www.gigadevice.com/) |
 | VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README.md) | [StarFive](https://starfivetech.com/en/) |
 <!-- MATRIX:END -->
 
