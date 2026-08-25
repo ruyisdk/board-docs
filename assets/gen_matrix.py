@@ -169,7 +169,8 @@ def render_matrix(
         readme_path = board.directory / readme_name
         if not readme_path.is_file():
             readme_name = "README.md"
-        board_link = f"./{board.directory.name}/{readme_name}"
+            readme_path = board.directory / readme_name
+        board_link = f"./{board.directory.name}/{readme_path.name}"
         vendor_name, localized_urls = vendor_links[board.silicon_vendor]
         vendor_url = (
             localized_urls.get("zh" if chinese else "en")
