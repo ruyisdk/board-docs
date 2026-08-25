@@ -16,20 +16,20 @@
 <!-- MATRIX:BEGIN -->
 | 支持设备 | 开发板文档 | 芯片厂商 |
 | --- | --- | --- |
-| Banana Pi BPI-F3 | [BPI-F3](./BPI-F3/README_zh.md) | [SpacemiT](https://www.spacemit.com/en/) |
+| Banana Pi BPI-F3 | [BPI-F3](./BPI-F3/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
 | Canaan K510-CRB-V1.2 KIT | [K510](./K510/README_zh.md) | [Canaan](https://www.canaan.io/) |
-| EBC7700 | [EBC7700](./EBC7700/README_zh.md) | [ESWIN](https://www.eswincomputing.com/en/) |
-| ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README_zh.md) | [Espressif](https://www.espressif.com/en/) |
-| Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README_zh.md) | [SpacemiT](https://www.spacemit.com/en/) |
-| Lichee Pi 4A | [LicheePi4A](./LicheePi4A/README_zh.md) | [XuanTie](https://www.xrvm.com/) |
-| Milk-V Duo (256M) | [Duo_256m](./Duo_256m/README_zh.md) | [SOPHGO](https://en.sophgo.com/) |
-| Milk-V Duo (64M) | [Duo](./Duo/README_zh.md) | [SOPHGO](https://en.sophgo.com/) |
-| Milk-V Duo S | [Duo_S](./Duo_S/README_zh.md) | [SOPHGO](https://en.sophgo.com/) |
-| Milk-V Jupiter2 | [Jupiter2](./Jupiter2/README_zh.md) | [SpacemiT](https://www.spacemit.com/en/) |
-| Milk-V Meles | [Meles](./Meles/README_zh.md) | [XuanTie](https://www.xrvm.com/) |
-| Milk-V Pioneer | [Pioneer](./Pioneer/README_zh.md) | [SOPHGO](https://en.sophgo.com/) |
-| RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com/) |
-| VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README_zh.md) | [StarFive](https://starfivetech.com/en/) |
+| EBC7700 | [EBC7700](./EBC7700/README_zh.md) | [ESWIN](https://www.eswincomputing.com/) |
+| ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README_zh.md) | [Espressif](https://www.espressif.com/zh-hans/) |
+| Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
+| Lichee Pi 4A | [LicheePi4A](./LicheePi4A/README_zh.md) | [XuanTie](https://www.xrvm.cn/) |
+| Milk-V Duo (256M) | [Duo_256m](./Duo_256m/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
+| Milk-V Duo (64M) | [Duo](./Duo/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
+| Milk-V Duo S | [Duo_S](./Duo_S/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
+| Milk-V Jupiter2 | [Jupiter2](./Jupiter2/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
+| Milk-V Meles | [Meles](./Meles/README_zh.md) | [XuanTie](https://www.xrvm.cn/) |
+| Milk-V Pioneer | [Pioneer](./Pioneer/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
+| RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com.cn/) |
+| VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README_zh.md) | [StarFive](https://starfivetech.com/) |
 <!-- MATRIX:END -->
 
 *(注：完整的开发板与示例列表请访问[开发板文档前端](https://boards.ruyisdk.org/)查阅。)*

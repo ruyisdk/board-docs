@@ -39,11 +39,27 @@ categories:
   - other
 
 silicon_vendor_links:
-  SpacemiT: https://www.spacemit.com/en/
-  SOPHGO: https://en.sophgo.com/
-  ESWIN: https://www.eswincomputing.com/en/
-  Espressif: https://www.espressif.com/en/
-  Canaan: https://www.canaan.io/
-  XuanTie: https://www.xrvm.com/
-  GigaDevice: https://www.gigadevice.com/
-  StarFive: https://starfivetech.com/en/
+  SpacemiT:
+    en: https://www.spacemit.com/en/
+    zh: https://www.spacemit.com/
+  SOPHGO:
+    en: https://en.sophgo.com/
+    zh: https://www.sophgo.com/
+  ESWIN:
+    en: https://www.eswincomputing.com/en/
+    zh: https://www.eswincomputing.com/
+  Espressif:
+    en: https://www.espressif.com/en/
+    zh: https://www.espressif.com/zh-hans/
+  Canaan:
+    en: https://www.canaan.io/
+    zh: https://www.canaan.io/
+  XuanTie:
+    en: https://www.xrvm.com/
+    zh: https://www.xrvm.cn/
+  GigaDevice:
+    en: https://www.gigadevice.com/
+    zh: https://www.gigadevice.com.cn/
+  StarFive:
+    en: https://starfivetech.com/en/
+    zh: https://starfivetech.com/

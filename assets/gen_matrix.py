@@ -9,6 +9,7 @@ import sys
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 import frontmatter
 import yaml
@@ -88,8 +89,8 @@ def discover_boards(root: Path) -> list[BoardMetadata]:
     return sorted(boards, key=lambda board: board.product.casefold())
 
 
-def load_vendor_links(path: Path) -> dict[str, str]:
-    """Load and validate the silicon vendor URL mapping."""
+def load_vendor_links(path: Path) -> dict[str, dict[str, str]]:
+    """Load and validate the localized silicon vendor URL mapping."""
 
     raw_rules = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
     if not isinstance(raw_rules, dict):
@@ -98,28 +99,45 @@ def load_vendor_links(path: Path) -> dict[str, str]:
     if not isinstance(links, dict):
         raise ValueError(f"{path}: silicon_vendor_links must be a mapping")
 
-    validated_links: dict[str, str] = {}
-    for vendor, url in links.items():
-        if not isinstance(vendor, str) or not isinstance(url, str) or not url:
+    validated_links: dict[str, dict[str, str]] = {}
+    for vendor, raw_urls in links.items():
+        if not isinstance(vendor, str) or not isinstance(raw_urls, dict):
             raise ValueError(
-                f"{path}: silicon_vendor_links entries must map names to URLs"
+                f"{path}: silicon_vendor_links entries must map names to language URLs"
             )
-        validated_links[vendor] = url
+        localized_urls: dict[str, str] = {}
+        for language in ("en", "zh"):
+            url = raw_urls.get(language)
+            parsed_url = urlparse(url) if isinstance(url, str) else None
+            if (
+                parsed_url is None
+                or parsed_url.scheme not in {"http", "https"}
+                or not parsed_url.netloc
+            ):
+                raise ValueError(
+                    f"{path}: {vendor!r} must define a non-empty HTTP(S) "
+                    f"{language!r} URL"
+                )
+            localized_urls[language] = url
+        validated_links[vendor] = localized_urls
     return validated_links
 
 
 def resolve_vendor_links(
-    boards: list[BoardMetadata], links: dict[str, str]
-) -> dict[str, tuple[str, str | None]]:
-    """Resolve vendor labels and URLs, warning once for missing mappings."""
+    boards: list[BoardMetadata], links: dict[str, dict[str, str]]
+) -> dict[str, tuple[str, dict[str, str] | None]]:
+    """Resolve vendor labels and localized URLs, warning once for missing mappings."""
 
     folded_links = {vendor.casefold(): (vendor, url) for vendor, url in links.items()}
-    resolved: dict[str, tuple[str, str | None]] = {}
+    resolved: dict[str, tuple[str, dict[str, str] | None]] = {}
     for board in boards:
         vendor = board.silicon_vendor
         if vendor in resolved:
             continue
-        match = links.get(vendor) or folded_links.get(vendor.casefold())
+        if vendor in links:
+            resolved[vendor] = (vendor, links[vendor])
+            continue
+        match = folded_links.get(vendor.casefold())
         if match is None:
             print(
                 f"warning: no URL configured for silicon vendor {vendor!r}; "
@@ -127,16 +145,14 @@ def resolve_vendor_links(
                 file=sys.stderr,
             )
             resolved[vendor] = (vendor, None)
-        elif isinstance(match, tuple):
-            resolved[vendor] = match
         else:
-            resolved[vendor] = (vendor, match)
+            resolved[vendor] = match
     return resolved
 
 
 def render_matrix(
     boards: list[BoardMetadata],
-    vendor_links: dict[str, tuple[str, str | None]],
+    vendor_links: dict[str, tuple[str, dict[str, str] | None]],
     *,
     chinese: bool,
 ) -> str:
@@ -154,7 +170,12 @@ def render_matrix(
         if not readme_path.is_file():
             readme_name = "README.md"
         board_link = f"./{board.directory.name}/{readme_name}"
-        vendor_name, vendor_url = vendor_links[board.silicon_vendor]
+        vendor_name, localized_urls = vendor_links[board.silicon_vendor]
+        vendor_url = (
+            localized_urls.get("zh" if chinese else "en")
+            if localized_urls is not None
+            else None
+        )
         vendor_cell = (
             f"[{vendor_name}]({vendor_url})"
             if vendor_url is not None
