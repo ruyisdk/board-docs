@@ -11,11 +11,11 @@ profile: Coremark
 
 ---
 
-# RuyiSDK 性能测试示例
+# RuyiSDK Performance Test Example
 
-本示例在 PC 上使用 RuyiSDK GCC 和 LLVM 工具链交叉编译 Coremark，再将二进制文件传输到开发板运行。
+This example uses the RuyiSDK GCC and LLVM toolchains on a PC to cross-compile Coremark, then transfers the binaries to the development board for execution.
 
-安装ruyi包管理器
+Install the ruyi package manager
 
 ```bash
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
@@ -25,29 +25,29 @@ chmod +x ./ruyi-0.50.0.amd64
 sudo cp -v ./ruyi-0.50.0.amd64 /usr/local/bin/ruyi
 ```
 
-安装GCC和LLVM工具链
+Install the GCC and LLVM toolchains
 
 ```bash
 ruyi update
 ruyi install gnu-ruyisdk llvm-ruyisdk
 ```
 
-## Coremark（GCC版）
+## Coremark (GCC)
 
-创建并激活ruyi虚拟环境（GCC）
+Create and activate a ruyi virtual environment (GCC)
 
 ```bash
 ruyi venv -t gnu-ruyisdk generic gcc-env
 . gcc-env/bin/ruyi-activate
 ```
 
-验证GCC版本
+Verify the GCC version
 
 ```bash
 riscv64-ruyisdk-linux-gnu-gcc -v
 ```
 
-编译Coremark（GCC）
+Compile Coremark (GCC)
 
 ```bash
 git clone https://github.com/eembc/coremark
@@ -57,13 +57,13 @@ mv coremark.exe coremark-gcc
 riscv64-ruyisdk-linux-gnu-objcopy --remove-section=.riscv.attributes coremark-gcc coremark-gcc
 ```
 
-PC端传输
+Transfer the file from the PC
 
 ```bash
 python3 -m http.server 8000
 ```
 
-在开发板的`minicom`终端里运行：
+Run the following commands in the development board's `minicom` terminal:
 
 ```bash
 wget http://10.13.61.37:8000/coremark-gcc -O /root/coremark-gcc
@@ -71,7 +71,7 @@ chmod +x /root/coremark-gcc
 /root/coremark-gcc
 ```
 
-输出结果
+Output
 
 ```text
 2K performance run parameters for coremark.
@@ -90,28 +90,28 @@ seedcrc          : 0xe9f5
 Correct operation validated. See README.md for run and reporting rules.
 ```
 
-退出ruyi GCC虚拟环境
+Exit the ruyi GCC virtual environment
 
 ```bash
 cd ..; ruyi-deactivate
 ```
 
-## Coremark（LLVM版）
+## Coremark (LLVM)
 
-创建并激活ruyi虚拟环境（LLVM）
+Create and activate a ruyi virtual environment (LLVM)
 
 ```bash
 ruyi venv -t llvm-ruyisdk generic --sysroot-from gnu-ruyisdk llvm-env
 . llvm-env/bin/ruyi-activate
 ```
 
-验证LLVM版本
+Verify the LLVM version
 
 ```bash
 clang -v
 ```
 
-编译Coremark（LLVM）
+Compile Coremark (LLVM)
 
 ```bash
 cd coremark
@@ -120,7 +120,7 @@ make CC=clang XCFLAGS="-static --target=riscv64-linux-gnu -march=rv64imafdc -Ipo
 mv coremark.exe coremark-llvm
 ```
 
-剥离属性段
+Strip the attributes section
 
 ```bash
 OBJCOPY=~/tes/k510_buildroot/k510_crb_lp3_v1_2_defconfig/host/bin/riscv64-buildroot-linux-gnu-objcopy
@@ -131,13 +131,13 @@ fi
 $OBJCOPY --remove-section=.riscv.attributes coremark-llvm coremark_llvm
 ```
 
-PC端传输
+Transfer the file from the PC
 
 ```bash
 python3 -m http.server 8000
 ```
 
-在开发板的`minicom`终端里运行：
+Run the following commands in the development board's `minicom` terminal:
 
 ```bash
 wget http://10.13.61.37:8000/coremark_llvm -O /root/coremark_llvm
@@ -145,7 +145,7 @@ chmod +x /root/coremark_llvm
 /root/coremark_llvm
 ```
 
-输出结果
+Output
 
 ```text
 2K performance run parameters for coremark.
@@ -164,7 +164,7 @@ seedcrc          : 0xe9f5
 Correct operation validated. See README.md for run and reporting rules.
 ```
 
-退出ruyi LLVM虚拟环境
+Exit the ruyi LLVM virtual environment
 
 ```bash
 cd ..; ruyi-deactivate
