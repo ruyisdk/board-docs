@@ -1,3 +1,6 @@
+<!-- 新增板卡目录使用去掉空格的官方产品名称；存量目录不改名。 -->
+<!-- 如加入 Ruyi 安装步骤，请链接 https://ruyisdk.org/docs/Package-Manager/installation/，不使用固定版本下载链接。 -->
+
 # [开发板名称]
 
 ## 概述

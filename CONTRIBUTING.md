@@ -38,6 +38,25 @@ board-docs
          |--- Images and other supporting files
 ```
 
+## Conventions
+
+### Directory Naming
+
+- Name new board directories after the official product name used by the chip or board vendor, with spaces removed (for example, `BPI-F3` and `Jupiter2`).
+- Name new example directories using lowercase letters and hyphens (for example, `hello-world` and `pedestrian-detection`).
+- Do not rename existing directories; this convention applies only to new content.
+
+### Version References
+
+- When a tutorial installs `ruyi`, always link to the [official RuyiSDK installation documentation](https://ruyisdk.org/en/docs/Package-Manager/installation/) instead of using a hard-coded download link for a specific version, such as `ruyi-0.47.0.amd64`.
+- When a specific version must be shown, state that it is an example using version X, revalidate the tutorial, and ensure the frontmatter `last_update` field truthfully reflects the document's last update date.
+
+### Bilingual Documentation
+
+- New examples must provide a Chinese `README_zh.md`.
+- An English `README.md` is welcome.
+- Having only one language does not block merging.
+
 ## Code of Conduct
 
 Please be respectful and considerate of others when contributing to RuyiSDK. We aim to foster an open and welcoming environment for all contributors.
