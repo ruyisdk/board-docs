@@ -11,12 +11,13 @@ profile: Hello World
 
 ---
 
-# RuyiSDK 入门示例
->说明：ESP32-P4 必须使用乐鑫官方 IDF 工具链编译。本示例中，RuyiSDK 仅用于创建虚拟环境、获取源码和编辑 `hello_world_main.c`，编译烧录仍通过 `idf.py` 完成。
+# RuyiSDK Getting Started Example
 
-可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
+> Note: ESP32-P4 must be built with Espressif's official IDF toolchain. In this example, RuyiSDK is used only to create the virtual environment, obtain the source code, and edit `hello_world_main.c`; compilation and flashing are still performed with `idf.py`.
 
-安装ruyi包管理器
+This example can be compiled and run directly on the development board, making it suitable for beginners.
+
+Install the ruyi package manager
 
 ```
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
@@ -27,23 +28,23 @@ chmod +x ruyi-0.48.0.amd64
 sudo cp -v ./ruyi-0.48.0.amd64 /usr/local/bin/ruyi
 ```
 
-安装GCC和LLVM工具链
+Install the GCC and LLVM toolchains
 
 ```
 ruyi update
 ruyi install gnu-plct llvm-plct
 ```
 
-安装 ESP-IDF v5.5.4 及工具链
+Install ESP-IDF v5.5.4 and its toolchain
 
 ```
-# 下载并运行 ESP-IDF 离线安装包
-# 安装完成后，通过"ESP-IDF PowerShell" 快捷方式打开终端
+# Download and run the ESP-IDF offline installer
+# After installation, open a terminal using the "ESP-IDF PowerShell" shortcut
 ```
 
-## Hello World (GCC版)
+## Hello World (GCC)
 
-创建并配置项目
+Create and configure the project
 
 ```
 xcopy /e /i $env:IDF_PATH\examples\get-started\hello_world hello_world
@@ -52,14 +53,14 @@ cd hello_world
 idf.py set-target esp32p4
 ```
 
-创建并激活ruyi虚拟环境（GCC）
+Create and activate the ruyi virtual environment (GCC)
 
 ```
 ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
 . venv-gnu-plct/bin/ruyi-activate
 ```
 
-在虚拟环境中编辑源代码：
+Edit the source code in the virtual environment:
 
 ```
 cd /mnt/d/platform/esp/hello_world/main
@@ -72,7 +73,7 @@ void app_main(void)
 }
 ```
 
-编译并运行Hello World（GCC）
+Compile and run Hello World (GCC)
 
 ```
 idf.py build
@@ -81,7 +82,7 @@ idf.py -p COM6 flash
 idf.py -p COM6 monitor
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 ...
@@ -89,25 +90,24 @@ Hello world!
 ...
 ```
 
+Press `Ctrl + ]` to exit the monitor.
 
-按 `Ctrl + ]` 退出监视器。
+## Hello World (LLVM)
 
-## Hello World (LLVM版)
-
-安装 Clang 工具链
+Install the Clang toolchain
 
 ```
 python "$env:IDF_PATH/tools/idf_tools.py" install esp-clang
 ```
 
-切换到 Clang 工具链
+Switch to the Clang toolchain
 
 ```
 cd hello_world
 $env:IDF_TOOLCHAIN = "clang"
 ```
 
-重新编译、烧录并运行
+Rebuild, flash, and run
 
 ```
 idf.py fullclean
@@ -118,7 +118,7 @@ idf.py -p COM6 flash
 idf.py -p COM6 monitor
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 ...
@@ -126,9 +126,9 @@ Hello world!
 ...
 ```
 
-按 `Ctrl + ]` 退出监视器。
+Press `Ctrl + ]` to exit the monitor.
 
-清理环境
+Clean up the environment
 
 ```
 idf.py fullclean

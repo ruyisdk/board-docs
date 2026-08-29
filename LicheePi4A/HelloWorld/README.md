@@ -10,17 +10,17 @@ model: Lichee Pi 4A
 profile: Hello World
 ---
 
-# RuyiSDK 入门示例
+# RuyiSDK Getting Started Example
 
-可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
+This example can be compiled and run directly on the development board, making it suitable for beginners.
 
-安装依赖包
+Install dependencies
 
 ```
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
-安装ruyi包管理器
+Install the ruyi package manager
 
 ```
 wget https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi.riscv64
@@ -30,7 +30,7 @@ chmod +x ruyi-0.47.0.riscv64
 sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
 ```
 
-安装GCC和LLVM工具链
+Install the GCC and LLVM toolchains
 
 ```
 ruyi update
@@ -38,9 +38,9 @@ ruyi update
 ruyi install gnu-plct llvm-plct
 ```
 
-## Hello World (GCC版)
+## Hello World (GCC)
 
-创建并激活ruyi虚拟环境（GCC）
+Create and activate the ruyi virtual environment (GCC)
 
 ```
 ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
@@ -49,7 +49,7 @@ ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
 
 
 
-验证GCC版本
+Verify the GCC version
 
 ```
 riscv64-plct-linux-gnu-gcc -v
@@ -57,7 +57,7 @@ riscv64-plct-linux-gnu-gcc -v
 
 
 
-编译并运行Hello World（GCC）
+Compile and run Hello World (GCC)
 
 ```
 cat > hello.c << 'EOF'
@@ -73,7 +73,7 @@ riscv64-plct-linux-gnu-gcc hello.c -o hello-gcc
 ./hello-gcc
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 debian@revyos-lpi4a:~$ source venv-gnu-plat/bin/ruyi-activate
@@ -84,7 +84,7 @@ Hello, World!
 ```
 
 
-退出ruyi GCC虚拟环境
+Exit the ruyi GCC virtual environment
 
 ```
 cd ..; ruyi-deactivate
@@ -92,9 +92,9 @@ cd ..; ruyi-deactivate
 
 
 
-## Hello World (LLVM版)
+## Hello World (LLVM)
 
-创建并激活ruyi虚拟环境（LLVM）
+Create and activate the ruyi virtual environment (LLVM)
 
 ```
 ruyi venv -t toolchain/llvm-plct manual --sysroot-from gnu-plct venv-llvm-plct
@@ -103,7 +103,7 @@ ruyi venv -t toolchain/llvm-plct manual --sysroot-from gnu-plct venv-llvm-plct
 
 
 
-验证LLVM版本
+Verify the LLVM version
 
 ```
 clang -v
@@ -111,13 +111,13 @@ clang -v
 
 
 
-编译并运行Hello World（LLVM）
+Compile and run Hello World (LLVM)
 
 ```
 clang hello.c -o hello-llvm; ./hello-llvm
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 debian@revos:/home$ source venv-llvm-plct/bin/rui activate
@@ -127,10 +127,8 @@ Hello, World!
 《Rui venv-llvm-plct》 debian@revos:/home$
 ```
 
-退出ruyi LLVM虚拟环境
+Exit the ruyi LLVM virtual environment
 
 ```
 cd ..; ruyi-deactivate
 ```
-
-

@@ -118,7 +118,7 @@ clang -v
 编译 Hello World（LLVM）
 
 ```
-clang hello.c -o hello-llvm; 
+clang hello.c -o hello-llvm;
 ```
 
 将LLVM构建的二进制传输到开发板
@@ -126,7 +126,7 @@ clang hello.c -o hello-llvm;
 scp ../hello-llvm root@192.168.42.1:~
 ```
 
-返回上级目录并退出ruyi GCC虚拟环境
+返回上级目录并退出ruyi LLVM虚拟环境
 
 ```
 cd ..; ruyi-deactivate

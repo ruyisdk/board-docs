@@ -11,11 +11,11 @@ profile: Hello World
 
 ---
 
-# RuyiSDK Getting Started Example
+# RuyiSDK 入门示例
 
-This example can be compiled and run directly on the development board, making it suitable for beginners to get started quickly.
+可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 
-Install the ruyi package manager
+安装ruyi包管理器
 
 ```bash
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
@@ -25,29 +25,29 @@ chmod +x ./ruyi-0.50.0.amd64
 sudo cp -v ./ruyi-0.50.0.amd64 /usr/local/bin/ruyi
 ```
 
-Install the GCC and LLVM toolchains
+安装GCC和LLVM工具链
 
 ```bash
 ruyi update
 ruyi install gnu-ruyisdk llvm-ruyisdk
 ```
 
-## Hello World (GCC)
+## Hello World (GCC版)
 
-Create and activate a ruyi virtual environment (GCC)
+创建并激活ruyi虚拟环境（GCC）
 
 ```bash
 ruyi venv -t gnu-ruyisdk generic gcc-env
 . gcc-env/bin/ruyi-activate
 ```
 
-Verify the GCC version
+验证GCC版本
 
 ```bash
 riscv64-ruyisdk-linux-gnu-gcc -v
 ```
 
-Compile Hello World (GCC)
+编译Hello World（GCC）
 
 ```bash
 cat << EOF > hello.c
@@ -63,13 +63,13 @@ riscv64-ruyisdk-linux-gnu-gcc -static -march=rv64imafdc hello.c -o hello-gcc
 riscv64-ruyisdk-linux-gnu-objcopy --remove-section=.riscv.attributes hello-gcc hello-gcc
 ```
 
-Transfer the file from the PC
+PC端传输
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Run the following commands in the development board's `minicom` terminal:
+在开发板的`minicom`终端里运行：
 
 ```bash
 wget http://10.13.61.37:8000/hello-gcc -O /root/hello-gcc
@@ -77,7 +77,7 @@ chmod +x /root/hello-gcc
 /root/hello-gcc
 ```
 
-Output
+输出结果
 
 ```bash
 [root@canaan ~ ]$ wget http://10.13.61.37:8000/hello-gcc -O /root/hello-gcc
@@ -90,7 +90,7 @@ hello-gcc            100% |********************************| 4150k  0:00:00 ETA
 Hello, World!
 ```
 
-Compile CoreMark (GCC)
+编译CoreMark（GCC）
 
 ```bash
 git clone https://github.com/eembc/coremark
@@ -100,13 +100,13 @@ mv coremark.exe coremark-gcc
 riscv64-ruyisdk-linux-gnu-objcopy --remove-section=.riscv.attributes coremark-gcc coremark-gcc
 ```
 
-Transfer CoreMark from the PC
+PC端传输CoreMark
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Run the following commands in the development board's `minicom` terminal:
+在开发板的`minicom`终端里运行：
 
 ```bash
 wget http://10.13.61.37:8000/coremark-gcc -O /root/coremark-gcc
@@ -114,7 +114,7 @@ chmod +x /root/coremark-gcc
 /root/coremark-gcc
 ```
 
-CoreMark result excerpt
+CoreMark结果节选
 
 ```text
 2K performance run parameters for coremark.
@@ -133,28 +133,28 @@ seedcrc          : 0xe9f5
 Correct operation validated. See README.md for run and reporting rules.
 ```
 
-Exit the ruyi GCC virtual environment
+退出ruyi GCC虚拟环境
 
 ```
 cd ..; ruyi-deactivate
 ```
 
-## Hello World (LLVM)
+## Hello World (LLVM版)
 
-Create and activate a ruyi virtual environment (LLVM)
+创建并激活ruyi虚拟环境（LLVM）
 
 ```bash
 ruyi venv -t llvm-ruyisdk generic --sysroot-from gnu-ruyisdk llvm-env
 . llvm-env/bin/ruyi-activate
 ```
 
-Verify the LLVM version
+验证LLVM版本
 
 ```
 clang -v
 ```
 
-Compile Hello World (LLVM)
+编译Hello World（LLVM）
 
 ```bash
 cat > hello_k510.c << "EOF"
@@ -165,11 +165,11 @@ int main() {
 }
 EOF
 
-# Static cross-compilation
+#静态交叉编译
 clang -static --target=riscv64-linux-gnu -march=rv64imafdc hello_k510.c -o hello_k510
 ```
 
-Strip the attributes section
+剥离属性段
 
 ```bash
 OBJCOPY=~/tes/k510_buildroot/k510_crb_lp3_v1_2_defconfig/host/bin/riscv64-buildroot-linux-gnu-objcopy
@@ -180,13 +180,13 @@ fi
 $OBJCOPY --remove-section=.riscv.attributes hello_k510 hello_k510_stripped
 ```
 
-Transfer the file from the PC
+PC端传输
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Run the following commands in the development board's `minicom` terminal:
+在开发板的`minicom`终端里运行：
 
 ```bash
 wget http://10.13.61.37:8000/hello_k510_stripped -O /root/hello_k510_stripped
@@ -194,7 +194,7 @@ chmod +x /root/hello_k510_stripped
 /root/hello_k510_stripped
 ```
 
-Output
+输出结果
 
 ```bash
 [root@canaan ~ ]$ wget http://10.13.61.37:8000/hello_k510_stripped -O /root/hell
@@ -208,7 +208,7 @@ hello_k510_stripped  100% |********************************|  551k  0:00:00 ETA
 Hello from K510 with Clang!
 ```
 
-Compile CoreMark (LLVM)
+编译CoreMark（LLVM）
 
 ```bash
 cd coremark
@@ -217,7 +217,7 @@ make CC=clang XCFLAGS="-static --target=riscv64-linux-gnu -march=rv64imafdc -Ipo
 mv coremark.exe coremark-llvm
 ```
 
-Strip the CoreMark attributes section
+剥离CoreMark属性段
 
 ```bash
 OBJCOPY=~/tes/k510_buildroot/k510_crb_lp3_v1_2_defconfig/host/bin/riscv64-buildroot-linux-gnu-objcopy
@@ -228,13 +228,13 @@ fi
 $OBJCOPY --remove-section=.riscv.attributes coremark-llvm coremark_llvm
 ```
 
-Transfer CoreMark from the PC
+PC端传输CoreMark
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Run the following commands in the development board's `minicom` terminal:
+在开发板的`minicom`终端里运行：
 
 ```bash
 wget http://10.13.61.37:8000/coremark_llvm -O /root/coremark_llvm
@@ -242,7 +242,7 @@ chmod +x /root/coremark_llvm
 /root/coremark_llvm
 ```
 
-CoreMark result excerpt
+CoreMark结果节选
 
 ```text
 2K performance run parameters for coremark.
@@ -261,7 +261,7 @@ seedcrc          : 0xe9f5
 Correct operation validated. See README.md for run and reporting rules.
 ```
 
-Exit the ruyi LLVM virtual environment
+退出ruyi LLVM虚拟环境
 
 ```bash
 cd ..; ruyi-deactivate
