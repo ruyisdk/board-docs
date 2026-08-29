@@ -32,3 +32,7 @@ jobs:
       - name: Check metadata
         run: uv run metadata_check.py
         working-directory: assets
+
+      - name: Check README matrix
+        run: uv run gen_matrix.py --check
+        working-directory: assets
