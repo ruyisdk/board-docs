@@ -29,6 +29,7 @@
 | Milk-V Meles | [Meles](./Meles/README_zh.md) | [XuanTie](https://www.xrvm.cn/) |
 | Milk-V Pioneer | [Pioneer](./Pioneer/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |
 | Nuclei RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com.cn/) |
+| SpacemiT K3 Pico-ITX | [K3-Pico-ITX](./K3-Pico-ITX/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
 | VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README_zh.md) | [StarFive](https://starfivetech.com/) |
 <!-- MATRIX:END -->
 
