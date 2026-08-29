@@ -10,17 +10,17 @@ model: Milk-V Duo S
 profile: Hello World
 ---
 
-# RuyiSDK 入门示例
+# RuyiSDK Getting Started Example
 
-可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
+This example can be compiled and run directly on the development board, making it suitable for beginners.
 
-安装依赖包
+Install dependencies
 
 ```
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
-安装ruyi包管理器
+Install the ruyi package manager
 
 ```
 wget https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi.riscv64
@@ -30,7 +30,7 @@ chmod +x ruyi-0.47.0.riscv64
 sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
 ```
 
-安装GCC和LLVM工具链
+Install the GCC and LLVM toolchains
 
 ```
 ruyi update
@@ -38,9 +38,9 @@ ruyi update
 ruyi install gnu-plct llvm-plct
 ```
 
-## Hello World (GCC) 
+## Hello World (GCC)
 
-创建并激活 ruyi 虚拟环境（GCC）
+Create and activate the ruyi virtual environment (GCC)
 
 ```
 ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
@@ -48,13 +48,13 @@ ruyi venv -t toolchain/gnu-plct manual venv-gnu-plct
 . ~/venv-gnu-plct/bin/ruyi-activate
 ```
 
-验证 GCC 版本
+Verify the GCC version
 
 ```
 riscv64-plct-linux-gnu-gcc -v
 ```
 
-编译 Hello World（GCC）
+Compile Hello World (GCC)
 
 ```
 cat > hello.c << 'EOF'
@@ -69,21 +69,21 @@ EOF
 riscv64-plct-linux-gnu-gcc hello.c -o hello-gcc
 ```
 
-正常情况下，终端会看到类似如下输出:
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 debian@duos-1cae:~$ source venv-gnu-plct/bin/ruyi-activate
 <an@duos-1cae:~$ riscv64-plct-linux-gnu-gcc hello.c -o hello-gcc
 «Ruyi venv-gnu-plct» debian@duos-1cae:~$
 ```
-运行 Hello World（GCC）
+
+Run Hello World (GCC)
 
 ```
 ./hello-gcc
 ```
 
-
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 debian@duos-1cae:~$ source venv-gnu-plct/bin/ruyi-activate
@@ -93,14 +93,15 @@ Hello, World!
 «Ruyi venv-gnu-plct» debian@duos-1cae:~$
 ```
 
-返回上级目录并退出 ruyi GCC 虚拟环境
+Return to the parent directory and exit the ruyi GCC virtual environment
 
 ```
 cd ..; ruyi-deactivate
 ```
-## Hello World (LLVM) 
 
-创建并激活 ruyi 虚拟环境（LLVM）
+## Hello World (LLVM)
+
+Create and activate the ruyi virtual environment (LLVM)
 
 ```
 ruyi venv -t toolchain/llvm-plct manual --sysroot-from gnu-plct venv-llvm-plct
@@ -108,39 +109,41 @@ ruyi venv -t toolchain/llvm-plct manual --sysroot-from gnu-plct venv-llvm-plct
 . ~/venv-llvm-plct/bin/ruyi-activate
 ```
 
-验证 LLVM 版本
+Verify the LLVM version
 
 ```
 clang -v
 ```
 
-编译 Hello World（LLVM）
+Compile Hello World (LLVM)
 
 ```
 clang hello.c -static -o hello-llvm
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 debian@duos-1cae:~$ source venv-llvm-plct/bin/ruyi-activate
 «Ruyi venv-llvm-plct» debian@duos-1cae:~$ clang hello.c -o hello-llvm
 «Ruyi venv-llvm-plct» debian@duos-1cae:~$
 ```
-运行 Hello World（LLVM）
+
+Run Hello World (LLVM)
 
 ```
 ./hello-llvm
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 «Ruyi venv-llvm-plct» debian@duos-1cae:~$ ./hello-llvm
 Hello, World!
 «Ruyi venv-llvm-plct» debian@duos-1cae:~$
 ```
-返回上级目录并退出 ruyi LLVM 虚拟环境
+
+Return to the parent directory and exit the ruyi LLVM virtual environment
 
 ```
 cd ..; ruyi-deactivate
