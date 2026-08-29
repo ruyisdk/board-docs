@@ -9,13 +9,13 @@ profile: Hello World
 
 ---
 
-# RuyiSDK 入门示例
+# RuyiSDK Getting Started Example
 
-> 说明：Nuclei RV-STAR 硬件驱动依赖 Nuclei 官方 SDK 和专用工具链。本示例中，RuyiSDK 仅用于虚拟环境管理、源码获取和编辑，编译烧录仍使用 make 和 openocd 命令。
+> Note: The Nuclei RV-STAR hardware driver depends on the official Nuclei SDK and dedicated toolchains. In this example, RuyiSDK is used only for virtual environment management, obtaining the source code, and editing; compilation and flashing still use the `make` and `openocd` commands.
 
-可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
+This example can be compiled and run directly on the development board, making it suitable for beginners.
 
-安装依赖包
+Install dependencies
 
 ```
 
@@ -23,7 +23,7 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 
-安装 ruyi 包管理器
+Install the ruyi package manager
 
 ```
 
@@ -35,7 +35,7 @@ sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
 
 ```
 
-创建 RuyiSDK 虚拟环境
+Create a RuyiSDK virtual environment
 
 ```
 
@@ -47,7 +47,7 @@ source ruyi-venv/bin/activate
 
 ```
 
-克隆 Nuclei SDK
+Clone the Nuclei SDK
 
 ```
 
@@ -57,7 +57,7 @@ cd nuclei-sdk
 
 ```
 
-下载 Nuclei 专用 GCC 工具链
+Download the dedicated Nuclei GCC toolchain
 
 ```
 
@@ -66,7 +66,7 @@ tar -xjvf nuclei_riscv_newlibc_prebuilt_linux64_nuclei-2024.tar.bz2
 
 ```
 
-下载 Nuclei OpenOCD
+Download Nuclei OpenOCD
 
 ```
 
@@ -75,7 +75,7 @@ tar -xzvf nuclei-openocd-2024.02.28-linux-x64.tgz
 
 ```
 
-设置环境变量
+Set the environment variables
 
 ```
 
@@ -84,7 +84,7 @@ export PATH=~/nuclei-sdk/Nuclei/openocd/2024.02.28/bin:$PATH
 
 ```
 
-在终端1启动 OpenOCD
+Start OpenOCD in Terminal 1
 
 ```
 
@@ -92,9 +92,9 @@ sudo openocd -f ~/nuclei-sdk/SoC/gd32vf103/Board/gd32vf103v_rvstar/openocd_gd32v
 
 ```
 
-## Hello World (GCC版)
+## Hello World (GCC)
 
-编译Hello World
+Compile Hello World
 
 ```
 cd ~/nuclei-sdk/application/baremetal/helloworld
@@ -104,7 +104,7 @@ make SOC=gd32vf103 BOARD=gd32vf103v_rvstar TOOLCHAIN=nuclei_gnu all
 
 ```
 
-在终端2执行烧录
+Flash the board from Terminal 2
 
 ```
 
@@ -116,7 +116,7 @@ minicom -D /dev/ttyUSB1 -b 115200
 
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 
@@ -128,9 +128,9 @@ Testing GCC toolchain with Nuclei SDK.
 
 ```
 
-## Hello World (LLVM版)
+## Hello World (LLVM)
 
-编译Hello World
+Compile Hello World
 
 ```
 cd ~/nuclei-sdk/application/baremetal/helloworld
@@ -140,7 +140,7 @@ make SOC=gd32vf103 BOARD=gd32vf103v_rvstar TOOLCHAIN=nuclei_llvm all
 
 ```
 
-在终端2执行烧录
+Flash the board from Terminal 2
 
 ```
 
@@ -152,7 +152,7 @@ minicom -D /dev/ttyUSB1 -b 115200
 
 ```
 
-正常情况下，终端会看到类似如下输出：
+Under normal circumstances, the terminal displays output similar to:
 
 ```
 
