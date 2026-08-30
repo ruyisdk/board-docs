@@ -14,8 +14,8 @@ profile: [Example Name]
 <!-- Use a canonical `category` value from "Example Categories" in CONTRIBUTING.md. -->
 <!-- Use official product names without spaces for new board directories; do not rename existing directories. -->
 <!-- Use lowercase letters and hyphens for new example directories. -->
-<!-- Link Ruyi installation to https://ruyisdk.org/en/docs/Package-Manager/installation/, not a fixed-version download. -->
-<!-- If showing a version, label it as an example and keep frontmatter `last_update` accurate. -->
+<!-- Use the repository-maintained Ruyi version and command format documented in CONTRIBUTING.md. -->
+<!-- Keep each command independent and its version and architecture suffix consistent; monthly version bumps do not change `last_update`. -->
 
 # RuyiSDK [Example Category] Example
 

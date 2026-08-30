@@ -15,14 +15,14 @@ profile: Coremark
 
 This example uses the RuyiSDK GCC and LLVM toolchains on a PC to cross-compile Coremark, then transfers the binaries to the development board for execution.
 
-Install the ruyi package manager
+Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
 
 ```bash
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.50.0/ruyi-0.50.0.amd64
-chmod +x ./ruyi-0.50.0.amd64
-sudo cp -v ./ruyi-0.50.0.amd64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.amd64
+chmod +x ./ruyi-0.51.0.amd64
+sudo cp -v ./ruyi-0.51.0.amd64 /usr/local/bin/ruyi
 ```
 
 Install the GCC and LLVM toolchains

@@ -16,15 +16,15 @@ profile: Hello World
 
 可直接在开发板上进行编译和运行的示例，适合初学者快速上手。
 
-安装ruyi包管理器
+安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
 
-```
+```bash
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 pip install esptool
 
-wget  https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.48.0/ruyi-0.48.0.amd64
-chmod +x ruyi-0.48.0.amd64
-sudo cp -v ./ruyi-0.48.0.amd64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.amd64
+chmod +x ./ruyi-0.51.0.amd64
+sudo cp -v ./ruyi-0.51.0.amd64 /usr/local/bin/ruyi
 ```
 
 安装GCC和LLVM工具链

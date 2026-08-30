@@ -48,8 +48,10 @@ board-docs
 
 ### Version References
 
-- When a tutorial installs `ruyi`, always link to the [official RuyiSDK installation documentation](https://ruyisdk.org/en/docs/Package-Manager/installation/) instead of using a hard-coded download link for a specific version, such as `ruyi-0.47.0.amd64`.
-- When a specific version must be shown, state that it is an example using version X, revalidate the tutorial, and ensure the frontmatter `last_update` field truthfully reflects the document's last update date.
+- Tutorials that install `ruyi` use the repository's centrally maintained version, versioned path, and versioned binary filename from the [RuyiSDK tags mirror](https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/). The monthly workflow updates this version across all tutorials.
+- Keep each installation command independently executable without relying on shell state from a previous line. Use `.amd64` for x86_64 hosts and `.riscv64` for RISC-V boards, and keep the version and architecture suffix consistent in the `wget`, `chmod`, and `cp` commands.
+- Link to the [official RuyiSDK installation documentation](https://ruyisdk.org/docs/Package-Manager/installation) for other installation methods.
+- A repository-wide automated `ruyi` version update does not change the frontmatter `last_update` field; that field records when the tutorial itself was last verified.
 
 ### Bilingual Documentation
 
