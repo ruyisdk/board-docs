@@ -19,14 +19,12 @@ profile: Hello World
 sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
-安装ruyi包管理器
+安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
 
-```
-wget https://fast-mirror.isrc.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi.riscv64
-
-chmod +x ruyi-0.47.0.riscv64
-
-sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
+```bash
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.riscv64
+chmod +x ./ruyi-0.51.0.riscv64
+sudo cp -v ./ruyi-0.51.0.riscv64 /usr/local/bin/ruyi
 ```
 
 安装GCC和LLVM工具链
