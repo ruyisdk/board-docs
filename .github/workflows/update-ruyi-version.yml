@@ -1,0 +1,50 @@
+name: Update ruyi Version
+
+on:
+  schedule:
+    - cron: "23 6 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    name: Update ruyi version
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v9
+
+      - name: Update ruyi version
+        id: update
+        shell: bash
+        working-directory: assets
+        run: |
+          output="$(uv run update_ruyi_version.py)"
+          printf '%s\n' "$output"
+          version="$(printf '%s\n' "$output" | sed -n '1s/^Target version: //p')"
+          if [[ ! "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Failed to read the target ruyi version" >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: chore/bump-ruyi-version
+          commit-message: "docs: bump ruyi version to ${{ steps.update.outputs.version }}"
+          author: DuoQilai <duoqilai@outlook.com>
+          committer: DuoQilai <duoqilai@outlook.com>
+          signoff: true
+          title: "docs: bump ruyi version to ${{ steps.update.outputs.version }}"
+          body: |
+            This pull request was created by the monthly ruyi version update workflow.
+            Version source: https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/
+
+            Before merging, please spot-check that one or two download URLs are available.
