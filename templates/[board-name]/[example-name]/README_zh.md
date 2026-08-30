@@ -14,8 +14,8 @@ profile: [Example Name]
 <!-- `category` 请填写规范的示例分类，详见 CONTRIBUTING_zh.md 中的“示例分类”。 -->
 <!-- 新增板卡目录使用去掉空格的官方产品名称；存量目录不改名。 -->
 <!-- 新增示例目录统一使用小写字母和连字符。 -->
-<!-- 安装 Ruyi 时链接 https://ruyisdk.org/docs/Package-Manager/installation/，不使用固定版本下载链接。 -->
-<!-- 如需展示版本，请注明“以 X 版本为例”，并确保 frontmatter 的 `last_update` 准确。 -->
+<!-- 使用 CONTRIBUTING_zh.md 中记录的仓库统一维护 Ruyi 版本和命令格式。 -->
+<!-- 每行命令保持独立，版本号和架构后缀保持一致；月度升版不修改 `last_update`。 -->
 
 # RuyiSDK [示例分类]示例
 

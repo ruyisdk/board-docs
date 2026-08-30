@@ -8,7 +8,7 @@ silicon_vendor: [Silicon Vendor]
 ---
 
 <!-- Use official product names without spaces for new board directories; do not rename existing directories. -->
-<!-- If adding Ruyi installation steps, link to https://ruyisdk.org/en/docs/Package-Manager/installation/ instead of a fixed-version download. -->
+<!-- If adding Ruyi installation steps, use the repository-maintained version and command format documented in CONTRIBUTING.md. -->
 
 # [Development Board Name]
 
