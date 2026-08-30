@@ -75,16 +75,14 @@ profile: Pico-8SEG-LED
 
 #### 安装 ruyi 包管理器
 
+安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
+
 ```bash
-
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.41.0/ruyi-0.41.0.riscv64
-
-chmod +x ruyi-0.41.0.riscv64
-
-sudo cp -v ruyi-0.41.0.riscv64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.riscv64
+chmod +x ./ruyi-0.51.0.riscv64
+sudo cp -v ./ruyi-0.51.0.riscv64 /usr/local/bin/ruyi
 
 ruyi update
-
 ```
 #### 部署编译环境
 
