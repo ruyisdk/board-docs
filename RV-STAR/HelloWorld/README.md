@@ -23,16 +23,12 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 
-Install the ruyi package manager
+Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
 
-```
-
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.47.0/ruyi-0.47.0.riscv64
-
-chmod +x ruyi-0.47.0.riscv64
-
-sudo cp -v ruyi-0.47.0.riscv64 /usr/local/bin/ruyi
-
+```bash
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.riscv64
+chmod +x ./ruyi-0.51.0.riscv64
+sudo cp -v ./ruyi-0.51.0.riscv64 /usr/local/bin/ruyi
 ```
 
 Create a RuyiSDK virtual environment
