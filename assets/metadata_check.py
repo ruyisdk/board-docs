@@ -100,6 +100,26 @@ class CheckError:
     message: str
 
 
+@dataclass(frozen=True)
+class CheckWarning:
+    """One bilingual coverage warning associated with a repository path."""
+
+    path: Path
+    message: str
+    missing_language: str
+
+
+@dataclass(frozen=True)
+class BoardCoverage:
+    """Bilingual example coverage for one board."""
+
+    board: str
+    examples: int
+    bilingual: int
+    chinese_only: int
+    english_only: int
+
+
 def parse_arguments() -> argparse.Namespace:
     """Parse command-line arguments."""
 
@@ -120,6 +140,16 @@ def parse_arguments() -> argparse.Namespace:
         help="metadata rules file",
     )
     parser.add_argument("--verbose", action="store_true")
+    parser.add_argument(
+        "--report",
+        action="store_true",
+        help="print bilingual coverage details",
+    )
+    parser.add_argument(
+        "--strict-bilingual",
+        action="store_true",
+        help="treat missing translations as errors",
+    )
     return parser.parse_args()
 
 
@@ -334,10 +364,18 @@ def board_directories(root: Path) -> list[Path]:
 
 def run_check(
     root: Path, rules: MetadataRules, *, verbose: bool = False
-) -> tuple[list[CheckError], int, int]:
+) -> tuple[
+    list[CheckError],
+    list[CheckWarning],
+    list[BoardCoverage],
+    int,
+    int,
+]:
     """Validate all board and example documents in a repository."""
 
     errors: list[CheckError] = []
+    warnings: list[CheckWarning] = []
+    coverage: list[BoardCoverage] = []
     board_count = 0
     example_document_count = 0
 
@@ -346,10 +384,71 @@ def run_check(
         board_readme = board_dir / "README.md"
         board_zh_readme = board_dir / "README_zh.md"
 
-        if not board_readme.is_file():
+        board_readme_exists = board_readme.is_file()
+        if not board_readme_exists:
             errors.append(
                 CheckError(relative_path(board_readme, root), "board README.md is missing")
             )
+        elif not board_zh_readme.is_file():
+            warnings.append(
+                CheckWarning(
+                    relative_path(board_zh_readme, root),
+                    "missing Chinese board README (README_zh.md)",
+                    "Chinese",
+                )
+            )
+
+        example_count = 0
+        bilingual_count = 0
+        chinese_only_count = 0
+        english_only_count = 0
+        example_documents: list[tuple[Path, Path, list[Path]]] = []
+
+        for example_dir in sorted(path for path in board_dir.iterdir() if path.is_dir()):
+            readme = example_dir / "README.md"
+            readme_zh = example_dir / "README_zh.md"
+            markdown_files = [
+                path
+                for path in (readme, readme_zh)
+                if path.is_file()
+            ]
+            if not markdown_files:
+                continue
+
+            example_documents.append((readme, readme_zh, markdown_files))
+            example_count += 1
+            if readme.is_file() and readme_zh.is_file():
+                bilingual_count += 1
+            elif readme_zh.is_file():
+                chinese_only_count += 1
+                warnings.append(
+                    CheckWarning(
+                        relative_path(readme, root),
+                        "missing English translation (README.md)",
+                        "English",
+                    )
+                )
+            else:
+                english_only_count += 1
+                warnings.append(
+                    CheckWarning(
+                        relative_path(readme_zh, root),
+                        "missing Chinese version (README_zh.md)",
+                        "Chinese",
+                    )
+                )
+
+        coverage.append(
+            BoardCoverage(
+                board_dir.name,
+                example_count,
+                bilingual_count,
+                chinese_only_count,
+                english_only_count,
+            )
+        )
+
+        if not board_readme_exists:
             continue
 
         if verbose:
@@ -376,18 +475,7 @@ def run_check(
                 )
             )
 
-        for example_dir in sorted(path for path in board_dir.iterdir() if path.is_dir()):
-            markdown_files = [
-                path
-                for path in (
-                    example_dir / "README.md",
-                    example_dir / "README_zh.md",
-                )
-                if path.is_file()
-            ]
-            if not markdown_files:
-                continue
-
+        for readme, readme_zh, markdown_files in example_documents:
             parsed_documents: dict[str, ExampleMetadata | None] = {}
             for document in markdown_files:
                 example_document_count += 1
@@ -399,8 +487,6 @@ def run_check(
                 errors.extend(document_errors)
                 parsed_documents[document.name] = parsed
 
-            readme = example_dir / "README.md"
-            readme_zh = example_dir / "README_zh.md"
             if readme.is_file() and readme_zh.is_file():
                 errors.extend(
                     compare_language_versions(
@@ -413,7 +499,65 @@ def run_check(
                     )
                 )
 
-    return errors, board_count, example_document_count
+    return errors, warnings, coverage, board_count, example_document_count
+
+
+def print_coverage_report(
+    coverage: list[BoardCoverage], warnings: list[CheckWarning]
+) -> None:
+    """Print per-board and repository bilingual coverage details."""
+
+    board_width = max([len("Board")] + [len(item.board) for item in coverage])
+    row_format = f"{{:<{board_width}}}  {{:>8}}  {{:>9}}  {{:>12}}  {{:>12}}"
+
+    print("Bilingual coverage report:")
+    print(
+        row_format.format(
+            "Board", "Examples", "Bilingual", "Chinese only", "English only"
+        )
+    )
+    print(
+        row_format.format(
+            "-" * board_width, "-" * 8, "-" * 9, "-" * 12, "-" * 12
+        )
+    )
+    for item in coverage:
+        print(
+            row_format.format(
+                item.board,
+                item.examples,
+                item.bilingual,
+                item.chinese_only,
+                item.english_only,
+            )
+        )
+
+    example_total = sum(item.examples for item in coverage)
+    bilingual_total = sum(item.bilingual for item in coverage)
+    chinese_only_total = sum(item.chinese_only for item in coverage)
+    english_only_total = sum(item.english_only for item in coverage)
+    coverage_percent = (
+        100.0 * bilingual_total / example_total if example_total else 0.0
+    )
+
+    print()
+    print(
+        "Repository total: "
+        f"{len(coverage)} board(s), {example_total} example(s), "
+        f"{bilingual_total} bilingual, {chinese_only_total} Chinese only, "
+        f"{english_only_total} English only."
+    )
+    print(
+        f"Bilingual coverage: {coverage_percent:.1f}% "
+        f"({bilingual_total}/{example_total} example(s))."
+    )
+    print()
+    print("Missing translations:")
+    if warnings:
+        for warning in warnings:
+            print(f"- {warning.path}: missing {warning.missing_language}")
+    else:
+        print("- None")
 
 
 def main() -> int:
@@ -433,9 +577,22 @@ def main() -> int:
         print(f"error: cannot load metadata rules from {rules_path}: {error}", file=sys.stderr)
         return 2
 
-    errors, board_count, example_document_count = run_check(
+    errors, warnings, coverage, board_count, example_document_count = run_check(
         root, rules, verbose=arguments.verbose
     )
+
+    if arguments.report:
+        print_coverage_report(coverage, warnings)
+
+    if warnings and not arguments.strict_bilingual and not arguments.report:
+        print(
+            "Bilingual coverage: "
+            f"{len(warnings)} document(s) missing a translation "
+            "(run with --report for details)."
+        )
+
+    if arguments.strict_bilingual:
+        errors.extend(CheckError(item.path, item.message) for item in warnings)
 
     if errors:
         print(f"Metadata check failed with {len(errors)} error(s):", file=sys.stderr)
@@ -445,7 +602,8 @@ def main() -> int:
 
     print(
         "Metadata check passed: "
-        f"{board_count} board(s), {example_document_count} example document(s)."
+        f"{board_count} board(s), {example_document_count} example document(s), "
+        f"{len(warnings)} warning(s)."
     )
     return 0
 
