@@ -17,8 +17,8 @@ This repository currently includes, but is not limited to, documentation resourc
 | Supported Device | Board Documentation | Chip Vendor |
 | --- | --- | --- |
 | Banana Pi BPI-F3 | [BPI-F3](./BPI-F3/README.md) | [SpacemiT](https://www.spacemit.com/en/) |
+| BPI-CANMV-K230D-Zero | [BPI-CANMV-K230D-Zero](./BPI-CANMV-K230D-Zero/README.md) | [Canaan](https://www.canaan.io/) |
 | Canaan K510-CRB-V1.2 KIT | [K510](./K510/README.md) | [Canaan](https://www.canaan.io/) |
-| Canaan Kendryte K230D | [K230D](./K230D/README.md) | [Canaan](https://www.canaan.io/) |
 | EBC7700 | [EBC7700](./EBC7700/README.md) | [ESWIN](https://www.eswincomputing.com/en/) |
 | ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README.md) | [Espressif](https://www.espressif.com/en/) |
 | Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README.md) | [SpacemiT](https://www.spacemit.com/en/) |
