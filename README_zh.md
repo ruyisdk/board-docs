@@ -18,6 +18,7 @@
 | --- | --- | --- |
 | Banana Pi BPI-F3 | [BPI-F3](./BPI-F3/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
 | Canaan K510-CRB-V1.2 KIT | [K510](./K510/README_zh.md) | [Canaan](https://www.canaan.io/) |
+| Canaan Kendryte K230D | [K230D](./K230D/README_zh.md) | [Canaan](https://www.canaan.io/) |
 | EBC7700 | [EBC7700](./EBC7700/README_zh.md) | [ESWIN](https://www.eswincomputing.com/) |
 | ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README_zh.md) | [Espressif](https://www.espressif.com/zh-hans/) |
 | Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README_zh.md) | [SpacemiT](https://www.spacemit.com/) |
