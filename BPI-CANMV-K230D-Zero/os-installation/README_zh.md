@@ -5,11 +5,11 @@ sys_var: RV64ILP32 / RV64LP64
 category: other
 last_update: 2026-08-31
 
-model: Canaan Kendryte K230D
+model: BPI-CANMV-K230D-Zero
 profile: OS Installation
 ---
 
-# Canaan K230D 使用说明
+# BPI-CANMV-K230D-Zero 使用说明
 
 ## 安装系统镜像
 
