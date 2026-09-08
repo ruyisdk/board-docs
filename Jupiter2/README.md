@@ -4,7 +4,7 @@ cpu: SpacemiT K3
 cpu_core: SpacemiT X100
 ram: 8G/16G/32G
 vendor: Milk-V
-silicon_vendor: SpacemiT
+silicon_vendor: SpaceMIT
 
 ---
 

@@ -3,8 +3,8 @@ product: SpacemiT K3 Pico-ITX
 cpu: SpacemiT K3
 cpu_core: SpacemiT X100
 ram: 16G/32G LPDDR5
-vendor: SpacemiT
-silicon_vendor: SpacemiT
+vendor: SpaceMIT
+silicon_vendor: SpaceMIT
 
 ---
 
