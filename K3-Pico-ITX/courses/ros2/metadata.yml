@@ -9,13 +9,13 @@ chapters:
     documents:
       riscv:
         zh:
-          lesson: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/teaching_docs_k3_pico_itx/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
-          lab: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/lab_manuals_k3_pico_itx/ch01_lab.md
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_pico_itx/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_pico_itx/ch01_lab.md
       x86:
         zh:
-          lesson: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/teaching_docs/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
-          lab: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/lab_manuals/ch01_lab.md
-introduction_source: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/README.md
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch01_lab.md
+introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:
     programming_language: C++17
