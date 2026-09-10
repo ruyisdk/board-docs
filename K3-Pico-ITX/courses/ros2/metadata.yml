@@ -1,0 +1,29 @@
+title:
+  zh: RISC-V ROS2 机器人操作系统编程技术
+source:
+  repository: https://gitee.com/yunxiangluo/ROS2_RISCV
+chapters:
+  - id: ch01
+    title:
+      zh: ROS 2 概述与架构设计
+    documents:
+      riscv:
+        zh:
+          lesson: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/teaching_docs_k3_pico_itx/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
+          lab: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/lab_manuals_k3_pico_itx/ch01_lab.md
+      x86:
+        zh:
+          lesson: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/teaching_docs/ch01_ROS2%E6%A6%82%E8%BF%B0%E4%B8%8E%E6%9E%B6%E6%9E%84.md
+          lab: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/lab_manuals/ch01_lab.md
+introduction_source: https://gitee.com/yunxiangluo/ROS2_RISCV/blob/master/README.md
+editions:
+  riscv:
+    programming_language: C++17
+    environment:
+      zh: K3 Pico-ITX / Bianbu ≥ 4.0.1 / Humble，配合 x86 Ubuntu 22.04 / Humble / Harmonic 课程容器
+      en: K3 Pico-ITX / Bianbu ≥ 4.0.1 / Humble, with an x86 Ubuntu 22.04 / Humble / Harmonic course container
+  x86:
+    programming_language: Python
+    environment:
+      zh: Ubuntu 22.04 / Humble 或 Ubuntu 24.04 / Jazzy
+      en: Ubuntu 22.04 / Humble or Ubuntu 24.04 / Jazzy
