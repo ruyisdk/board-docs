@@ -21,6 +21,7 @@
 | Canaan K510-CRB-V1.2 KIT | [K510](./K510/README_zh.md) | [Canaan](https://www.canaan.io/) |
 | EBC7700 | [EBC7700](./EBC7700/README_zh.md) | [ESWIN](https://www.eswincomputing.com/) |
 | ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README_zh.md) | [Espressif](https://www.espressif.com/zh-hans/) |
+| HiFive Premier P550 | [Premier_P550](./Premier_P550/README_zh.md) | [ESWIN](https://www.eswincomputing.com/) |
 | Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README_zh.md) | [SpaceMIT](https://www.spacemit.com/) |
 | Lichee Pi 4A | [LicheePi4A](./LicheePi4A/README_zh.md) | [XuanTie](https://www.xrvm.cn/) |
 | Milk-V Duo (256M) | [Duo_256m](./Duo_256m/README_zh.md) | [SOPHGO](https://www.sophgo.com/) |

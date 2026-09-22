@@ -21,6 +21,7 @@ This repository currently includes, but is not limited to, documentation resourc
 | Canaan K510-CRB-V1.2 KIT | [K510](./K510/README.md) | [Canaan](https://www.canaan.io/) |
 | EBC7700 | [EBC7700](./EBC7700/README.md) | [ESWIN](https://www.eswincomputing.com/en/) |
 | ESP32-P4-Function-EV-Board | [ESP32-P4](./ESP32-P4/README.md) | [Espressif](https://www.espressif.com/en/) |
+| HiFive Premier P550 | [Premier_P550](./Premier_P550/README.md) | [ESWIN](https://www.eswincomputing.com/en/) |
 | Lichee Pi 3A | [LicheePi3A](./LicheePi3A/README.md) | [SpaceMIT](https://www.spacemit.com/en/) |
 | Lichee Pi 4A | [LicheePi4A](./LicheePi4A/README.md) | [XuanTie](https://www.xrvm.com/) |
 | Milk-V Duo (256M) | [Duo_256m](./Duo_256m/README.md) | [SOPHGO](https://en.sophgo.com/) |
