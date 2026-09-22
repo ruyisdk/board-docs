@@ -1,3 +1,4 @@
+catalog: catalogs/CoM260_Kit.yml
 title:
   zh: RISC-V ROS2 机器人操作系统编程技术
 source:
@@ -27,6 +28,30 @@ chapters:
         zh:
           lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch02_%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80.md
           lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch02_lab.md
+  - id: ch03
+    title:
+      zh: ROS 2 话题通信
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch03_%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch03_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch03_%E8%AF%9D%E9%A2%98%E9%80%9A%E4%BF%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch03_lab.md
+  - id: ch04
+    title:
+      zh: ROS 2 服务通信
+    documents:
+      riscv:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs_k3_com260_kit/ch04_%E6%9C%8D%E5%8A%A1%E9%80%9A%E4%BF%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals_k3_com260_kit/ch04_lab.md
+      x86:
+        zh:
+          lesson: https://github.com/DuoQilai/ROS2_RISCV/blob/master/teaching_docs/ch04_%E6%9C%8D%E5%8A%A1%E9%80%9A%E4%BF%A1.md
+          lab: https://github.com/DuoQilai/ROS2_RISCV/blob/master/lab_manuals/ch04_lab.md
 introduction_source: https://github.com/DuoQilai/ROS2_RISCV/blob/master/README.md
 editions:
   riscv:
