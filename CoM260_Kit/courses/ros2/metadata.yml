@@ -1,4 +1,4 @@
-catalog: catalogs/CoM260_Kit.yml
+catalog: course_support/k3_com260_kit/catalog.yml
 title:
   zh: RISC-V ROS2 机器人操作系统编程技术
 source:
