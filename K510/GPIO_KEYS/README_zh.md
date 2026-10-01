@@ -18,9 +18,9 @@ profile: GPIO_KEYS
 ```bash
 sudo apt update; sudo apt install wget
 
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.riscv64
-chmod +x ./ruyi-0.51.0.riscv64
-sudo cp -v ./ruyi-0.51.0.riscv64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.52.0/ruyi-0.52.0.riscv64
+chmod +x ./ruyi-0.52.0.riscv64
+sudo cp -v ./ruyi-0.52.0.riscv64 /usr/local/bin/ruyi
 ```
 
 - 安装工具链
