@@ -6,7 +6,7 @@ sys_var: null
 category: getting-started
 last_update: 2026-07-22
 
-model: 	Milk-V Jupiter2
+model: Milk-V Jupiter2
 profile: Hello World
 ---
 

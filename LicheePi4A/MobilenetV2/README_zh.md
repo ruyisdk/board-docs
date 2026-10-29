@@ -224,7 +224,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 ## MobilenetV2
 ### 示例描述和硬件环境准备
 本教程是一个如何在 LicheePi4A 平台上部署 mobilenetv2 模型完成图像分类的示例。  
-硬件环境：Lichee Pi 4A (16GB)    
+硬件环境：Lichee Pi 4A (16GB)  
 软件环境：RuyiSDK：0.47.0  HHB：2.6.17  
 
 ### 创建并激活 ruyi 虚拟环境
@@ -237,7 +237,7 @@ ruyi venv -t gnu-plct-xthead sipeed-lpi4a yolox-venv
 ```bash
 cd yolox-venv
 ```
-激活虚拟环境  ，该虚拟环境为后续开发板的运行提供了统一的运行环境。 
+激活虚拟环境  ，该虚拟环境为后续开发板的运行提供了统一的运行环境。
 ```bash
 source ./bin/ruyi-activate
 ```
@@ -388,6 +388,3 @@ n02127052 lynx, catamount
 n02124075 Egyptian cat
 n02123159 tiger cat
 ```
-
-
- 

@@ -34,9 +34,9 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ## Face-Detection
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现人脸检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
-硬件环境：Milk-V Duo 256M （SG2002 ),CAM-GC2083    
-软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK   
+基于 TDL SDK 实现人脸检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
+硬件环境：Milk-V Duo 256M （SG2002 ),CAM-GC2083  
+软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK  
 
 ### 创建并激活 ruyi 虚拟环境
 ```bash
@@ -56,7 +56,7 @@ which riscv64-unknown-linux-musl-gcc
 /home/duo256/milkv-venv/bin/riscv64-unknown-linux-musl-gcc
 ```
 ### 使用 ruyi 工具链编译示例代码  
-获取 TDL-SDK 示例源码    
+获取 TDL-SDK 示例源码  
 ```bash
 git clone https://github.com/milkv-duo/cvitek-tdl-sdk-sg200x.git
 ```

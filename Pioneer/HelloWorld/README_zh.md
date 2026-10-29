@@ -74,7 +74,7 @@ Hello, World!
 退出ruyi GCC虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
 
 ## Hello World (LLVM版)
@@ -114,7 +114,5 @@ Hello, World!
 退出ruyi LLVM虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
-
-

@@ -189,5 +189,3 @@ ruyi install gnu-plct llvm-plct
   cd
   ruyi-deactivate
   ```
-
-  

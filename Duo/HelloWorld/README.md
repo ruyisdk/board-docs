@@ -15,7 +15,7 @@ profile: Hello World
 Install dependencies
 
 ```
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
 Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
@@ -68,7 +68,7 @@ riscv64-plct-linux-gnu-gcc hello.c -o hello-gcc
 Transfer the GCC-built binary to the development board
 
 ```
-scp ../hello-gcc root@192.168.42.1:~
+scp ../hello-gcc root@192.168.42.1:~
 ```
 
 Return to the parent directory and exit the ruyi GCC virtual environment
@@ -80,7 +80,7 @@ cd ..; ruyi-deactivate
 Connect to the development board over SSH and run the compiled binary
 
 ```
-ssh root@192.168.42.1
+ssh root@192.168.42.1
 
 # If you see Host key verification failed:
 
@@ -121,18 +121,18 @@ clang hello.c -o hello-llvm;
 
 Transfer the LLVM-built binary to the development board
 ```
-scp ../hello-llvm root@192.168.42.1:~
+scp ../hello-llvm root@192.168.42.1:~
 ```
 
 Return to the parent directory and exit the ruyi LLVM virtual environment
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
 
 Connect to the development board over SSH and run the compiled binary
 ```
-ssh root@192.168.42.1
+ssh root@192.168.42.1
 
 # If you see Host key verification failed：
 

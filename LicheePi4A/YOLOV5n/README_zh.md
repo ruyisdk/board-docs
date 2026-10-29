@@ -94,7 +94,7 @@ docker run -itd --name hhb_env hhb4tools/hhb:latest
 #进入容器
 docker exec -it hhb_env /bin/bash
 ```
-下载Yolov5n模型    
+下载Yolov5n模型  
 下载到示例目录 /home/example/th1520_npu/yolov5n 下：  
 ```bash
 mkdir -p /home/example/th1520_npu/yolov5n
@@ -220,7 +220,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 ## YOLOv5n
 ### 示例描述和硬件环境准备
 示例描述：YOLOv5n 是轻量级目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOv5n，验证 RuyiSDK 工具链在 RISC-V CPU（C920）上的交叉编译能力。
-硬件环境：Lichee Pi 4A (16GB)   
+硬件环境：Lichee Pi 4A (16GB)  
 软件环境：RuyiSDK 0.47.0，HHB 2.6.17
 
 ### 创建并激活 ruyi 虚拟环境
@@ -301,7 +301,7 @@ riscv64-plctxthead-linux-gnu-gcc \
   -Wl,-unresolved-symbols=ignore-in-shared-libs
 
 ```
-生成的可执行文件 yolov5n_example 用于在开发板上运行模型推理   
+生成的可执行文件 yolov5n_example 用于在开发板上运行模型推理  
 解决 omp.h 缺失问题
 ```bash
 mkdir -p /home/licheepi/venv-sipeed/sysroot.riscv64-plctxthead-linux-gnu/usr/include

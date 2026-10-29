@@ -15,8 +15,8 @@ profile: Hello World
 安装依赖包
 
 ```bash
-sudo apt update
-sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update
+sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
 安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
@@ -35,7 +35,7 @@ ruyi update
 ruyi install gnu-ruyisdk llvm-ruyisdk
 ```
 
-## Hello World (GCC版) 
+## Hello World (GCC版)
 
 创建并激活ruyi虚拟环境（GCC）
 ```bash
@@ -65,7 +65,7 @@ EOF
 riscv64-ruyisdk-linux-gnu-gcc hello.c -o hello-gcc
 
 ```
-运行生成的文件   
+运行生成的文件  
 
 ```bash
 ./hello-gcc
@@ -84,7 +84,7 @@ Hello, World!
 ruyi-deactivate
 ```
 
-## Hello World (LLVM版) 
+## Hello World (LLVM版)
 创建并激活ruyi虚拟环境（LLVM）
 
 ```bash
@@ -104,7 +104,7 @@ clang -v
 clang hello.c -o hello-llvm
 ```
 
-运行生成的文件：   
+运行生成的文件：  
 ```bash
 ./hello-llvm
 ```

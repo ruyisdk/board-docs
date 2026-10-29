@@ -17,7 +17,7 @@ profile: Hello World
 安装依赖包
 
 ```
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
 安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
@@ -36,7 +36,7 @@ ruyi update
 ruyi install gnu-plct llvm-plct
 ```
 
-## Hello World (GCC) 
+## Hello World (GCC)
 
 创建并激活 ruyi 虚拟环境（GCC）
 
@@ -94,9 +94,9 @@ Hello, World!
 返回上级目录并退出 ruyi GCC 虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
-## Hello World (LLVM) 
+## Hello World (LLVM)
 
 创建并激活 ruyi 虚拟环境（LLVM）
 
@@ -115,7 +115,7 @@ clang -v
 编译 Hello World（LLVM）
 
 ```
-clang hello.c -static -o hello-llvm
+clang hello.c -static -o hello-llvm
 ```
 
 正常情况下，终端会看到类似如下输出：
@@ -141,5 +141,5 @@ Hello, World!
 返回上级目录并退出 ruyi LLVM 虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```

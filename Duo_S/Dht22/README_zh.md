@@ -17,7 +17,7 @@ profile: Dht22
 
 ```
 
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 
@@ -39,7 +39,7 @@ ruyi install gnu-plct llvm-plct
 
 ```
 
-## Dht22 
+## Dht22
 
 本文介绍如何使用 RuyiSDK 在 Milk-V Duo S 开发板上快速部署编译环境，构建 DHT22 温湿度传感器测试程序，验证传感器数据读取功能。
 

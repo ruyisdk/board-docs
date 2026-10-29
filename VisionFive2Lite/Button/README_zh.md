@@ -248,18 +248,18 @@ profile: GPIO_Button
      ^C
      «Ruyi venv-gnu-ruyisdk» user@starfive:~/button$
      ```
-  
+
      终止程序：按 `Ctrl+C` 即可停止。
-  
+
   2. **退出 Ruyi 虚拟环境**
-  
+
      ```
      cd
      ruyi-deactivate
      ```
-  
+
   3. **关闭开发板**
-  
+
      ```
      sudo poweroff
      ```

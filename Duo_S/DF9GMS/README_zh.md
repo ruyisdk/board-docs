@@ -17,7 +17,7 @@ profile: DF9GMS
 
 ```
 
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 
@@ -63,7 +63,7 @@ ruyi install gnu-plct llvm-plct
 
 [![df9gms 引脚图](https://raw.githubusercontent.com/ZihanCheng63/my-repo/main/videos/df9gms.png)](https://raw.githubusercontent.com/ZihanCheng63/my-repo/main/videos/df9gms.png)
 
-  
+
 
 [![duos-pinout-v1.1](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)
 

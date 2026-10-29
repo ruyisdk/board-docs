@@ -34,7 +34,7 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ## YOLOv8
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现 YOLOv8 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
+基于 TDL SDK 实现 YOLOv8 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
 硬件环境：Milk-V Duo 256M （SG2002 ）  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK
 ### 创建并激活 ruyi 虚拟环境

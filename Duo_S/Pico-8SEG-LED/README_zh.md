@@ -45,17 +45,17 @@ profile: Pico-8SEG-LED
 
 [![Pico-8SEG-LED 引脚图](https://raw.githubusercontent.com/jason-hue/riscv-board-custom-dev/main/Duo_S/images/Pico-8SEG-LED.webp)](https://raw.githubusercontent.com/jason-hue/plct/main/Pico-8SEG-LED.webp)
 
-  
+
 
 [![duos-pinout-v1.1](https://raw.githubusercontent.com/jason-hue/riscv-board-custom-dev/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/jason-hue/plct/main/duos-pinout-v1.1.webp)
 
-  
+
 
 | 连接名称 | VSYS | GND | RCLK | CLK | DIN |
 | -------- | ---- | ---- | ----- | ----- | ----- |
 | 连接引脚 | 3.3V | GND | PIN50 | PIN23 | PIN19 |
 
-  
+
 
 | Pico-8SEG | 信号 | Milk-V Duo S |
 | ------------------------------- | -------- | ------------------ |
@@ -65,7 +65,7 @@ profile: Pico-8SEG-LED
 | GP10（14脚） | CLK | J3头部 23脚 |
 | GP11（15脚） | DIN | J3头部 19脚 |
 
-  
+
 
 ![接线图 1](https://raw.githubusercontent.com/jason-hue/riscv-board-custom-dev/main/Duo_S/images/image-20250426174905950.png)
 
@@ -180,4 +180,3 @@ file shu
 «Ruyi venv» λ ~/tmp/Pico-8SEG-LED/Pico-8SEG-LED/c/ main* file shu
 shu: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), dynamically linked, interpreter /lib/ld-musl-riscv64.so.1, with debug_info, not stripped
 ```
-

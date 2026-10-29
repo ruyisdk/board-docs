@@ -16,7 +16,7 @@ profile: OpenCV-Mobile
 
 ```
 
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
@@ -38,7 +38,7 @@ ruyi install gnu-plct llvm-plct
 ```
 ## OpenCV-Mobile
 
-本文介绍如何使用 RuyiSDK 在 Milk-V Duo 256M 开发板上快速部署编译环境，并构建 OpenCV-Mobile，OpenCV-Mobile 是一个精简版的 OpenCV 库，通过调整编译参数，删减部分 OpenCV 源码，来最小化编译 OpenCV。
+本文介绍如何使用 RuyiSDK 在 Milk-V Duo 256M 开发板上快速部署编译环境，并构建 OpenCV-Mobile，OpenCV-Mobile 是一个精简版的 OpenCV 库，通过调整编译参数，删减部分 OpenCV 源码，来最小化编译 OpenCV。
 
 
 ### 1. 准备工作
@@ -444,4 +444,3 @@ Error loading shared library /mnt/system/usr/lib/libvpu.so: No such file or dire
 w=940, h=940
 resize success, out.jpg saved!
 ```
-

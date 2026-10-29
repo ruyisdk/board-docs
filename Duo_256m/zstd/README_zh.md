@@ -16,7 +16,7 @@ profile: zstd
 
 ```
 
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 

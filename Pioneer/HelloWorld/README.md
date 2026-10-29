@@ -74,7 +74,7 @@ Hello, World!
 Exit the ruyi GCC virtual environment
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
 
 ## Hello World (LLVM)
@@ -114,5 +114,5 @@ Hello, World!
 Exit the ruyi LLVM virtual environment
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```

@@ -126,15 +126,15 @@ ruyi install gnu-ruyisdk
          return 0;
      }
      ```
-  
+
   2. **使用 RuyiGCC 编译**
-  
+
      ```bash
      riscv64-ruyisdk-linux-gnu-gcc -static uart_test.c -o uart_test
      ```
-  
+
   3. **剥离属性段**
-  
+
      ```bash
      riscv64-ruyisdk-linux-gnu-objcopy --remove-section=.riscv.attributes uart_test uart_test_stripped
      ```
@@ -167,8 +167,8 @@ ruyi install gnu-ruyisdk
      wget http://10.13.21.160:8000/uart_test_stripped -O /root/uart_test
      chmod +x /root/uart_test
      ```
-     
-  
+
+
 - #### 运行测试
 
   ```bash
@@ -192,5 +192,3 @@ ruyi install gnu-ruyisdk
                                            Hello from K510 UART!
                                                                 Sent: Hello from K5!
     ```
-    ​
-

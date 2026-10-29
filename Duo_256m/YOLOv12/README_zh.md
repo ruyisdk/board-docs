@@ -34,14 +34,14 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ## YOLOv12
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现 YOLOv12 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
+基于 TDL SDK 实现 YOLOv12 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
 硬件环境：Milk-V Duo 256M （SG2002 ）  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK  
 ### 模型准备与编译
 可以直接点击下载预编译好的[yolo12n_cv181x_int8_sym.cvimodel](https://github.com/TOT2232/yolo12-object-detection.git)
-或者根据本节文档步骤自己生成。 
+或者根据本节文档步骤自己生成。
 
-生成 .cvimodel,首先下载 yolov12 仓库    
+生成 .cvimodel,首先下载 yolov12 仓库  
 ```bash
 git clone https://github.com/sunsmarterjie/yolov12.git
 ```
@@ -64,11 +64,11 @@ mkdir -p yolo_export_work
 cd yolo_export_work
 wget https://github.com/ultralytics/assets/releases/download/v8.3.0/yolo12n.pt
 ```
-获取 TDL-SDK 示例源码     
+获取 TDL-SDK 示例源码  
 ```bash
 git clone https://github.com/milkv-duo/cvitek-tdl-sdk-sg200x.git
 ``` 
-将 cvitek-tdl-sdk-sg200x/sample/yolo_export/yolov8_export.py 代码复制到 当前文件夹，yolo12 可兼容 yolov8 。     
+将 cvitek-tdl-sdk-sg200x/sample/yolo_export/yolov8_export.py 代码复制到 当前文件夹，yolo12 可兼容 yolov8 。  
 ```bash
 cp ~/cvitek-tdl-sdk-sg200x/sample/yolo_export/yolov8_export.py .
 python3 yolov8_export.py --weights ./yolo12n.pt --img-size 640 640
@@ -178,7 +178,7 @@ which riscv64-unknown-linux-musl-gcc
 «Ruyi milkv-venv» duo256@duo256-virtual-machine:~$ which riscv64-unknown-linux-musl-gcc
 /home/duo256/milkv-venv/bin/riscv64-unknown-linux-musl-gcc
 ```
-### 使用 ruyi 工具链编译示例代码 
+### 使用 ruyi 工具链编译示例代码
 ```bash
 #进入TDL-SDK 示例源码目录，在该目录下下载v12.cpp,并命名为sample_v12.cpp
 cd cvitek-tdl-sdk-sg200x/sample/cvi_yolo
@@ -199,7 +199,7 @@ make sample_yolov12 \
 cp ~/model_yolo12/dataset/COCO2017/val2017/000000000632.jpg .
 ```
 ### 运行示例并验证结果
-将编译好的 sample_yolov12、yolo12n_cv181x_int8_sym.cvimodel、要推理的 jpg 图片，拷贝到板端然后执行二进制程序:    
+将编译好的 sample_yolov12、yolo12n_cv181x_int8_sym.cvimodel、要推理的 jpg 图片，拷贝到板端然后执行二进制程序:  
 ```bash
 scp sample_yolov12 yolo12n_cv181x_int8_sym.cvimodel 000000000632.jpg  root@192.168.42.1:/root/
 ```

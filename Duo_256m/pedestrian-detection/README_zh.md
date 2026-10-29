@@ -34,8 +34,8 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ##  Pedestrian-Detection
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现行人检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
-硬件环境：Milk-V Duo 256M （SG2002 ),CAM-GC2083    
+基于 TDL SDK 实现行人检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
+硬件环境：Milk-V Duo 256M （SG2002 ),CAM-GC2083  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK  
 
 ### 创建并激活 ruyi 虚拟环境
@@ -56,11 +56,11 @@ which riscv64-unknown-linux-musl-gcc
 /home/duo256/milkv-venv/bin/riscv64-unknown-linux-musl-gcc
 ```
 ### 使用 ruyi 工具链编译示例代码
-获取 TDL-SDK 示例源码    
+获取 TDL-SDK 示例源码  
 ```bash
 git clone https://github.com/milkv-duo/cvitek-tdl-sdk-sg200x.git
 ```
-下载行人检测程序源码  sample_vi_od.c   
+下载行人检测程序源码  sample_vi_od.c  
 ```bash
 git clone https://github.com/milkv-duo/duo-tdl-examples.git
 ```
@@ -174,7 +174,7 @@ scp mbv2_det_person_256_448_INT8_cv181x.cvimodel root@192.168.42.1:/root/
 ```bash
 chmod +x sample_vi_od
 ```
-在终端执行测试程序：    
+在终端执行测试程序：  
 ```bash
 ./sample_vi_od mobiledetv2-pedestrian mbv2_det_person_256_448_INT8_cv181x.cvimodel
 ```

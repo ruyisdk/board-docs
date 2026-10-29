@@ -17,7 +17,7 @@ profile: I2C
 
 ```
 
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 
 ```
 
@@ -63,7 +63,7 @@ ruyi install gnu-plct llvm-plct
 
 [![OLED 屏幕引脚图](https://raw.githubusercontent.com/ZihanCheng63/ruyisdk-dev-archive/main/videos/Duo_s/OLED%E6%98%BE%E7%A4%BA%E5%B1%8F.png)](https://raw.githubusercontent.com/ZihanCheng63/ruyisdk-dev-archive/main/videos/Duo_s/OLED%E6%98%BE%E7%A4%BA%E5%B1%8F.png)
 
-  
+
 
 [![duos-pinout-v1.1](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)](https://raw.githubusercontent.com/ruyisdk/board-docs/main/Duo_S/images/duos-pinout-v1.1.webp)
 

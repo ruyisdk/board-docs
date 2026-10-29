@@ -93,7 +93,7 @@ docker run -itd --name hhb_env hhb4tools/hhb:latest
 #进入容器
 docker exec -it hhb_env /bin/bash
 ```
-下载Yolov5s模型    
+下载Yolov5s模型  
 下载到示例目录 /home/example/th1520_npu/yolov5s 下：  
 ```bash
 mkdir -p /home/example/th1520_npu/yolov5s
@@ -212,7 +212,7 @@ info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 ## YOLOv5s
 ### 示例描述和硬件环境准备
 本示例基于 LicheePi 4A（TH1520）平台，使用 HHB 工具链将 YOLOv5s 模型从 ONNX 格式转换为适用于 RISC-V 架构的可执行程序，并在开发板的 C920 CPU 上运行推理任务。  
-硬件环境：Lichee Pi 4A (16GB)     
+硬件环境：Lichee Pi 4A (16GB)  
 软件环境：RuyiSDK 0.47.0，HHB 2.6.17  
 ### 创建并激活 ruyi 虚拟环境
 如果没有 ruyi 虚拟环境，则创建虚拟环境 venv-sipeed  

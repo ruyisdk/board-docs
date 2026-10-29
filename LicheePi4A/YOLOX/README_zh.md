@@ -27,13 +27,13 @@ ruyi install gnu-plct-xthead
 info: skipping already installed package gnu-plct-xthead-3.1.0-ruyi.20250526
 ```
 
-## YOLOX 
+## YOLOX
 
 ### 示例描述和硬件环境准备
 
 YOLOX 是一个高性能的目标检测模型，本示例在 Lichee Pi 4A 上运行 YOLOX，对输入图片进行目标检测，输出带检测框的结果图片。  
 硬件环境：Lichee Pi 4A (16GB)  
-软件环境：RuyiSDK：0.47.0   Python：3.11.4   
+软件环境：RuyiSDK：0.47.0   Python：3.11.4  
 
 ### 创建并激活 ruyi 虚拟环境
 
@@ -165,7 +165,7 @@ wget https://github.com/Megvii-BaseDetection/YOLOX/releases/download/0.1.1rc0/yo
 
 ```
 
-用 nano 编辑 onnx_inference.py    
+用 nano 编辑 onnx_inference.py  
 
 ```bash
 
@@ -324,5 +324,3 @@ python3 onnx_inference.py -m yolox_s.onnx -i soccer.jpg -o outdir -s 0.3 --input
 soccer.jpg
 
 ```
-
-

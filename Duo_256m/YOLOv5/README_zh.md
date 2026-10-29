@@ -34,7 +34,7 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ## YOLOv5
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现 YOLOv5 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo256M（RISC-V）上的交叉编译能力。   
+基于 TDL SDK 实现 YOLOv5 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo256M（RISC-V）上的交叉编译能力。  
 硬件环境：Milk-V Duo256M （SG2002 ）  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK
 ### 创建并激活 ruyi 虚拟环境
@@ -53,7 +53,7 @@ which riscv64-unknown-linux-musl-gcc
 «Ruyi milkv-venv» duo256@duo256-virtual-machine:~$ which riscv64-unknown-linux-musl-gcc
 /home/duo256/milkv-venv/bin/riscv64-unknown-linux-musl-gcc
 ```
-### 使用 ruyi 工具链编译示例代码   
+### 使用 ruyi 工具链编译示例代码  
 下载 TDL SDK 源码
 ```bash
 git clone https://github.com/milkv-duo/cvitek-tdl-sdk-sg200x.git  

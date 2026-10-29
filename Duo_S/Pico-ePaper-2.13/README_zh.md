@@ -45,17 +45,17 @@ profile: Pico-ePaper-2.13
 
 [![Pico-ePaper1-2.13](https://raw.githubusercontent.com/jason-hue/riscv-board-custom-dev/main/Duo_S/images/Pico-ePaper1-2.13.webp)](https://raw.githubusercontent.com/jason-hue/plct/main/Pico-ePaper1-2.13.webp)
 
-  
+
 
 | 连接名称 | GND | VCC | DC | CS | RST | BUSY | CLK | DIN |
 | -------- | ---- | ---------- | ----- | ----- | ----- | ----- | ----- | ----- |
 | 引脚 | GND | VCC (3.3V) | PIN50 | PIN11 | PIN13 | PIN46 | PIN23 | PIN19 |
 
-  
+
 
 [![2.13英寸 LCD Pico 扩展板引脚排列介绍](https://raw.githubusercontent.com/jason-hue/plct/main/Pico-ePaper-2.13-details-inter.jpg)](https://raw.githubusercontent.com/jason-hue/plct/main/Pico-ePaper-2.13-details-inter.jpg)
 
-  
+
 
 ### 3. 部署 RuyiSDK 环境
 
@@ -170,7 +170,7 @@ paper: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (
 
 > - 以字符大小为`Font16`为例:
 
-在main函数中调用`Paint_DrawString_EN(5, 10, "HELLO", &Font16, WHITE, BLACK);` ，便可以顶格显示字符 `HELLO` 。
+在main函数中调用`Paint_DrawString_EN(5, 10, "HELLO", &Font16, WHITE, BLACK);` ，便可以顶格显示字符 `HELLO` 。
 
 ```bash
 

@@ -6,7 +6,7 @@ sys_var: null
 category: benchmark
 last_update: 2026-07-22
 
-model: 	Milk-V Jupiter2
+model: Milk-V Jupiter2
 profile: Coremark
 ---
 

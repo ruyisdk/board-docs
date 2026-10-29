@@ -34,8 +34,8 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ##  Yolov8-Person-Pets
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现yolov8 人形及猫狗侦测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
-硬件环境：Milk-V Duo 256M （SG2002 )，CAM-GC2083    
+基于 TDL SDK 实现yolov8 人形及猫狗侦测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
+硬件环境：Milk-V Duo 256M （SG2002 )，CAM-GC2083  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK  
 
 ### 创建并激活 ruyi 虚拟环境
@@ -56,7 +56,7 @@ which riscv64-unknown-linux-musl-gcc
 /home/duo256/milkv-venv/bin/riscv64-unknown-linux-musl-gcc
 ```
 ### 使用 ruyi 工具链编译示例代码
-下载人形及猫狗检测程序源码  sample_vi_od.c   
+下载人形及猫狗检测程序源码  sample_vi_od.c  
 ```bash
 git clone https://github.com/milkv-duo/duo-tdl-examples.git
 ```
@@ -96,7 +96,7 @@ Environment is ready.
   LDFLAGS="-L../libs"
 ```
 ### 运行示例并验证结果
-duo256m连接上CAM-GC2083摄像头,确认排线插紧后再通电开机。     
+duo256m连接上CAM-GC2083摄像头,确认排线插紧后再通电开机。  
 将编译生成的 sample_vi_od 在电脑上通过 scp 命令上传到 Duo 开发板中:  
 ```bash
 scp sample_vi_od root@192.168.42.1:/root/
@@ -106,7 +106,7 @@ scp sample_vi_od root@192.168.42.1:/root/
 wget https://github.com/sophgo/tdl_models/raw/refs/heads/main/cv181x/yolov8n_det_pet_person_384_640_INT8_cv181x.cvimodel
 scp yolov8n_det_pet_person_384_640_INT8_cv181x.cvimodel root@192.168.42.1:/root/
 ```
-执行以下命令，将电脑上的库文件夹传到板子上：   
+执行以下命令，将电脑上的库文件夹传到板子上：  
 ```bash
 scp -r ../libs root@192.168.42.1:/root/
 ```

@@ -179,6 +179,3 @@ profile: OpenCV
      Success! Image saved as test_output.jpg
      ```
      ![test.png](./images/test.png)
-
-
-     

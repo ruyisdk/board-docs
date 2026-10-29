@@ -11,5 +11,4 @@ silicon_vendor: SpaceMIT
 
 ## Overview
 
-Lichee Pi 3A is a RISC-V Linux development board based on core compute board LM3A, which is equipped with a K1 RISC-V processor, 8GB/16GB LPDDR4X memory, and 64GB/128GB eMMC storage. 
-
+Lichee Pi 3A is a RISC-V Linux development board based on core compute board LM3A, which is equipped with a K1 RISC-V processor, 8GB/16GB LPDDR4X memory, and 64GB/128GB eMMC storage.

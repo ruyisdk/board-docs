@@ -35,7 +35,7 @@ ruyi install gnu-milkv-milkv-duo-musl-bin
 ```
 ## YOLOv11
 ### 示例描述和硬件环境准备
-基于 TDL SDK 实现 YOLOv11 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。   
+基于 TDL SDK 实现 YOLOv11 目标检测，读取图像并进行推理，验证 Ruyi 工具链在 Duo 256M（RISC-V）上的交叉编译能力。  
 硬件环境：Milk-V Duo 256M （SG2002 ）  
 软件环境：Ubuntu，RuyiSDK 0.47.0，TDL SDK
 ### 创建并激活 ruyi 虚拟环境
@@ -56,8 +56,8 @@ which riscv64-unknown-linux-musl-gcc
 ```
 ### 使用 ruyi 工具链编译示例代码
 由于 Ultralytics 官方在设计 YOLOv11 时，延续了与 YOLOv8 相同的 Anchor-Free（无锚框）检测头架构，两者的模型输出张量（Tensor）维度和坐标解码逻辑高度一致。
-因此，YOLOv11 可复用 sample_yolov8 示例程序进行推理验证。 
-获取 TDL-SDK 示例源码   
+因此，YOLOv11 可复用 sample_yolov8 示例程序进行推理验证。
+获取 TDL-SDK 示例源码  
 ```bash
 git clone https://github.com/milkv-duo/cvitek-tdl-sdk-sg200x.git
 #进入代码目录进行编译，生成sample_yolov8 程序

@@ -16,8 +16,8 @@ profile: Coremark
 安装依赖包
 
 ```bash
-sudo apt update
-sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update
+sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
 安装ruyi包管理器（其他安装方式见[官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)）
@@ -89,7 +89,7 @@ CoreMark 1.0 : 13454.423142 / GCC16.1.1 20260624 -O2 -march=rv64gc_zba_zbb  -lrt
 退出ruyi GCC虚拟环境
 
 ```bash
-cd ..
+cd ..
 ruyi-deactivate
 ```
 
@@ -146,6 +146,6 @@ CoreMark 1.0 : 9091.660468 / RuyiSDK Clang 22.1.8 (https://github.com/ruyisdk/ll
 退出ruyi LLVM虚拟环境
 
 ```bash
-cd ..
+cd ..
 ruyi-deactivate
 ```

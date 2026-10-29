@@ -17,7 +17,7 @@ This example can be compiled and run directly on the development board, making i
 Install dependencies
 
 ```
-sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
+sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 ```
 
 Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
@@ -82,7 +82,7 @@ Hello, World!
 Return to the parent directory and exit the ruyi GCC virtual environment
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
 
 ## Hello World (LLVM)
@@ -104,7 +104,7 @@ clang -v
 Compile and run Hello World (LLVM)
 
 ```
-clang hello.c -static -o hello-llvm
+clang hello.c -static -o hello-llvm
 
 ./hello-llvm
 ```
@@ -124,5 +124,5 @@ Hello, World!
 Return to the parent directory and exit the ruyi LLVM virtual environment
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```

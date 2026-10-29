@@ -86,7 +86,7 @@ profile: SKL
      ```
 
      固定源码版本，以保持本教程使用的文件路径和接口一致。
-     
+
   2. **创建算子验证程序**
 
      矩阵乘法使用 `2×3` 与 `3×2` 的输入矩阵，核对结果 `58、64、139、154`；Softmax 使用 `[1, 2, 3]`，核对输出及概率总和，并检查输入整体平移为 `[1001, 1002, 1003]` 后的结果。
@@ -152,9 +152,9 @@ profile: SKL
      }
      EOF
      ```
-     
+
   3. **使用 RuyiGCC 编译**
-  
+
      ```bash
      set -o pipefail
 
@@ -179,9 +179,9 @@ profile: SKL
      ```text
      Build exit code: 0
      ```
-  
+
   `-march=rv64gc -mabi=lp64d` 指定目标指令集和 ABI；`-lm` 链接 Softmax 所需的数学函数库。本例仅编译两个 FP32 参考算子，不使用仓库默认的向量工具链配置。
-  
+
 - #### 运行示例并验证结果
 
   1. **运行测试程序**
@@ -207,18 +207,18 @@ profile: SKL
      «Ruyi ruyi-skl-env» [fedora@localhost p550-skl]$ echo "Run exit code: $?"
      Run exit code: 0
      ```
-     
+
      矩阵乘法、Softmax 和 Softmax 大数值输入检查均为 `PASS`，程序退出码为 `0`，本示例的数值校验通过。编译与运行日志分别保存在 `logs/build.log` 和 `logs/run.log`。
-     
+
   2. **退出 Ruyi 虚拟环境**
-  
+
      ```bash
      cd
      ruyi-deactivate
      ```
-  
+
   3. **关闭开发板**
-  
+
      ```bash
      sudo poweroff
      ```

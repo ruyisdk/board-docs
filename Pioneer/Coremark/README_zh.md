@@ -83,7 +83,7 @@ CoreMark 1.0 : 10552.419142 / GCC15.1.0 20250912 (experimental) -O2 -mcpu=xt-c92
 退出ruyi GCC虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
 
 ## Hello World (LLVM版)
@@ -135,7 +135,5 @@ CoreMark 1.0 : 7611.929970 / RuyiSDK Clang 21.1.0 (https://github.com/ruyisdk/ll
 退出ruyi GCC虚拟环境
 
 ```
-cd ..; ruyi-deactivate
+cd ..; ruyi-deactivate
 ```
-
-
