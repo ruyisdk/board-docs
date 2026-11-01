@@ -23,9 +23,9 @@ sudo dnf install -y git make wget tar zstd xz
 Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
 
 ```bash
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.52.0/ruyi-0.52.0.riscv64
-chmod +x ./ruyi-0.52.0.riscv64
-sudo cp -v ./ruyi-0.52.0.riscv64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.53.0/ruyi-0.53.0.riscv64
+chmod +x ./ruyi-0.53.0.riscv64
+sudo cp -v ./ruyi-0.53.0.riscv64 /usr/local/bin/ruyi
 ```
 
 Install the GCC and LLVM toolchains
