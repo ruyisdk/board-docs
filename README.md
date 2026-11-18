@@ -33,6 +33,7 @@ This repository currently includes, but is not limited to, documentation resourc
 | Nuclei RV-STAR | [RV-STAR](./RV-STAR/README.md) | [GigaDevice](https://www.gigadevice.com/) |
 | SpacemiT K3 CoM260 Kit | [CoM260_Kit](./CoM260_Kit/README.md) | [SpaceMIT](https://www.spacemit.com/en/) |
 | SpacemiT K3 Pico-ITX | [K3-Pico-ITX](./K3-Pico-ITX/README.md) | [SpaceMIT](https://www.spacemit.com/en/) |
+| SpacemiT V100-C2201 | [V100-C2201](./V100-C2201/README.md) | [SpaceMIT](https://www.spacemit.com/en/) |
 | VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README.md) | [StarFive](https://starfivetech.com/en/) |
 <!-- MATRIX:END -->
 

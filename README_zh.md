@@ -33,6 +33,7 @@
 | Nuclei RV-STAR | [RV-STAR](./RV-STAR/README_zh.md) | [GigaDevice](https://www.gigadevice.com.cn/) |
 | SpacemiT K3 CoM260 Kit | [CoM260_Kit](./CoM260_Kit/README_zh.md) | [SpaceMIT](https://www.spacemit.com/) |
 | SpacemiT K3 Pico-ITX | [K3-Pico-ITX](./K3-Pico-ITX/README_zh.md) | [SpaceMIT](https://www.spacemit.com/) |
+| SpacemiT V100-C2201 | [V100-C2201](./V100-C2201/README_zh.md) | [SpaceMIT](https://www.spacemit.com/) |
 | VisionFive 2 Lite | [VisionFive2Lite](./VisionFive2Lite/README_zh.md) | [StarFive](https://starfivetech.com/) |
 <!-- MATRIX:END -->
 
