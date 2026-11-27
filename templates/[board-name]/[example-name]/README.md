@@ -14,8 +14,8 @@ profile: [Example Name]
 <!-- Use a canonical `category` value from "Example Categories" in CONTRIBUTING.md. -->
 <!-- Use official product names without spaces for new board directories; do not rename existing directories. -->
 <!-- Use lowercase letters and hyphens for new example directories. -->
-<!-- Use the repository-maintained Ruyi version and command format documented in CONTRIBUTING.md. -->
-<!-- Keep each command independent and its version and architecture suffix consistent; monthly version bumps do not change `last_update`. -->
+<!-- Use the fixed Ruyi download URLs and command format documented in CONTRIBUTING.md. -->
+<!-- Keep each command independent and its filename and architecture suffix consistent. -->
 
 # RuyiSDK [Example Category] Example
 

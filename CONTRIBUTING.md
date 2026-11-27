@@ -48,10 +48,10 @@ board-docs
 
 ### Version References
 
-- Tutorials that install `ruyi` use the repository's centrally maintained version, versioned path, and versioned binary filename from the [RuyiSDK tags mirror](https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/). The monthly workflow updates this version across all tutorials.
-- Keep each installation command independently executable without relying on shell state from a previous line. Use `.amd64` for x86_64 hosts and `.riscv64` for RISC-V boards, and keep the version and architecture suffix consistent in the `wget`, `chmod`, and `cp` commands.
+- Tutorials that install `ruyi` use the fixed download URLs from the [RuyiSDK latest stable release mirror](https://mirror.iscas.ac.cn/ruyisdk/ruyi/stable/latest/), with filenames such as `ruyi.amd64` and `ruyi.riscv64`.
+- Keep each installation command independently executable without relying on shell state from a previous line. Use `.amd64` for x86_64 hosts and `.riscv64` for RISC-V boards, and keep the filename and architecture suffix consistent in the `wget`, `chmod`, and `cp` commands.
 - Link to the [official RuyiSDK installation documentation](https://ruyisdk.org/docs/Package-Manager/installation) for other installation methods.
-- A repository-wide automated `ruyi` version update does not change the frontmatter `last_update` field; that field records when the tutorial itself was last verified.
+- The frontmatter `last_update` field records when the tutorial itself was last verified.
 
 ### Bilingual Documentation
 

@@ -20,9 +20,9 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential
 Install the ruyi package manager (see the [official installation guide](https://ruyisdk.org/docs/Package-Manager/installation) for other methods)
 
 ```bash
-wget https://github.com/ruyisdk/ruyi/releases/download/0.54.0/ruyi-0.54.0.riscv64
-chmod +x ./ruyi-0.54.0.riscv64
-sudo cp -v ./ruyi-0.54.0.riscv64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/stable/latest/ruyi.riscv64
+chmod +x ./ruyi.riscv64
+sudo cp -v ./ruyi.riscv64 /usr/local/bin/ruyi
 ```
 
 Install the GCC and LLVM toolchains

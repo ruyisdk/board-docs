@@ -24,9 +24,9 @@ sudo apt update; sudo apt install -y wget tar zstd xz-utils git build-essential 
 
 ```
 
-wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/0.51.0/ruyi-0.51.0.riscv64
-chmod +x ruyi-0.51.0.riscv64
-sudo cp -v ruyi-0.51.0.riscv64 /usr/local/bin/ruyi
+wget https://mirror.iscas.ac.cn/ruyisdk/ruyi/stable/latest/ruyi.riscv64
+chmod +x ruyi.riscv64
+sudo cp -v ruyi.riscv64 /usr/local/bin/ruyi
 
 ```
 
