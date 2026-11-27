@@ -48,10 +48,10 @@
 
 ### 版本引用
 
-- 安装 `ruyi` 的教程统一使用仓库集中维护的版本，以及 [RuyiSDK 版本标签镜像](https://mirror.iscas.ac.cn/ruyisdk/ruyi/tags/)中的版本路径和带版本号的二进制文件名。月度工作流会统一更新所有教程中的版本。
-- 每行安装命令应能独立执行，不依赖前一行留下的 shell 状态。x86_64 主机使用 `.amd64`，RISC-V 开发板使用 `.riscv64`，并确保 `wget`、`chmod` 和 `cp` 命令中的版本号与架构后缀一致。
+- 安装 `ruyi` 的教程使用 [RuyiSDK 最新稳定版镜像](https://mirror.iscas.ac.cn/ruyisdk/ruyi/stable/latest/)中的固定下载链接，文件名如 `ruyi.amd64` 和 `ruyi.riscv64`。
+- 每行安装命令应能独立执行，不依赖前一行留下的 shell 状态。x86_64 主机使用 `.amd64`，RISC-V 开发板使用 `.riscv64`，并确保 `wget`、`chmod` 和 `cp` 命令中的文件名与架构后缀一致。
 - 其他安装方式请链接到 [RuyiSDK 官方安装文档](https://ruyisdk.org/docs/Package-Manager/installation)。
-- 仓库范围的 `ruyi` 自动升版不修改 frontmatter 中的 `last_update` 字段；该字段记录教程本身最后实际验证的日期。
+- frontmatter 中的 `last_update` 字段记录教程本身最后实际验证的日期。
 
 ### 双语文档
 
